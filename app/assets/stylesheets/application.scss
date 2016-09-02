@@ -16,3 +16,29 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.wrapper {
+  padding: 100px 0;
+}
+
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+a:link {    /* unvisited link */
+    color: #FFFFFF;
+    text-decoration: none;
+}
+a:visited {    /* visited link */
+    color: #FFFFFF;
+    text-decoration: none;
+}
+a:hover {    /* mouse over link */
+    color: orange;
+    text-decoration: none;
+}
+a:active {    /* active link */
+    color: orange;
+    text-decoration: none;
+}
