@@ -1,3 +1,5 @@
+{<img src="https://codeclimate.com/github/fruitcake0525/ror_taichung/badges/coverage.svg" />}[https://codeclimate.com/github/fruitcake0525/ror_taichung/coverage]
+{<img src="https://codeclimate.com/github/fruitcake0525/ror_taichung/badges/issue_count.svg" />}[https://codeclimate.com/github/fruitcake0525/ror_taichung]
 {<img alt='Stories in Ready' src='https://badge.waffle.io/fruitcake0525/ror_taichung.png?label=ready&title=Ready' />}[https://waffle.io/fruitcake0525/ror_taichung]
 == 說明文件
 
