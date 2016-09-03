@@ -4,4 +4,4 @@ RoR Taichung 官網
 
 * Trello : https://trello.com/b/FSNx1RV6/rails
 
-* Demo : http://ror-taichung.kissr.com/
+* Demo : https://calm-tundra-24506.herokuapp.com/
