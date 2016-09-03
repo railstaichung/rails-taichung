@@ -1,3 +1,4 @@
+{<img alt='Stories in Ready' src='https://badge.waffle.io/fruitcake0525/ror_taichung.png?label=ready&title=Ready' />}[https://waffle.io/fruitcake0525/ror_taichung]
 == 說明文件
 
 RoR Taichung 官網
