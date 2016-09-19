@@ -1,0 +1,20 @@
+<div class="row">
+  <% @events.each do |event| %>
+    <div class="col-sm-6 col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h3><%= event.topic %></h3>
+          <p>
+          主辦人:<%= event.owner %><br>
+          開始時間:<%= event.start_time %><br>
+          結束時間:<%= event.end_time %><br>
+          活動地點:<%= event.location %><br>
+          </p>
+          <div>
+            <%= link_to("活動詳情", event_path(event), class: "btn btn-primary btn-block", role: "button") %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
