@@ -49,7 +49,7 @@ group :development do
   gem 'spring'
   gem 'pry'
   gem 'pry-nav'
-  gem "awesome_rails_console"  
+  gem "awesome_rails_console"
 end
 
 group :production do
