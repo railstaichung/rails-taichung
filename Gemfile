@@ -27,6 +27,8 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'simple_form'
 gem 'devise'
 
+gem 'holder_rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -49,7 +51,7 @@ group :development do
   gem 'spring'
   gem 'pry'
   gem 'pry-nav'
-  gem "awesome_rails_console"  
+  gem "awesome_rails_console"
 end
 
 group :production do
