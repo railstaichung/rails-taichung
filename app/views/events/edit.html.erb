@@ -1,14 +1,17 @@
 <br>
-<div class="row">
-  <div class="col-md-8 col-md-offset-2">
-    <%= simple_form_for @event do |f| %>
-      <%= f.input :topic, required: true, label: '這次活動的主題？' %>
-      <%= f.input :start_time, required: true, label: '開始時間' %>
-      <%= f.input :end_time, required: true, label: '結束時間' %>
-      <%= f.input :location, required: true, label: '活動地點' %>
-      <%= f.input :content, required: true, label: '活動內容' %>
-      <%= f.submit 'Save', class: "btn btn-primary" %>
-    <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2 col-xs-9 col-xs-offset-1">
+      <%= simple_form_for @event do |f| %>
+        <%= f.input :topic, required: true, label: '這次活動的主題？' %>
+        <%= f.input :start_time, required: true, label: '開始時間' %>
+        <%= f.input :end_time, required: true, label: '結束時間' %>
+        <%= f.input :location, required: true, label: '活動地點' %>
+        <%= f.input :content, required: true, label: '活動內容' %>
+        <%= f.submit 'Save', class: "btn btn-primary" %>
+       <% end %>
+    </div>
   </div>
 </div>
 <br>
+
