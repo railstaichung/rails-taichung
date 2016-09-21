@@ -8,28 +8,35 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Ruby on Rails 臺中聚會</a>
+      <a class="navbar-brand" href="<%= root_path %>">Ruby on Rails 臺中聚會</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-left">
-        <li><a href="#">參加活動</a></li>
+        <li><%= link_to("參加活動", events_path) %></li>
         <li><a href="#">聚會成員</a></li>
         <li><a href="#">熱門議題</a></li>
         <li><a href="#">資源分享</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">登入/註冊 <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">帳號密碼</a></li>
-            <li><a href="#">個人簡介</a></li>
-            <li><a href="#">我的議題</a></li>
-            <li class="divider"></li>
-            <li><a href="#">進入後台</a></li>
-          </ul>
-        </li>
+        <% if !current_user %>
+          <li> <%= link_to("註冊", new_user_registration_path) %> </li>
+          <li> <%= link_to("登入", new_user_session_path) %> </li>
+        <% else %>
+          <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <%= current_user.email %> <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><%= link_to("帳號設定", edit_user_registration_path) %></li>
+              <li><%= link_to("建立/修改活動", events_path) %></li>
+              <li><a href="#">個人簡介</a></li>
+              <li><a href="#">我的議題</a></li>
+              <li class="divider"></li>
+              <li><a href="#">進入後台</a></li>
+              <li class="divider"></li>
+              <li><%= link_to("登出", destroy_user_session_path, method: :delete ) %></li>
+            </ul>
+          </li>
+        <% end %>
       </ul>
       <form class="navbar-form navbar-right visible-lg-block" role="search">
         <div class="form-group">

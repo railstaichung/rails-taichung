@@ -1,0 +1,32 @@
+<br>
+<div class="container">
+<div class="jumbotron">
+  <br>
+  <h1><%= @event.topic %></h1>
+  <br>
+</div>
+
+<div class="page-header">
+  <h1><%=  @event.topic %></h1>
+</div>
+
+<div>
+  <!-- <p>主辦人 : <%= @event.owner %></p> -->
+  <p>活動日期 : <%= @event.start_time %> ~ <%= @event.end_time %></p><br>
+  <p>活動地點 : <%= @event.location %></p>
+</div>
+
+<hr>
+
+<div>
+  <p>活動內容 : <%= simple_format(@event.content) %></p>
+</div>
+
+<hr>
+
+<div>
+  <%= link_to("立刻報名", root_path, class: "btn btn-primary btn-lg btn-block") %>
+</div>
+</div>
+<br>
+
