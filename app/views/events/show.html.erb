@@ -12,14 +12,9 @@
 
 <div>
   <!-- <p>主辦人 : <%= @event.owner %></p> -->
-  <p>活動日期 : <%= @event.start_time %> ~ <%= @event.end_time %></p><br>
-  <p>活動地點 : <%= @event.location %></p>
-</div>
-
-<hr>
-
-<div>
-  <p>活動內容 : <%= simple_format(@event.content) %></p>
+  <p>活動日期 : <%= @event.start_time %> ~ <%= @event.end_time %><br>
+     活動地點 : <%= @event.location %><br>
+     活動內容 : <%= simple_format(@event.content) %></p>
 </div>
 
 <hr>

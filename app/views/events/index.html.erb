@@ -12,7 +12,7 @@
           結束時間:<br>
           活動地點:<br>
           </p>
-            <p><%= link_to("建立活動", new_event_path, class: "btn btn-primary btn-block", role: "button") %></p>
+          <div><%= link_to("建立活動", new_event_path, class: "btn btn-primary btn-block", role: "button") %></div>
         </div>
       </div>
     </div>
@@ -34,15 +34,9 @@
             <p><%= link_to("活動詳情", event_path(event), class: "btn btn-primary btn-block", role: "button") %></p>
           <% else %>
             <div class="btn-group" role="group" aria-label="...">
-              <div class="btn-group" role="group">
                 <%= link_to("詳情", event_path(event), class: "btn btn-primary", role: "button") %>
-              </div>
-              <div class="btn-group" role="group">
                 <%= link_to("修改", edit_event_path(event), class: "btn btn-warning", role: "button") %>
-              </div>
-              <div class="btn-group" role="group">
                 <%= link_to("刪除", event_path(event), data: { confirm: "你確定要刪除嗎？" }, method: :delete, class: "btn btn-danger", role: "button") %>
-              </div>
             </div>
           <% end %>
         </div>
