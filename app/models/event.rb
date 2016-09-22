@@ -6,5 +6,7 @@ class Event < ActiveRecord::Base
   validates :content, presence: true
 
   has_many :user_events
-  has_many :user, through: :user_events
+  has_many :members, throught: :user_events, source: :user
+
+  belongs_to :owner, class_name: "User", foreign_key: :user_id
 end
