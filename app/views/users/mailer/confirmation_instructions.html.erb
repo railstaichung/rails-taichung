@@ -1,0 +1,5 @@
+<p><%= @name %>歡迎您加入Rails台中的大家庭：</p>
+
+<p>請點選連結驗證E-mail信箱完成註冊：</p>
+
+<p><%= link_to '驗證E-Mail', confirmation_url(@resource, confirmation_token: @token) %></p>
