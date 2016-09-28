@@ -1,9 +1,5 @@
 class Event < ActiveRecord::Base
-  validates :topic, presence: true
-  validates :start_time, presence: true
-  validates :end_time, presence: true
-  validates :location, presence: true
-  validates :content, presence: true
+  validates_presence_of :topic, :start_time, :end_time, :location, :content
 
   has_many :user_events
   has_many :members, through: :user_events, source: :user
