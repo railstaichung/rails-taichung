@@ -1,7 +1,17 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'landingpage#index'
-  resources :events
+  resources :events do
+    member do
+      post :join
+      post :quit
+    end
+  end
+
+  namespace :account do
+    resources :events
+    resources :my_events
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -14,5 +14,5 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require holder
-
+//= require bootstrap/alert
 //= require_tree .
