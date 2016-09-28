@@ -9,5 +9,5 @@ $(document).ready ->
     autoclose: true,
     todayBtn: true,
     pickerPosition: "bottom-left",
-    format: 'mm-dd-yyyy hh:ii'
+    format: 'yyyy-mm-dd hh:ii:ss'
   });
