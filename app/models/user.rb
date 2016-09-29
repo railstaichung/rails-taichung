@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
       user.password = Devise.friendly_token[0,20]
       user.name = auth.info.name   # assuming the user model has a name
     end
+  end 
   has_many :participated_events, through: :user_events, source: :event
 
   has_many :events
