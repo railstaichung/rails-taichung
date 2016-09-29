@@ -20,10 +20,14 @@
 <hr>
 
 <div>
-  <% if current_user.is_member_of?(@event) %>
-    <%= link_to("取消報名", quit_event_path(@event), data: { confirm: "你確定要取消報名嗎？" }, method: :post, class: "btn btn-warning btn-lg btn-block") %>
+  <% if !current_user %>
+    <%= link_to("立刻報名", new_user_session_path, class: "btn btn-primary btn-lg btn-block") %>
   <% else %>
-    <%= link_to("立刻報名", join_event_path(@event), method: :post, class: "btn btn-primary btn-lg btn-block") %>
+    <% if current_user.is_member_of?(@event) %>
+      <%= link_to("取消報名", quit_event_path(@event), data: { confirm: "你確定要取消報名嗎？" }, method: :post, class: "btn btn-warning btn-lg btn-block") %>
+    <% else %>
+      <%= link_to("立刻報名", join_event_path(@event), method: :post, class: "btn btn-primary btn-lg btn-block") %>
+    <% end %>
   <% end %>
 </div>
 </div>
