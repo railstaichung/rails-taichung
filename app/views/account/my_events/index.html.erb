@@ -1,0 +1,31 @@
+<br>
+<div class="container">
+  <div class="page-header">
+    <p> <%= link_to("建立新活動", new_event_path, class: "btn btn-primary btn-lg", role: "button") %> </p>
+    </h1>
+  </div>
+  <div class="row">
+    <% @events.each do |event| %>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <img data-src="holder.js/300x300" alt="...">
+          <div class="caption">
+            <h3><%= event.topic %></h3>
+            <p>
+            主 辦 人 : <%= event.owner.email %><br>
+            開始時間 : <%= event.start_time %><br>
+            結束時間 : <%= event.end_time %><br>
+            活動地點 : <%= event.location %><br>
+            </p>
+            <div class="btn-group" role="group" aria-label="...">
+              <%= link_to("詳情", event_path(event), class: "btn btn-primary", role: "button") %>
+              <%= link_to("修改", edit_event_path(event), class: "btn btn-warning", role: "button") %>
+              <%= link_to("刪除", event_path(event), data: { confirm: "你確定要刪除嗎？" }, method: :delete, class: "btn btn-danger", role: "button") %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<br>

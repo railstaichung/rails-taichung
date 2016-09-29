@@ -11,21 +11,24 @@
 </div>
 
 <div>
-  <!-- <p>主辦人 : <%= @event.owner %></p> -->
-  <p>活動日期 : <%= @event.start_time %> ~ <%= @event.end_time %></p><br>
-  <p>活動地點 : <%= @event.location %></p>
+  <p>主 辦 人 : <%= @event.owner.email %><br>
+    活動日期 : <%= @event.start_time %> ~ <%= @event.end_time %><br>
+    活動地點 : <%= @event.location %><br>
+    活動內容 : <%= simple_format(@event.content) %></p>
 </div>
 
 <hr>
 
 <div>
-  <p>活動內容 : <%= simple_format(@event.content) %></p>
-</div>
-
-<hr>
-
-<div>
-  <%= link_to("立刻報名", root_path, class: "btn btn-primary btn-lg btn-block") %>
+  <% if !current_user %>
+    <%= link_to("立刻報名", new_user_session_path, class: "btn btn-primary btn-lg btn-block") %>
+  <% else %>
+    <% if current_user.is_member_of?(@event) %>
+      <%= link_to("取消報名", quit_event_path(@event), data: { confirm: "你確定要取消報名嗎？" }, method: :post, class: "btn btn-warning btn-lg btn-block") %>
+    <% else %>
+      <%= link_to("立刻報名", join_event_path(@event), method: :post, class: "btn btn-primary btn-lg btn-block") %>
+    <% end %>
+  <% end %>
 </div>
 </div>
 <br>
