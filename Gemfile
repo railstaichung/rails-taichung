@@ -26,6 +26,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'simple_form'
 gem 'devise'
+gem 'simple_captcha2', require: 'simple_captcha'
+gem 'letter_opener_web'
 
 gem 'holder_rails'
 
