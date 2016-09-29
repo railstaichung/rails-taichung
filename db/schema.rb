@@ -18,10 +18,10 @@ ActiveRecord::Schema.define(version: 20160928092737) do
     t.datetime "start_time"
     t.datetime "end_time"
     t.string   "location"
-    t.string   "owner"
     t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
   create_table "simple_captcha_data", force: :cascade do |t|
