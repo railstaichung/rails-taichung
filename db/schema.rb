@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160928092737) do
+ActiveRecord::Schema.define(version: 20160928092738) do
 
   create_table "events", force: :cascade do |t|
     t.string   "topic"
@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 20160928092737) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
