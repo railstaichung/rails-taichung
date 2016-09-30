@@ -26,4 +26,10 @@ class User < ActiveRecord::Base
   def is_member_of?(event)
     participated_events.include?(event)
   end
+
+  def editable_by?(user, current_user)
+    user && user == current_user
+  end
+
+
 end

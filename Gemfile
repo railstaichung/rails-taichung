@@ -31,6 +31,11 @@ gem 'letter_opener_web'
 
 gem 'holder_rails'
 
+# user profile
+gem 'haml-rails'
+gem 'carrierwave'
+gem 'mini_magick'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

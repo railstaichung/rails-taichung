@@ -1,0 +1,30 @@
+<br>
+<div class="container">
+<div class="jumbotron">
+  <br>
+  <h1><%= @user.name %></h1>
+  <br>
+</div>
+
+<div class="page-header">
+  <h1><%=  @user.name %></h1>
+</div>
+
+<div>
+  <p>
+    信箱：<%= @user.email %><br>
+  </p>
+</div>
+
+<hr>
+
+<!-- 自己可以修改內容 -->
+<% if @user.editable_by?(@user, current_user) %>
+  <div class="btn-group" role="group">
+    <%= link_to("修改", edit_user_path(@user), class: "btn btn-warning", role: "button") %>
+  </div>
+<% end %>
+
+
+</div>
+<br>
