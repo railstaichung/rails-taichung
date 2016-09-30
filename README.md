@@ -1,6 +1,6 @@
-{<img src="https://codeclimate.com/github/fruitcake0525/ror_taichung/badges/gpa.svg" />}[https://codeclimate.com/github/fruitcake0525/ror_taichung]
-{<img src="https://codeclimate.com/github/fruitcake0525/ror_taichung/badges/issue_count.svg" />}[https://codeclimate.com/github/fruitcake0525/ror_taichung/issues]
-{<img alt='Stories in Ready' src='https://badge.waffle.io/fruitcake0525/ror_taichung.png?label=ready&title=Ready' />}[https://waffle.io/fruitcake0525/ror_taichung]
+[<img src="https://codeclimate.com/github/fruitcake0525/ror_taichung/badges/gpa.svg" />](https://codeclimate.com/github/fruitcake0525/ror_taichung)
+[<img src="https://codeclimate.com/github/fruitcake0525/ror_taichung/badges/issue_count.svg" />](https://codeclimate.com/github/fruitcake0525/ror_taichung/issues)
+[<img alt='Stories in Ready' src='https://badge.waffle.io/fruitcake0525/ror_taichung.png?label=ready&title=Ready' />](https://waffle.io/fruitcake0525/ror_taichung)
 == 說明文件
 # RoR Taichung 官網
 ## 前言
