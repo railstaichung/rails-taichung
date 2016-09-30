@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
          :validatable,
          :confirmable
 
+  has_one :profile
   has_many :user_events
   has_many :participated_events, through: :user_events, source: :event
 
