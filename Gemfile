@@ -29,6 +29,7 @@ gem 'omniauth-facebook'
 gem 'letter_opener_web'
 gem 'figaro'
 gem 'holder_rails'
+gem "font-awesome-rails"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

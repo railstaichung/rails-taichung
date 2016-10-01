@@ -3,10 +3,9 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
-  after_filter :store_location
+  after_filter  :store_location
 
   private
-
   def store_location
     # store last url as long as it isn't a /users path
     session[:previous_url] = request.env['HTTP_REFERER'] unless request.env['HTTP_REFERER'] =~ /\/users/

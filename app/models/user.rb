@@ -11,17 +11,16 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:facebook]
 
   has_many :user_events
-
+  has_many :participated_events, through: :user_events, source: :event
+  has_many :events
+  
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
       user.name = auth.info.name   # assuming the user model has a name
     end
-  end 
-  has_many :participated_events, through: :user_events, source: :event
-
-  has_many :events
+  end
 
   def join!(event)
     participated_events << event
