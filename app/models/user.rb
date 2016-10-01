@@ -8,12 +8,12 @@ class User < ActiveRecord::Base
          :trackable,
          :validatable,
          :confirmable,
-         :omniauthable, :omniauth_providers => [:facebook]
+         :omniauthable, :omniauth_providers => [:facebook,:google_oauth2,:github]
 
   has_many :user_events
   has_many :participated_events, through: :user_events, source: :event
   has_many :events
-  
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email

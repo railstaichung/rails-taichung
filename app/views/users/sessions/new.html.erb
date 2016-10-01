@@ -15,6 +15,7 @@
   </div>
 <% end %>
 <%= link_to "使用Facebook登入", user_facebook_omniauth_authorize_path, class: "btn btn-primary btn-block"%>
-
+<%= link_to "使用Google+登入", user_google_oauth2_omniauth_authorize_path, class: "btn btn-primary btn-block"%>
+<%= link_to "使用GitHub登入", user_github_omniauth_authorize_path, class: "btn btn-primary btn-block"%>
 
 <%= render "users/shared/links" %>

@@ -21,11 +21,14 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem "rails-i18n"
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'simple_form'
 gem 'devise'
 gem 'simple_captcha2', require: 'simple_captcha'
 gem 'omniauth-facebook'
+gem "omniauth-google-oauth2"
+gem 'omniauth-github'
 gem 'letter_opener_web'
 gem 'figaro'
 gem 'holder_rails'
