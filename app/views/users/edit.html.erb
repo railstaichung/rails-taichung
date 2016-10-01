@@ -6,6 +6,20 @@
     </div>
     <%= simple_form_for @user do |f| %>
       <%= f.input :name, required: true, label: '名稱' %>
+        連結：
+        <ul>
+          <%= f.fields_for :profile do |profile_form| %>
+            <li>
+              <%= addresses_form.check_box :_destroy%>              
+              <%= profile_form.label :kind %>
+              <%= profile_form.text_field :kind %>
+
+              <%= profile_form.label :url %>
+              <%= profile_form.text_field :url %>
+
+            </li>
+          <% end %>
+        </ul>
       <%= f.submit 'Save', class: "btn btn-primary" %>
     <% end %>
   </div>

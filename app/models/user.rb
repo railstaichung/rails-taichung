@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
          :confirmable
 
   has_one :profile
+  accepts_nested_attributes_for :profile, allow_destroy: true, reject_if: lambda {|attributes| attributes['kind'].blank?}
+
   has_many :user_events
   has_many :participated_events, through: :user_events, source: :event
 
