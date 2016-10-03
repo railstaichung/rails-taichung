@@ -1,9 +1,0 @@
-en:
-  hello: "亲，您好~"
-en:
-  simple_captcha:
-    placeholder: "輸入圖片中的字元"
-    label: "請在輸入框中填入驗證碼:"
-    message:
-      default: "喔哦！您輸入驗證碼跟圖片中的字元不一樣喔~"
-      user: "喔哦！您輸入驗證碼跟圖片中的字元不一樣喔~"

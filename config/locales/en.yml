@@ -18,10 +18,28 @@
 #
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
-
 en:
   hello: "Hello world"
-en:
+  title: "Rails Taichung"
+  activities: "Activities"
+  members: "Members"
+  issues: "Issues"
+  resources: "Resources"
+  register: "New member?"
+  login: "Log in"
+  account_setting: "Account setting"
+  my_events: "My events"
+  create_event: "Create event"
+  member_info: "Personal info"
+  my_issues: "My issues"
+  backstage: "Backstage"
+  logout: "Log out"
+  search: "Search"
+  meeting_place: "Meeting place"
+  address: "404 North Daya Lu Taichung No. 454"
+  location: "Stella Matutina Girls' High School next to the Mos burg"
+  contact_us: "Contact Us"
+  copyright: "Copyright (c) 2016 Ruby on Rails Taichung"
   simple_captcha:
     placeholder: "Enter the image value"
     label: "Enter the code in the box:"
