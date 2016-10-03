@@ -23,8 +23,9 @@ Rails.application.routes.draw do
     omniauth: "users/omniauth",
   }
 
-  resources :users
-  resources :profiles
+  resources :users do    
+    resources :profiles
+  end
 
   if Rails.env.development? then
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

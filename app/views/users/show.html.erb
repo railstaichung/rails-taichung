@@ -14,17 +14,35 @@
   <p>
     信箱：<%= @user.email %><br>
   </p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>
+          <%= link_to("新增資訊", new_user_profile_path(@user), class: "btn btn-warning") %>
+        </th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @profiles.each do |profile| %>
+        <tr>
+          <td>
+            <%= link_to( "#{profile.content}", profile.url, target: "_blank" )  %>
+          </td>
+          <td>
+
+            <% if @user.editable_by?(@user, current_user) %>
+              <div class="btn-group pull-right" role="group">
+                <%= link_to("修改", edit_user_profile_path(profile.user, profile)) %>
+                <%= link_to("刪除", user_profile_path(profile.user, profile), method: :delete, data: { confirm: "確定刪除?"}) %>
+              </div>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
-
 <hr>
-
-<!-- 自己可以修改內容 -->
-<% if @user.editable_by?(@user, current_user) %>
-  <div class="btn-group" role="group">
-    <%= link_to("修改", edit_user_path(@user), class: "btn btn-warning", role: "button") %>
-  </div>
-<% end %>
-
-
 </div>
 <br>

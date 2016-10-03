@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160928092737) do
+ActiveRecord::Schema.define(version: 20161003020735) do
 
   create_table "events", force: :cascade do |t|
     t.string   "topic"
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 20160928092737) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.text     "content"
+    t.string   "url"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "simple_captcha_data", force: :cascade do |t|
