@@ -1,21 +1,56 @@
-<h2>Log in</h2>
+<div class="container-fluid" style="height:550px; width:770px;">
+  <div class="row" style="position: absolute; top:50%; left:50%; margin: -230px 0 0 -365px;">
+    <div class="col-xs-6 col-sm-4 login-frame login-body">
+      <h4><%= I18n.t('logintitle') %>(
+          <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+            <%= link_to I18n.t('register'), new_registration_path(resource_name) %>
+          <% end -%>)
+      </h4>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email, label: "帳號", required: false, autofocus: true, stakeholder: "E-Mail帳號" %>
-    <%= f.input :password, label: "密碼", required: false %>
-    <%= f.input :remember_me, label: "記住我", as: :boolean if devise_mapping.rememberable? %>
-    <%= f.input :captcha do %>
-      <%= show_simple_captcha %>
-    <% end %>
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name) ) do |f| %>
+        <div class="form-inputs">
+          <%= f.input :email, label: I18n.t('email'),class:"form-control", required: false, autofocus: true, stakeholder: "E-Mail帳號" %>
+          <%= f.input :password, label: I18n.t('password'), required: false %>
+          <%= f.input :remember_me, label: I18n.t('remember_me'), as: :boolean if devise_mapping.rememberable? %>
+          <%= f.input :captcha, label: I18n.t('captcha') do %>
+            <%= show_simple_captcha %>
+          <% end %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, I18n.t('login'),class: "btn btn-success btn-lg btn-block" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-1 login-frame" style="width:6px;">
+      <%=image_tag("pixel.png", height:"450px", width:"1px")%>
+    </div>
+    <div class="col-xs-6 col-sm-4 login-frame login-body">
+      <h4><%= I18n.t('login_third_party') %></h4>
+      <%= link_to user_facebook_omniauth_authorize_path, class: "btn btn-primary btn-lg btn-block" do%>
+        <%= fa_icon "facebook", text: "facebook", class: "pull-left" %>
+      <% end %>
+      <%= link_to user_google_oauth2_omniauth_authorize_path, class: "btn btn-danger btn-lg btn-block" do%>
+        <%= fa_icon "google-plus", text: "Google+", class: "pull-left" %>
+      <% end %>
+      <%= link_to user_github_omniauth_authorize_path, class: "btn btn-warning btn-lg btn-block" do%>
+        <%= fa_icon "github", text: "github", class: "pull-left" %>
+      <% end %>
+      <hr>
+      <%= render "users/shared/links" %>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
-<%= link_to "使用Facebook登入", user_facebook_omniauth_authorize_path, class: "btn btn-primary btn-block"%>
-<%= link_to "使用Google+登入", user_google_oauth2_omniauth_authorize_path, class: "btn btn-primary btn-block"%>
-<%= link_to "使用GitHub登入", user_github_omniauth_authorize_path, class: "btn btn-primary btn-block"%>
-
-<%= render "users/shared/links" %>
+</div>
+<style media="screen">
+  div.login-frame{
+    height: 450px;
+    top: 40px;
+  }
+  div.login-body{
+    width: 350px;
+    border-style:solid;
+    border-width:2px;
+    border-radius: 10px;
+    padding: 10px;
+  }
+</style>
