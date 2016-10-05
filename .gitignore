@@ -4,6 +4,9 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+config/database.yml
+/public/uploads
+
 # Ignore bundler config.
 /.bundle
 
@@ -15,3 +18,6 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Ignore application configuration
+/config/application.yml
