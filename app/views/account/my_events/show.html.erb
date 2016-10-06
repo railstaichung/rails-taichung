@@ -1,0 +1,59 @@
+<br>
+<div class="container">
+<div class="jumbotron" style="background-image: url(<%= @event.event_photo.image.url %>); background-size: cover; background-repeat: no-repeat; background-attachment:center; background-position: center">
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+</div>
+
+<div class="page-header">
+  <h1><%=  @event.topic %></h1>
+  <h3>目前有 <%= @event.members.size %> 位夥伴參加</h3>
+</div>
+
+<div>
+  <p>主 辦 人 : <%= @event.owner.name %><br>
+    活動日期 : <%= @event.start_time.to_s(:normal) %> ~ <%= @event.end_time.to_s(:normal) %><br>
+    活動地點 : <%= @event.location %><br>
+    活動內容 : <%= simple_format(@event.content) %></p>
+</div>
+
+<div class="page-header">
+  <h3>參與人員</h3>
+</div>
+<div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>序 號</th>
+        <th>姓 名</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+      <tbody>
+        <% @s=0 %>
+        <% @members.each do |member| %>
+        <tr>
+          <td>#<%= @s=@s+1 %></td>
+          <td><%= member.name %></td>
+          <td><%= member.email %></td>
+        </tr>
+        <% end %>
+      </tbody>
+  </table>
+</div>
+<hr>
+<% if @event.active? %>
+  <%= link_to("關閉活動", to_close_event_path(@event), method: :post, class: "btn btn-danger btn-lg btn-block") %>
+<% else %>
+  <%= link_to("開啟活動", to_active_event_path(@event), method: :post, class: "btn btn-primary btn-lg btn-block") %>
+<% end %>
+<br>

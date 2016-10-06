@@ -15,5 +15,6 @@
 //= require jquery_ujs
 //= require holder
 //= require bootstrap/alert
+//= require ckeditor/init
 //= require_tree .
 //= require gravtastic
