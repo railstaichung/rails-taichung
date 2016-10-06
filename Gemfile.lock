@@ -79,6 +79,7 @@ GEM
     execjs (2.7.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    gravtastic (3.2.6)
     haml (4.0.7)
       tilt
     haml-rails (0.9.0)
@@ -228,6 +229,7 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 4.1.0)
   devise
+  gravtastic
   haml-rails
   holder_rails
   jbuilder (~> 2.0)
