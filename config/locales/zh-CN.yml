@@ -1,5 +1,6 @@
 zh-CN:
   hello: "亲，您好~"
+  # Navi bar
   title: "Rails 台中"
   activities: "参加活动"
   members: "聚会成员"
@@ -15,11 +16,13 @@ zh-CN:
   backstage: "进入后台"
   logout: "登出"
   search: "查找"
+  # Footer
   meeting_place: "聚会地点"
   address: "404台中市北区大雅路454号"
   location: "晓明女中摩斯汉堡"
   contact_us: "联络我们"
   copyright: "Copyright (c) 2016 Ruby on Rails 台中"
+  # Login page
   logintitle: "以帐号/密钥登录"
   login_third_party: "第三方帐号登录"
   email: "邮箱"
@@ -27,10 +30,21 @@ zh-CN:
   remember_me: "记住我"
   captcha: "验证码"
   forget_pw: "忘记密钥?"
-  dont_receive: "没有收到验证邮件?"  
+  dont_receive: "没有收到验证邮件?"
   simple_captcha:
     placeholder: "输入图片中的字元"
     label: "请在输入框中填入检查码:"
     message:
       default: "喔哦！您输入的检查码跟图片中的字元不一样喔~"
       user: "喔哦！您输入的检查码跟图片中的字元不一样喔~"
+  #Sign up page
+  name: "姓名/昵称"
+  password_confirmation: "密钥重复输入确认"
+  sign_up: "注册帐号"
+  password_char_min: "最少%{minimum_password_length}个字元"
+  #Forgot password page
+  forgot_pw_title: "忘记密钥?"
+  reset_pw_button: "寄送重置密钥邮件"
+  #Resend confirmation mail
+  resend_confirm_title: "重送帐号验证邮件"
+  resend_confirm_button: "重送帐号验证邮件"
