@@ -11,7 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160928092738) do
+
+ActiveRecord::Schema.define(version: 20161006063952) do
+
 
   create_table "events", force: :cascade do |t|
     t.string   "topic"
@@ -22,6 +24,23 @@ ActiveRecord::Schema.define(version: 20160928092738) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string   "url"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "images", ["user_id"], name: "index_images_on_user_id"
+
+  create_table "profiles", force: :cascade do |t|
+    t.text     "content"
+    t.string   "url"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "simple_captcha_data", force: :cascade do |t|
@@ -36,6 +55,13 @@ ActiveRecord::Schema.define(version: 20160928092738) do
   create_table "user_events", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_photos", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

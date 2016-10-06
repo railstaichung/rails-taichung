@@ -15,7 +15,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-left">
         <li><%= link_to(I18n.t('activities'), events_path) %></li>
-        <li><%= link_to(I18n.t('members'), '#') %></li>
+        <li><%= link_to(I18n.t('members'), users_path) %></li>
         <li><%= link_to(I18n.t('issues'), '#') %></li>
         <li><%= link_to(I18n.t('resources'), '#') %></li>
       </ul>
@@ -31,7 +31,7 @@
               <li><%= link_to(I18n.t('account_setting'), edit_user_registration_path) %></li>
               <li><%= link_to(I18n.t('my_events'), account_events_path) %></li>
               <li><%= link_to(I18n.t('create_event'), account_my_events_path) %></li>
-              <li><%= link_to(I18n.t('member_info'), "#") %></li>
+              <li><%= link_to(I18n.t('member_info'), user_path(current_user)) %></li>
               <li><%= link_to(I18n.t('my_issues'), "#") %></li>
               <li class="divider"></li>
               <li><%= link_to(I18n.t('backstage'), "#") %></li>

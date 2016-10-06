@@ -16,3 +16,4 @@
 //= require holder
 //= require bootstrap/alert
 //= require_tree .
+//= require gravtastic
