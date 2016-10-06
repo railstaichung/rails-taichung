@@ -15,3 +15,10 @@
 /log/*
 !/log/.keep
 /tmp
+
+# _建議ignore項目
+config/database.yml
+config/google_analytics.yml
+.DS_Store
+/nbproject/
+public/assets/**
