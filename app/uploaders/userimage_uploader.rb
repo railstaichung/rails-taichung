@@ -1,4 +1,4 @@
-class ImageUploader < CarrierWave::Uploader::Base
+class UserimageUploader < CarrierWave::Uploader::Base
 
   require "digest/md5"
   require 'carrierwave/processing/mini_magick'
@@ -22,7 +22,10 @@ class ImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  process resize_to_fit: [1280,360]
+
+  version :thumb do
+    process resize_to_fit: [300,300]
+  end
 
 
   # Add a white list of extensions which are allowed to be uploaded.
