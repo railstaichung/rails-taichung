@@ -1,18 +1,27 @@
 <br>
 <div class="container">
-<div class="jumbotron">
+<div class="jumbotron" style="background-image: url(<%= @event.event_photo.image.url %>); background-size: cover; background-repeat: no-repeat; background-attachment:center; background-position: center">
   <br>
-  <h1><%= @event.topic %></h1>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
   <br>
 </div>
 
 <div class="page-header">
   <h1><%=  @event.topic %></h1>
+  <h3>目前有 <%= @event.members.size %> 位夥伴參加</h3>
 </div>
 
 <div>
-  <p>主 辦 人 : <%= @event.owner.email %><br>
-    活動日期 : <%= @event.start_time %> ~ <%= @event.end_time %><br>
+  <p>主 辦 人 : <%= @event.owner.name %><br>
+    活動日期 : <%= @event.start_time.to_s(:normal) %> ~ <%= @event.end_time.to_s(:normal) %><br>
     活動地點 : <%= @event.location %><br>
     活動內容 : <%= simple_format(@event.content) %></p>
 </div>
@@ -20,14 +29,18 @@
 <hr>
 
 <div>
-  <% if !current_user %>
-    <%= link_to("立刻報名", new_user_session_path, class: "btn btn-primary btn-lg btn-block") %>
-  <% else %>
-    <% if current_user.is_member_of?(@event) %>
-      <%= link_to("取消報名", quit_event_path(@event), data: { confirm: "你確定要取消報名嗎？" }, method: :post, class: "btn btn-warning btn-lg btn-block") %>
+  <% if @event.active? %>
+    <% if !current_user %>
+      <%= link_to("立刻報名", new_user_session_path, class: "btn btn-primary btn-lg btn-block") %>
     <% else %>
-      <%= link_to("立刻報名", join_event_path(@event), method: :post, class: "btn btn-primary btn-lg btn-block") %>
+      <% if current_user.is_member_of?(@event) %>
+        <%= link_to("取消報名", quit_event_path(@event), data: { confirm: "你確定要取消報名嗎？" }, method: :post, class: "btn btn-warning btn-lg btn-block") %>
+      <% else %>
+        <%= link_to("立刻報名", join_event_path(@event), method: :post, class: "btn btn-primary btn-lg btn-block") %>
+      <% end %>
     <% end %>
+  <% else %>
+    <%= link_to("活動已結束", "#", class: "btn btn-primary btn-lg btn-block", disabled: "disabled") %>
   <% end %>
 </div>
 </div>

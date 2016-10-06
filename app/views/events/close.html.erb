@@ -1,0 +1,30 @@
+<br>
+<div class="container">
+  <div class="page-header">
+    <ul class="nav nav-pills">
+      <li role="presentation"><%= link_to("最新活動", active_events_path) %></li>
+      <li role="presentation" class="active"><%= link_to("過往活動", close_events_path) %></li>
+    </ul>
+  </div>
+<div class="row">
+  <% @events.each do |event| %>
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <%= image_tag(event.event_photo.image.thumb.url) %>
+        <div class="caption">
+          <h3><%= event.topic %></h3>
+          <h4>目前有 <%= event.members.size %> 位夥伴參加</h4>
+          <p>
+          主 辦 人 : <%= event.owner.name %><br>
+          開始時間 : <%= event.start_time.to_s(:normal) %><br>
+          結束時間 : <%= event.end_time.to_s(:normal) %><br>
+          活動地點 : <%= event.location %><br>
+          </p>
+          <p><%= link_to("活動詳情", event_path(event), class: "btn btn-primary btn-block", role: "button") %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+</div>
+<br>

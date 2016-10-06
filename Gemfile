@@ -34,6 +34,21 @@ gem 'figaro'
 gem 'holder_rails'
 gem "font-awesome-rails"
 
+# user profile
+gem 'haml-rails'
+
+gem 'mini_magick'
+gem 'gravtastic'
+
+gem 'ckeditor'
+gem 'ckeditor-imgur'
+
+gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
+gem 'mini_magick'
+gem 'carrierwave-qiniu', '>= 0.2.4'
+
+gem 'figaro'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

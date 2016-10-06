@@ -1,6 +1,9 @@
-class User < ActiveRecord::Base
+  class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  include Gravtastic
+  gravtastic
+
   devise :database_authenticatable,
          :registerable,
          :recoverable,
@@ -9,6 +12,12 @@ class User < ActiveRecord::Base
          :validatable,
          :confirmable,
          :omniauthable, :omniauth_providers => [:facebook,:google_oauth2,:github]
+
+  has_many :profiles
+  has_many :images
+  has_one :user_photo, dependent: :destroy
+  accepts_nested_attributes_for :user_photo
+
 
   has_many :user_events
   has_many :participated_events, through: :user_events, source: :event
@@ -35,4 +44,9 @@ class User < ActiveRecord::Base
   def is_member_of?(event)
     participated_events.include?(event)
   end
+
+  def editable_by?(user, current_user)
+    user && user == current_user
+  end
+
 end

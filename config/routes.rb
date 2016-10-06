@@ -4,12 +4,19 @@ Rails.application.routes.draw do
     member do
       post :join
       post :quit
+      post :to_active
+      post :to_close
+    end
+
+    collection do
+      get :active
+      get :close
     end
   end
 
   namespace :account do
-    resources :events
-    resources :my_events
+    resources :events, only: [:index]
+    resources :my_events, only: [:index, :show]
   end
 
   devise_for :users, controllers:{
@@ -18,8 +25,15 @@ Rails.application.routes.draw do
     registrations: "users/registrations",
     passwords: "users/passwords",
     unlocks: "users/unlocks",
+
     omniauth_callbacks: "users/omniauth_callbacks"
+
   }
+
+  resources :users do
+    resources :profiles
+    resources :images
+  end
 
   if Rails.env.development? then
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
