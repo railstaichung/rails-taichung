@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  #devise_for :users
   root 'landingpage#index'
-
   resources :events do
     member do
       post :join
@@ -20,7 +18,7 @@ Rails.application.routes.draw do
     registrations: "users/registrations",
     passwords: "users/passwords",
     unlocks: "users/unlocks",
-    omniauth: "users/omniauth"
+    omniauth_callbacks: "users/omniauth_callbacks"
   }
 
   if Rails.env.development? then

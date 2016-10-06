@@ -18,6 +18,53 @@
 #
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
-
 en:
   hello: "Hello world"
+  # Navi bar
+  title: "Rails Taichung"
+  activities: "Activities"
+  members: "Members"
+  issues: "Issues"
+  resources: "Resources"
+  register: "New member?"
+  login: "Log in"
+  account_setting: "Account setting"
+  my_events: "My events"
+  create_event: "Create event"
+  member_info: "Personal info"
+  my_issues: "My issues"
+  backstage: "Backstage"
+  logout: "Log out"
+  search: "Search"
+  # Footer
+  meeting_place: "Meeting place"
+  address: "404 North Daya Lu Taichung No. 454"
+  location: "Stella Matutina Girls' High School next to the Mos burg"
+  contact_us: "Contact Us"
+  copyright: "Copyright (c) 2016 Ruby on Rails Taichung"
+  #Login Page
+  logintitle: "Account / Password"
+  login_third_party: "Login with thirdparty"
+  email: "E-Mail"
+  password: "Password"
+  remember_me: "Remember me"
+  captcha: "Captcha"
+  forget_pw: "Forgot your password?"
+  dont_receive: "Did not receive confirmation email?"
+  simple_captcha:
+    placeholder: "Enter the image value"
+    label: "Enter the code in the box:"
+    message:
+      default: "Secret Code did not match with the Image"
+      user: "The secret Image and code were different"
+  #Sign up page
+  name: "Name"
+  password_confirmation: "Password confirmation"
+  sign_up: "Sign up"
+  password_char_min: "%{minimum_password_length} characters minimum"
+  #Forgot password page
+  forgot_pw_title: "Forgot your password?"
+  reset_pw_button: "Send me reset password instructions"
+  #Resend confirmation mail
+  resend_confirm_title: "Resend confirmation instructions"
+  resend_confirm_button: "Resend confirmation instructions"

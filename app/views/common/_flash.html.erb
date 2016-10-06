@@ -1,0 +1,43 @@
+<% flash.each do |name, msg| %>
+  <div id="flashModal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <p style="font-size:18px;">
+            <% if name == "alert" then %>
+              <%= fa_icon "fa-exclamation-circle 2x" %>
+            <% elsif name == "error" then %>
+              <%= fa_icon "fa-exclamation-triangle 2x" %>
+            <% else %>
+              <%= fa_icon "info-circle 2x" %>
+            <% end %>
+            <%= msg %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+<script>
+$("#flashModal").on("show", function() {    // wire up the OK button to dismiss the modal when shown
+    $("#flashModal a.btn").on("click", function(e) {
+        $("#flashModal").modal('hide');     // dismiss the dialog
+    });
+});
+$("#flashModal").on("hide", function() {    // remove the event listeners when the dialog is dismissed
+    $("#flashModal a.btn").off("click");
+});
+
+$("#flashModal").on("hidden", function() {  // remove the actual elements from the DOM when fully hidden
+    $("#flashModal").remove();
+});
+
+setTimeout(function(){$("#flashModal").modal("hide")},2000);
+
+$("#flashModal").modal({                    // wire up the actual modal functionality and show the dialog
+  "backdrop"  : "static",
+  "keyboard"  : true,
+  "show"      : true                     // ensure the modal is shown immediately
+});
+</script>
