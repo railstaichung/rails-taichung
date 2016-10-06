@@ -8,17 +8,18 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="<%= root_path %>">Ruby on Rails 臺中聚會</a>
+      <%= link_to(I18n.t('title'), root_path, class: "navbar-brand") %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-left">
+
         <% if current_user %>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">活動專區<span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= I18n.t('activities') %><span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><%= link_to("最新活動", active_events_path) %></li>
+              <li><%= link_to(I18n.t('activities'), active_events_path) %></li>
               <li><%= link_to("已報名活動", account_events_path) %></li>
               <li class="divider"></li>
               <li><%= link_to("建立活動", new_event_path) %></li>
@@ -26,27 +27,33 @@
             </ul>
           </li>
         <% else %>
-          <li><%= link_to("活動專區", events_path) %></li>
+          <li><%= link_to(I18n.t('activities'), events_path) %></li>
         <% end %>
-        <li><a href="#">聚會成員</a></li>
-        <li><a href="#">熱門議題</a></li>
-        <li><a href="#">資源分享</a></li>
+        <li><%= link_to(I18n.t('members'), users_path) %></li>
+        <li><%= link_to(I18n.t('issues'), '#') %></li>
+        <li><%= link_to(I18n.t('resources'), '#') %></li>
+
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <%= render "common/language" %>
         <% if !current_user %>
-          <li> <%= link_to("註冊", new_user_registration_path) %> </li>
-          <li> <%= link_to("登入", new_user_session_path) %> </li>
+          <li> <%= link_to(I18n.t('register'), new_user_registration_path) %> </li>
+          <li> <%= link_to(I18n.t('login'), new_user_session_path) %> </li>
         <% else %>
           <li>
-          <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= current_user.name %><span class="caret"></span></a>
+          <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hi~<%= current_user.name %><span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><%= link_to("帳號設定", edit_user_registration_path) %></li>
-              <li><a href="#">個人簡介</a></li>
-              <li><a href="#">我的議題</a></li>
+
+              <li><%= link_to(I18n.t('account_setting'), edit_user_registration_path) %></li>
+              <li><%= link_to(I18n.t('my_events'), account_events_path) %></li>
+              <li><%= link_to(I18n.t('create_event'), account_my_events_path) %></li>
+              <li><%= link_to(I18n.t('member_info'), user_path(current_user)) %></li>
+              <li><%= link_to(I18n.t('my_issues'), "#") %></li>
+
               <li class="divider"></li>
-              <li><a href="#">進入後台</a></li>
+              <li><%= link_to(I18n.t('backstage'), "#") %></li>
               <li class="divider"></li>
-              <li><%= link_to("登出", destroy_user_session_path, method: :delete ) %></li>
+              <li><%= link_to(I18n.t('logout'), destroy_user_session_path, method: :delete ) %></li>
             </ul>
           </li>
         <% end %>
@@ -55,7 +62,7 @@
         <div class="form-group">
           <input type="text" class="form-control" placeholder="全站搜尋">
         </div>
-        <button type="submit" class="btn btn-default">Search</button>
+        <button type="submit" class="btn btn-default"><%= I18n.t('search') %></button>
       </form>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

@@ -1,0 +1,46 @@
+<li>
+  <div style="height: 55px; width:85px; line-height: 55px">
+    <% if I18n.locale.to_s == "en" then %>
+        <div class="language">
+          <%= link_to controller: controller_name, action: action_name, locale: "zh-TW" do %>
+            <%=image_tag("language_tw.png", height: '30', width: '30', class:"img-rounded")%>
+          <% end %>
+        </div>
+        <div class="language">
+          <%= link_to controller: controller_name, action: action_name, locale: "zh-CN" do %>
+            <%=image_tag("language_cn.png", height: '30', width: '30', class:"img-rounded")%>
+          <% end %>
+        </div>
+    <% elsif I18n.locale.to_s == "zh-TW" then %>
+      <div class="language">
+        <%= link_to :controller => controller_name, :action => action_name, :locale => "en" do %>
+          <%=image_tag("language_en.png", height: '30', width: '30', class:"img-rounded")%>
+        <% end %>
+      </div>
+      <div class="language">
+        <%= link_to :controller => controller_name, :action => action_name, :locale => "zh-CN" do %>
+          <%=image_tag("language_cn.png", height: '30', width: '30', class:"img-rounded")%>
+        <% end %>
+      </div>
+    <% elsif I18n.locale.to_s == "zh-CN" then %>
+      <div class="language">
+        <%= link_to :controller => controller_name, :action => action_name, :locale => "en" do %>
+          <%=image_tag("language_en.png", height: '30', width: '30', class:"img-rounded")%>
+        <% end %>
+      </div>
+      <div class="language">
+        <%= link_to :controller => controller_name, :action => action_name, :locale => "zh-TW" do %>
+          <%=image_tag("language_tw.png", height: '30', width: '30', class:"img-rounded")%>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</li>
+<style media="screen">
+  div.language{
+    height: 30px;
+    width: 30px;
+    float:left;
+    margin-right: 3px
+  }
+</style>

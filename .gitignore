@@ -19,5 +19,11 @@ config/database.yml
 !/log/.keep
 /tmp
 
+# _建議ignore項目
+config/database.yml
+config/google_analytics.yml
+.DS_Store
+/nbproject/
+
 # Ignore application configuration
 /config/application.yml

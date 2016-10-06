@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  #devise_for :users
   root 'landingpage#index'
-
   resources :events do
     member do
       post :join
@@ -27,8 +25,15 @@ Rails.application.routes.draw do
     registrations: "users/registrations",
     passwords: "users/passwords",
     unlocks: "users/unlocks",
-    omniauth: "users/omniauth"
+
+    omniauth_callbacks: "users/omniauth_callbacks"
+
   }
+
+  resources :users do
+    resources :profiles
+    resources :images
+  end
 
   if Rails.env.development? then
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

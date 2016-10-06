@@ -1,0 +1,7 @@
+<%= simple_form_for @user, multipart: true do |f| %>
+  <%= f.input :name, label: '稱呼' %>
+  <%= f.simple_fields_for :user_photo do |c| %>
+    <%= c.input :image, as: :file, required: true, label: '上傳我的大頭照' %>
+  <% end %>
+  <%= f.submit 'Save', class: "btn btn-primary" %>
+<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161004144251) do
+ActiveRecord::Schema.define(version: 20161006063952) do
 
   create_table "event_photos", force: :cascade do |t|
     t.integer  "event_id"
@@ -32,6 +32,23 @@ ActiveRecord::Schema.define(version: 20161004144251) do
     t.boolean  "is_active",  default: true
   end
 
+  create_table "images", force: :cascade do |t|
+    t.string   "url"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "images", ["user_id"], name: "index_images_on_user_id"
+
+  create_table "profiles", force: :cascade do |t|
+    t.text     "content"
+    t.string   "url"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "simple_captcha_data", force: :cascade do |t|
     t.string   "key",        limit: 40
     t.string   "value",      limit: 6
@@ -44,6 +61,13 @@ ActiveRecord::Schema.define(version: 20161004144251) do
   create_table "user_events", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_photos", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -66,6 +90,8 @@ ActiveRecord::Schema.define(version: 20161004144251) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
