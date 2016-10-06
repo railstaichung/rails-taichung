@@ -8,6 +8,7 @@
 
 <div class="page-header">
   <h1><%=  @user.name %></h1>
+  <%= image_tag 'rortc.jpg' %>
 </div>
 
 <div>
@@ -18,7 +19,11 @@
     <thead>
       <tr>
         <th>
-          <%= link_to("新增資訊", new_user_profile_path(@user), class: "btn btn-warning") %>
+          <% if @user.editable_by?(@user, current_user) %>
+            <%= link_to("連結新增", new_user_profile_path(@user), class: "btn btn-warning") %>
+            <%= link_to("圖片新增", new_user_image_path(@user), class: "btn btn-warning") %>
+            <%= link_to("個資管理", edit_user_path(@user), class: "btn btn-warning", role: "button") %>
+          <% end %>
         </th>
         <th colspan="2"></th>
       </tr>
@@ -30,7 +35,6 @@
             <%= link_to( "#{profile.content}", profile.url, target: "_blank" )  %>
           </td>
           <td>
-
             <% if @user.editable_by?(@user, current_user) %>
               <div class="btn-group pull-right" role="group">
                 <%= link_to("修改", edit_user_profile_path(profile.user, profile)) %>
@@ -42,6 +46,18 @@
       <% end %>
     </tbody>
   </table>
+</div>
+<div>
+  <% @images.each do |image| %>
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <%= image_tag image.url.thumb %>
+        <% if @user.editable_by?(@user, current_user) %>
+            <%= link_to("刪除", user_image_path(image.user, image), method: :delete, data: { confirm: "確定刪除?"}) %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 </div>
 <hr>
 </div>

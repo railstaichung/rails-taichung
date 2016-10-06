@@ -23,8 +23,9 @@ Rails.application.routes.draw do
     omniauth: "users/omniauth",
   }
 
-  resources :users do    
+  resources :users do
     resources :profiles
+    resources :images
   end
 
   if Rails.env.development? then

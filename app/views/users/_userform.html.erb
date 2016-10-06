@@ -1,0 +1,4 @@
+<%= simple_form_for @user, multipart: true do |f| %>
+  <%= f.input :name, label: '稱呼' %>
+  <%= f.submit 'Save', class: "btn btn-primary" %>
+<% end %>

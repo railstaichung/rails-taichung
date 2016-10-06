@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+  class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
          :confirmable
 
   has_many :profiles
+  has_many :images
+
 
   has_many :user_events
   has_many :participated_events, through: :user_events, source: :event
@@ -31,6 +33,5 @@ class User < ActiveRecord::Base
   def editable_by?(user, current_user)
     user && user == current_user
   end
-
 
 end
