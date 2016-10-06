@@ -21,3 +21,5 @@ config/database.yml
 config/google_analytics.yml
 .DS_Store
 /nbproject/
+# Ignore application configuration
+/config/application.yml
