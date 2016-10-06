@@ -11,6 +11,8 @@
 
   has_many :profiles
   has_many :images
+  has_one :user_photo, dependent: :destroy
+  accepts_nested_attributes_for :user_photo
 
 
   has_many :user_events

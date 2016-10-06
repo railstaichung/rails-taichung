@@ -9,11 +9,15 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @profiles = @user.profiles
     @images = @user.images
-    @image1 = @user.images.last
   end
 
   def edit
     @user = User.find(params[:id])
+    if @user.user_photo.present?
+      @user_photo = @user.user_photo
+    else
+      @user_photo = @user.build_user_photo
+    end
   end
 
   def update
@@ -35,7 +39,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name)
+    params.require(:user).permit(:name, user_photo_attributes: [:image, :id])
   end
 
 
