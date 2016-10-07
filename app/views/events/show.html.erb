@@ -1,6 +1,6 @@
 <br>
 <div class="container">
-<div class="jumbotron" style="background-image: url(<%= @event.event_photo.image.url %>); background-size: cover; background-repeat: no-repeat; background-attachment:center; background-position: center">
+<div class="jumbotron" style="background-image: url(<%= @event.event_photo.try(:image).try(:url) %>); background-size: cover; background-repeat: no-repeat; background-attachment:center; background-position: center">
   <br>
   <br>
   <br>
