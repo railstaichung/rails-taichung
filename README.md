@@ -7,6 +7,7 @@
 ## Getting Started
 ```
 $ git clone https://github.com/fruitcake0525/ror_taichung
+$ cd ror_taichung
 $ bundle install
 $ bundle exec figaro install
 $ rake db:migrate
