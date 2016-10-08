@@ -16,5 +16,7 @@
 //= require holder
 //= require bootstrap/alert
 //= require ckeditor/init
+//= require underscore
+//= require gmaps/google
 //= require_tree .
 //= require gravtastic

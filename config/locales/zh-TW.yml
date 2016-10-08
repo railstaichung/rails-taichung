@@ -48,3 +48,7 @@ zh-TW:
   #Resend confirmation mail
   resend_confirm_title: "重寄帳號驗證信"
   resend_confirm_button: "重寄帳號驗證信"
+  #event
+  #show
+  show_map: "顯示地圖"
+  hide_map: "隱藏地圖"  

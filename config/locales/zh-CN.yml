@@ -48,3 +48,7 @@ zh-CN:
   #Resend confirmation mail
   resend_confirm_title: "重送帐号验证邮件"
   resend_confirm_button: "重送帐号验证邮件"
+  #event
+  #show
+  show_map: "显示地图"
+  hide_map: "隐藏地图"    
