@@ -43,6 +43,7 @@ gem 'ckeditor'
 gem 'ckeditor-imgur'
 
 gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
+
 gem 'carrierwave-qiniu', '>= 0.2.4'
 gem 'geocoder'
 gem 'gmaps4rails'

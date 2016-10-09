@@ -25,3 +25,18 @@
 .thumbnail {
    display: inline-block;
 }
+
+.img-container {
+    position: relative;
+    padding-bottom: 28.125%; /* 1280*360 ratio */
+    height: 0;
+    overflow: hidden;
+}
+
+.img-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
