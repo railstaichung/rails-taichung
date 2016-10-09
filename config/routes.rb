@@ -33,6 +33,10 @@ Rails.application.routes.draw do
   resources :users do
     resources :profiles
     resources :images
+    member do
+      post :follow
+      post :unfollow
+    end
   end
 
   if Rails.env.development? then

@@ -19,6 +19,13 @@
     <thead>
       <tr>
         <th>
+          <% if @user.not_me?(@user, current_user) %>
+            <% if current_user.is_following?(@user) %>
+              <%= link_to("追蹤", follow_user_path(@user),  method: :post, class: "btn btn-warning btn-lg btn-block") %>
+            <% else %>
+              <%= link_to("不追蹤", unfollow_user_path(@user), data: { confirm: "你確定要取消追蹤嗎？" }, method: :post, class: "btn btn-primary btn-lg btn-block") %>
+            <% end %>
+          <% end %>
           <% if @user.editable_by?(@user, current_user) %>
             <%= link_to("連結新增", new_user_profile_path(@user), class: "btn btn-warning") %>
             <%= link_to("圖片新增", new_user_image_path(@user), class: "btn btn-warning") %>

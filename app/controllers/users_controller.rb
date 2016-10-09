@@ -36,6 +36,25 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
+  def follow
+    @user = user.find(params[:id])
+      if !current_user.is_following?(@user)
+        current_user.follow!(@user)
+        flash[:notice] = "follow!"
+      end
+    redirect_to user_path(@user)
+  end
+
+  def unfollow
+    @user = user.find(params[:id])
+      if current_user.is_following?(@user)
+        current_user.unfollow!(@user)
+        flash[:alert] = "unfollowed！"
+      end
+    redirect_to user_path(@user)
+  end
+
+
   private
 
   def user_params

@@ -13,6 +13,10 @@
          :confirmable,
          :omniauthable, :omniauth_providers => [:facebook,:google_oauth2,:github]
 
+  # user followship
+  has_many :following_users, class_name: "Following"
+  belongs_to :user
+
   has_many :profiles
   has_many :images
   has_one :user_photo, dependent: :destroy
@@ -47,6 +51,23 @@
 
   def editable_by?(user, current_user)
     user && user == current_user
+  end
+
+
+  def not_me?(user, current_user)
+    user && user != current_user
+  end
+
+  def is_following?(user)
+    following_users.include?(user)
+  end
+
+  def follow!(user)
+    following_users << user
+  end
+
+  def unfollow!(user)
+    following_users.delete(user)
   end
 
 end
