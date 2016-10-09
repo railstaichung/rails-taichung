@@ -1,4 +1,6 @@
 class Event < ActiveRecord::Base
+  geocoded_by :location
+  after_validation :geocode
   validates_presence_of :topic, :start_time, :end_time, :location, :content
 
   has_one :event_photo, dependent: :destroy
