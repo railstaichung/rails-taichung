@@ -3,6 +3,18 @@
 [<img alt='Stories in Ready' src='https://badge.waffle.io/fruitcake0525/ror_taichung.png?label=ready&title=Ready' />](https://waffle.io/fruitcake0525/ror_taichung)
 == 說明文件
 # RoR Taichung 官網
+
+## Getting Started
+```
+$ git clone https://github.com/fruitcake0525/ror_taichung
+$ cd ror_taichung
+$ bundle install
+$ bundle exec figaro install
+$ rake db:migrate
+$ rake db:seed
+```
+* figaro applcation.yml 請 [Slack]( https://rortc.herokuapp.com/) 私訊取得
+
 ## 前言
 RoR Taichung 官網是Rails Taichung為了Rails在台中持續發展深耕並服務社群所建立。本專案也是Rails Taichung第一個團隊開發專案。
 * 開發工具為Ruby on Rails
@@ -71,7 +83,7 @@ RoR Taichung 官網是Rails Taichung為了Rails在台中持續發展深耕並服
     2. Slack邀請自己
 2. 成員介紹 user
   1. Blog/臉書/Github連結
-    1. 社群成員可以在後台自由的維護自己的相關資訊              
+    1. 社群成員可以在後台自由的維護自己的相關資訊
   2. 個人參與
     1. 社群成員可以在後臺檢視自己曾參與過的社群專案
     2. 社群成員可以在後臺檢視自己提出的社群問題
