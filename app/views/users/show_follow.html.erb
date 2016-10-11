@@ -1,0 +1,16 @@
+<% provide(:title, @title) %>
+<div class="row">
+<div class="container">
+   <h3><%= @title %></h3>
+   <% if @users.any? %>
+      <div class="user_names">
+        <% @users.each do |user| %>
+          <%= user.name %><br />
+        <% end %>
+      </div>
+     <ul class="users follow">
+       <%= paginate @users %>
+     </ul>
+   <% end %>
+ </div>
+</div>

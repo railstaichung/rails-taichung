@@ -125,6 +125,9 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.3)
     jwt (1.5.6)
+    kaminari (0.16.3)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     launchy (2.4.3)
       addressable (~> 2.3)
     letter_opener (1.4.1)
@@ -296,6 +299,7 @@ DEPENDENCIES
   holder_rails
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
   letter_opener_web
   mini_magick
   omniauth-facebook

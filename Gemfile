@@ -39,6 +39,9 @@ gem 'faker'
 # user profile
 gem 'haml-rails'
 
+# user follower
+gem 'kaminari'
+
 gem 'mini_magick'
 gem 'gravtastic'
 
