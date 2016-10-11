@@ -870,3 +870,71 @@ end
 代码清单 12.29: 绿色
 $ bundle exec rails test
 ```
+### 12.2.4 普通方法可用的关注按钮
+既然我们的视图可用了，是时候让follow/unfollow按钮工作了。因为following和unfollowing需要创建和删除关系，我们需要Relationships控制器，我们如往常生成
+```ruby
+$ rails generate controller Relationships
+```
+如我们在清单12.31里所见，需要读取控制在Relationships控制器动作不会更重要，但是我们仍将跟随我们之前的实践尽早得加强安全模型。具体来说，我们将检查在Relationships控制器里需要登陆用户的读取动作（因此重定向到登陆页面），然而也不改变Relationship数量，如清单12.30所示。
+```ruby
+代码清单 12.30: Basic access control tests for relationships. 红色
+# test/controllers/relationships_controller_test.rb
+ require 'test_helper'
+
+class RelationshipsControllerTest < ActionController::TestCase
+
+  test "create should require logged-in user" do
+    assert_no_difference 'Relationship.count' do
+      post :create
+    end
+    assert_redirected_to login_url
+  end
+
+  test "destroy should require logged-in user" do
+    assert_no_difference 'Relationship.count' do
+      delete :destroy, id: relationships(:one)
+    end
+    assert_redirected_to login_url
+  end
+end
+```
+我们让清单12.30里的测试通过，通过添加logged_in_user前置过滤（清单12.31）。
+```ruby
+代码清单 12.31: Access control for relationships. 绿色
+# app/controllers/relationships_controller.rb
+ class RelationshipsController < ApplicationController
+  before_action :logged_in_user
+
+  def create
+  end
+
+  def destroy
+  end
+end
+```
+为了follow和unfollow按钮工作，我们需要做的是查找用户关联的followed_id在相应表单里（例如清单12.21或者清单12.22)，然后使用合适的follow和unfollow方法从清单12.10里。完整的实现显示在清单12.32里。
+```ruby
+代码清单 12.32: The Relationships controller.
+# app/controllers/relationships_controller.rb
+ class RelationshipsController < ApplicationController
+  before_action :logged_in_user
+
+  def create
+    user = User.find(params[:followed_id])
+    current_user.follow(user)
+    redirect_to user
+  end
+
+  def destroy
+    user = Relationship.find(params[:id]).followed
+    current_user.unfollow(user)
+    redirect_to user
+  end
+end
+```
+我们能从清单12.32里看见为什么上面提到的安全问题是很小的：假如未登陆用户直接点击（例如使用像curl一样的命令行工具），current_user将是nil，在两种请求，动作的第二行将抛出例外，导致错误但是不会对应用程序或数据有所伤害。不过，最好不要依赖，所以我们采取额外的步骤，添加额外的安全层。
+
+有了那个，核心follow/unfollow函数完成了，任何用户可以follow或者unfollow别的用户，如你能通过在你的浏览器里相应的按钮。（我们将写集成测试来确认在12.2.6节的行为）结果的following用户#2显示在图12.19和图12.20.
+
+![图12.19：未关注的用户](https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_3rd_edition/images/figures/unfollowed_user.png)
+![图12.20：关注未关注的用户的结果](https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_3rd_edition/images/figures/unfollowed_user.png)
