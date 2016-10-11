@@ -13,6 +13,6 @@ class Account::MyEventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:topic, :start_time, :end_time, :location, :content, :is_active, event_photo_attributes: [:image, :id])
+    params.require(:event).permit(:topic, :start_time, :end_time, :location, :content, :is_active, :photo)
   end
 end

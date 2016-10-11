@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       post :quit
       post :to_active
       post :to_close
+      get :crop
     end
 
     collection do

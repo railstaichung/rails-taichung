@@ -1,43 +1,53 @@
 <br>
 <div class="container">
-<div class="jumbotron" style="background-image: url(<%= @event.event_photo.image.url %>); background-size: cover; background-repeat: no-repeat; background-attachment:center; background-position: center">
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
+<div class="row">
+<div class="col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1">
+<div class="img-container">
+  <%= image_tag @event.try(:photo).try(:url) || "https://unsplash.it/1280/360/?random" %>
 </div>
+ <br>
 
-<div class="page-header">
-  <h1><%=  @event.topic %></h1>
-  <h3>目前有 <%= @event.members.size %> 位夥伴參加</h3>
-</div>
+<ul class="nav nav-tabs" role="tablist" id="myTab">
+  <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">活動資訊</a></li>
+  <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">參與人員</a></li>
+  <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">發送通知</a></li>
+</ul>
 
-<div>
-  <p>主 辦 人 : <%= @event.owner.name %><br>
-    活動日期 : <%= @event.start_time.to_s(:normal) %> ~ <%= @event.end_time.to_s(:normal) %><br>
-    活動地點 : <%= @event.location %><br>
-    活動內容 : <%= simple_format(@event.content) %></p>
-</div>
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane fade in active" id="home">
+    <div class="page-header">
+      <h1><%=  @event.topic %></h1>
+      <h3>目前有 <%= @event.members.size %> 位夥伴參加</h3>
+    </div>
 
-<div class="page-header">
-  <h3>參與人員</h3>
-</div>
-<div>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>序 號</th>
-        <th>姓 名</th>
-        <th>Email</th>
-      </tr>
-    </thead>
+    <div>
+      <p>主 辦 人 : <%= @event.owner.name %><br>
+        活動日期 : <%= @event.start_time.to_s(:normal) %> ~ <%= @event.end_time.to_s(:normal) %><br>
+        活動地點 : <%= @event.location %><br>
+        活動內容 : <%= simple_format(@event.content) %></p>
+    </div>
+    <hr>
+    <% if @event.active? %>
+      <%= link_to("關閉活動", to_close_event_path(@event), method: :post, class: "btn btn-danger btn-lg btn-block") %>
+    <% else %>
+      <%= link_to("開啟活動", to_active_event_path(@event), method: :post, class: "btn btn-primary btn-lg btn-block") %>
+    <% end %>
+  </div>
+
+  <div role="tabpanel" class="tab-pane fade" id="profile">
+    <div class="page-header">
+      <h3>參與人員</h3>
+    </div>
+    <div>
+      <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>序 號</th>
+          <th>姓 名</th>
+          <th>Email</th>
+          <th>權 限</th>
+        </tr>
+      </thead>
       <tbody>
         <% @s=0 %>
         <% @members.each do |member| %>
@@ -45,15 +55,38 @@
           <td>#<%= @s=@s+1 %></td>
           <td><%= member.name %></td>
           <td><%= member.email %></td>
+          <td>
+            <% if @event.active? %>
+              <%= link_to("取消報名", "#", data: { confirm: "你確定要取消該人員的報名嗎？" }, class: "btn btn-warning") %>
+            <% else %>
+              <%= link_to("活動已結束", "#", class: "btn btn-primary", disabled: "disabled") %>
+            <% end %>
+          </td>
         </tr>
         <% end %>
       </tbody>
-  </table>
+      </table>
+    </div>
+  </div>
+
+  <div role="tabpanel" class="tab-pane fade" id="messages">
+
+  </div>
 </div>
-<hr>
-<% if @event.active? %>
-  <%= link_to("關閉活動", to_close_event_path(@event), method: :post, class: "btn btn-danger btn-lg btn-block") %>
-<% else %>
-  <%= link_to("開啟活動", to_active_event_path(@event), method: :post, class: "btn btn-primary btn-lg btn-block") %>
-<% end %>
+
+
+
+
+
+
+
+
+<script>
+  $(function () {
+    $('#myTab a:last').tab('show')
+  })
+</script>
+</div>
+</div>
+</div>
 <br>

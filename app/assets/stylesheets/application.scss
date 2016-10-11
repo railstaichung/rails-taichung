@@ -10,6 +10,8 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require jquery.jcrop
+ *= require jcrop_fix
  *= require_tree .
  *= require_self
  */
@@ -28,7 +30,7 @@
 
 .img-container {
     position: relative;
-    padding-bottom: 28.125%; /* 1280*360 ratio */
+    padding-bottom: 50%; /* 1280*640 ratio */
     height: 0;
     overflow: hidden;
 }
@@ -40,3 +42,4 @@
     width: 100%;
     height: 100%;
 }
+

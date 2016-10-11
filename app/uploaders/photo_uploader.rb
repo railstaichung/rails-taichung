@@ -1,4 +1,4 @@
-class ImageUploader < CarrierWave::Uploader::Base
+class PhotoUploader < CarrierWave::Uploader::Base
 
   require "digest/md5"
   require 'carrierwave/processing/mini_magick'
@@ -20,6 +20,12 @@ class ImageUploader < CarrierWave::Uploader::Base
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  end
+
+  process crop: [1080, 540]
+
+  version :small do
+    process resize_to_fill: [300,150]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

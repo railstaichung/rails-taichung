@@ -11,14 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161007230403) do
-
-  create_table "event_photos", force: :cascade do |t|
-    t.integer  "event_id"
-    t.string   "image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 20161011112528) do
 
   create_table "events", force: :cascade do |t|
     t.string   "topic"
@@ -32,6 +25,7 @@ ActiveRecord::Schema.define(version: 20161007230403) do
     t.boolean  "is_active",  default: true
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "photo"
   end
 
   create_table "images", force: :cascade do |t|
