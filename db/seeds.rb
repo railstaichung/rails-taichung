@@ -23,14 +23,13 @@ User.create!(name:  "Example User",
                password:              password,
                password_confirmation: password,
                )
+  # Profiles
+  4.times do |k|
+   Profile.create([content: "連結 #{k} ", user_id: "#{i}"])
+  end
+
 end
 
-# Profiles
-5.times do |i|
-  4.times do |k|
-    Profile.create([content: "連結 #{k} ", user_id: "#{i}"])
-  end
-end
 
 # Following relationships
 users = User.all
