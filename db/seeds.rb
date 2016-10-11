@@ -6,16 +6,39 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# puts "這個種子檔會自動建立5個帳號, 每個帳號創建 4 個 profile links"
+# Users
+User.create!(name:  "Example User",
+             email: "admin@rails-taichung.com",
+             password:              "foobar",
+             password_confirmation: "foobar",
+             # 預留 admin:     true,
+             )
 
-create_accounts =for h in 1..5 do
-                  User.create([email: "#{h}@#{h}", password: "123456", password_confirmation: "123456", name: "測試用帳號#{h}"])
-                end
-create_profiles = for i in 1..5 do
-                 for k in 1..4 do
-                   Profile.create([content: "連結 #{k} ", user_id: "#{i}"])
-                 end
-                end
+19.times do |n|
+  name  = Faker::Name.name
+  email = "example-#{n+1}@rails-taichung.com"
+  password = "password"
+  User.create!(name:  name,
+               email: email,
+               password:              password,
+               password_confirmation: password,
+               )
+end
+
+# Profiles
+5.times do |i|
+  4.times do |k|
+    Profile.create([content: "連結 #{k} ", user_id: "#{i}"])
+  end
+end
+
+# Following relationships
+users = User.all
+user  = users.first
+following = users[2..50]
+followers = users[3..40]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }
 
 user_ids = User.all.pluck(:id)
 

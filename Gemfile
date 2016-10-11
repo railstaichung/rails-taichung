@@ -33,6 +33,9 @@ gem 'figaro'
 gem 'holder_rails'
 gem "font-awesome-rails"
 
+# seed
+gem 'faker'
+
 # user profile
 gem 'haml-rails'
 

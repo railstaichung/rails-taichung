@@ -13,9 +13,15 @@
          :confirmable,
          :omniauthable, :omniauth_providers => [:facebook,:google_oauth2,:github]
 
-  # user followship
-  has_many :following_users, class_name: "Following"
-  belongs_to :user
+  # user relationships
+  has_many :active_relationships,  class_name:  "Relationship",
+                                   foreign_key: "follower_id",
+                                   dependent:   :destroy
+  has_many :passive_relationships, class_name:  "Relationship",
+                                   foreign_key: "followed_id",
+                                   dependent:   :destroy
+  has_many :following, through: :active_relationships,  source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
 
   has_many :profiles
   has_many :images
@@ -53,21 +59,19 @@
     user && user == current_user
   end
 
-
-  def not_me?(user, current_user)
-    user && user != current_user
+  # Follows a user.
+  def follow(other_user)
+    active_relationships.create(followed_id: other_user.id)
   end
 
-  def is_following?(user)
-    following_users.include?(user)
+  # Unfollows a user.
+  def unfollow(other_user)
+    active_relationships.find_by(followed_id: other_user.id).destroy
   end
 
-  def follow!(user)
-    following_users << user
-  end
-
-  def unfollow!(user)
-    following_users.delete(user)
+  # Returns true if the current user is following the other user.
+  def following?(other_user)
+    following.include?(other_user)
   end
 
 end

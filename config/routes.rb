@@ -34,10 +34,10 @@ Rails.application.routes.draw do
     resources :profiles
     resources :images
     member do
-      post :follow
-      post :unfollow
+      get :following, :followers
     end
   end
+  resources :relationships,       only: [:create, :destroy]
 
   if Rails.env.development? then
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

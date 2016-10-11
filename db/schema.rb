@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161009152034) do
+ActiveRecord::Schema.define(version: 20161011030114) do
 
   create_table "event_photos", force: :cascade do |t|
     t.integer  "event_id"
@@ -50,6 +50,17 @@ ActiveRecord::Schema.define(version: 20161009152034) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id"
+  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
+  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
 
   create_table "simple_captcha_data", force: :cascade do |t|
     t.string   "key",        limit: 40
