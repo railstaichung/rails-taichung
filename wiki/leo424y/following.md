@@ -938,3 +938,127 @@ end
 
 ![图12.19：未关注的用户](https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_3rd_edition/images/figures/unfollowed_user.png)
 ![图12.20：关注未关注的用户的结果](https://softcover.s3.amazonaws.com/636/ruby_on_rails_tutorial_3rd_edition/images/figures/unfollowed_user.png)
+
+### 12.2.5 带Ajax的工作流按钮
+尽管我们的用户following实现完成了如表明的，我们在开始状态feed之前有一点需要装饰一下。你可能已经注意到在12.2.4节create方法和destroy动作在Relationships控制器里简单滴重定向会原始的个人信息页面。换句话说，用户在别的用户的个人信息页面的开始，关注别的用户，被立即重定向会原始的页面。问究竟为什么用户需要离开页面是很合理的。
+
+这恰好是通过Ajax解决的问题，我们允许web页面来异步发送清单到服务器，不必离开页面。因为添加Ajax到web表单是普通的时间，Rails常Ajax实现更容易。确实，更新follow/unfollow表单片段是很小的；只是改变
+```ruby
+form_for
+```
+到
+```ruby
+form_for ..., remote: true
+```
+
+Rails会自动使用Ajax。更新的视图片段显示在清单12.33里和清单12.34里。
+```ruby
+代码清单 12.33: A form for following a user using Ajax.
+# app/views/users/_follow.html.erb
+ <%= form_for(current_user.active_relationships.build, remote: true) do |f| %>
+  <div><%= hidden_field_tag :followed_id, @user.id %></div>
+  <%= f.submit "Follow", class: "btn btn-primary" %>
+<% end %>
+```
+```ruby
+代码清单 12.34: A form for unfollowing a user using Ajax.
+# app/views/users/_unfollow.html.erb
+ <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id),
+             html: { method: :delete },
+             remote: true) do |f| %>
+  <%= f.submit "Unfollow", class: "btn" %>
+<% end %>
+```
+实际被ERB生成的HTML不是特别相关，但是你可能好奇，所以这里是大概的偷窥（细节会不同）：
+```ruby
+<form action="/relationships/117" class="edit_relationship" data-remote="true"
+      id="edit_relationship_117" method="post">
+  .
+  .
+  .
+</form>
+```
+在表单标签里设置变量data-remote="true",告诉Rails允许表单被Javascript处理。通过使用简单HTML属性替换插入的完整的Javascript代码（在在之前版本的Rails）Rails遵循了[不招摇的Javascript](http://railscasts.com/episodes/205-unobtrusive-javascript)哲学。
+
+已经更新了表单，我们现在需要安排Relationships控制器响应Ajax请求。我们可以使用respond_to方法来做这个，响应合适地依靠请求的类型。常用的模式看起来像这个：
+```ruby
+respond_to do |format|
+  format.html { redirect_to user }
+  format.js
+end
+```
+这个语法潜在第困扰人，理解上面的代码仅会有一行被执行是重要地。（在这句，respond_to更像if-then-else语句比起顺序行的系列）。事情Relationship控制到响应Ajax需要添加respond_to如清单12.32里的create和destroy动作。结果显示在清单12.35里。注意局部变量user和实例变量@user;在青岛12.32里不需要实例变量，但是在清单12.33和12.34里是必要的。
+```ruby
+代码清单 12.35: Responding to Ajax requests in the Relationships controller.
+# app/controllers/relationships_controller.rb
+ class RelationshipsController < ApplicationController
+  before_action :logged_in_user
+
+  def create
+    @user = User.find(params[:followed_id])
+    current_user.follow(@user)
+    respond_to do |format|
+      format.html { redirect_to @user }
+      format.js
+    end
+  end
+
+  def destroy
+    @user = Relationship.find(params[:id]).followed
+    current_user.unfollow(@user)
+    respond_to do |format|
+      format.html { redirect_to @user }
+      format.js
+    end
+  end
+end
+```
+
+在清单12.35里的动作优雅地降级了，这意味着它们在不支持Javascript的浏览器里工作的很好（尽管一点配置是必要的，如清单12.36里所示）
+```ruby
+代码清单 12.36: Configuration needed for graceful degradation of form submission.
+# config/application.rb
+ require File.expand_path('../boot', __FILE__)
+.
+.
+.
+module SampleApp
+  class Application < Rails::Application
+    .
+    .
+    .
+    # Include the authenticity token in remote forms.
+    config.action_view.embed_authenticity_token_in_remote_forms = true
+  end
+end
+```
+换句话说，我们仍然正确地响应当启用Javascript。在这个Ajax请求的例子，Rails自动调用Javascript内嵌Ruby（.js.erb)文件用和动作同样的名字，例如，create.js.erb或者destroy.js.erb。如你可能猜到的，这样的文件允许混合Javascript和内嵌Ruby到执行动作在当前页面。它是这些问题我们需要创建和编辑为了更新用户个人信息页面在被关注和取消关注。
+
+在JS-ERB文件里，Rails自动地提供jQuery Javascript辅助方法来使用[文档对象模型（DOM）](http://www.w3.org/DOM/)操作页面。jQuery库（我们在11.4.2节里见到——提供大量的方法为操作DOM，但是这里我们仅需要两个。首先，我们需要知道依据唯一的CSS id读取DOM元素的美元符号。例如，为了操作follow_form要素，我们将使用语法
+```ruby
+$("#follow_form")
+```
+（回忆12.19，这是个div，包装了表单，而不是表单本身）这个语法，被CSS激发，使用#符号来表明是CSS
+id。如你可能猜到的，jQuery，像CSS，使用点.来操作类。
+
+我们需要的第二个方法是html，它更新HTML里面的相关的要素有了它的参数的内容。例如，替换完整的follow表单用字符串“foobar”，我们将写
+```ruby
+$("#follow_form").html("foobar")
+```
+不像纯的Javascript文件，JS-ERB文件也允许内嵌Ruby的使用，我们应用在create.js.erb文件里更新follow表单用unfollow视图片段（这是成功关注后应该显示的内容）和更新关注者的数量。结果显示在清单12.37里。这使用escape_javascript方法，当插入HTML在文件Javascript文件里转义的结果。
+```ruby
+代码清单 12.37: The JavaScript embedded Ruby to create a following relationship.
+# app/views/relationships/create.js.erb
+ $("#follow_form").html("<%= escape_javascript(render('users/unfollow')) %>");
+$("#followers").html('<%= @user.followers.count %>');
+```
+注意行尾的分号，这是从[ALGOL](https://en.wikipedia.org/wiki/ALGOL)继承的语言的特性。
+
+destroy.js.erb文件是相似的（清单12.38）。
+```ruby
+代码清单 12.38: The Ruby JavaScript (RJS) to destroy a following relationship.
+# app/views/relationships/destroy.js.erb
+ $("#follow_form").html("<%= escape_javascript(render('users/follow')) %>");
+$("#followers").html('<%= @user.followers.count %>');
+```
+有了那个，你应该导航用户个人信息页面和确认你能关注和取消关注，不需要刷新页面。
