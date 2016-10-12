@@ -5,14 +5,12 @@
       <h1>修改活動</h1>
     </div>
     <%= simple_form_for @event do |f| %>
-      <% if @event.event_photo.present? %>
-        <%= image_tag(@event.event_photo.image.url, class: "img-responsive", alt: "Responsive image") %>
-      <% end %>
-      <div class="form-group">
-        <%= f.simple_fields_for :event_photo do |c| %>
-          <%= c.input :image, as: :file , required: true, label: '更換活動主題圖片？' %>
-        <% end %>
+      <div>
+        <%= image_tag @event.try(:photo).try(:url), class: "img-responsive", alt: "Responsive image" || "https://unsplash.it/1280/360/?random" %>
+        <br>
+      <%= link_to("修改圖片", crop_event_path(@event), method: :get, class: "btn btn-primary btn-lg btn-block") %>
       </div>
+      <br>
       <%= f.input :topic, required: true, label: '這次活動的主題？' %>
       <%= f.input :start_time, as: :date_time_picker, required: true, label: '開始時間' %>
       <%= f.input :end_time, as: :date_time_picker, required: true, label: '結束時間' %>

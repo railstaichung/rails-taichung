@@ -1,5 +1,9 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, only: [:to_active, :to_close, :join, :quit, :new, :edit, :create, :update, :destroy]
+  before_action :authenticate_user!, only: [:crop, :to_active, :to_close, :join, :quit, :new, :edit, :create, :update, :destroy]
+
+  def crop
+    @event = current_user.events.find(params[:id])
+  end
 
   def to_active
     @event = current_user.events.find(params[:id])
@@ -52,11 +56,10 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
-    @event_photo = @event.build_event_photo
   end
 
   def create
-    @event = current_user.events.create(event_params)
+    @event = current_user.events.new(event_params)
 
     if @event.start_time > @event.end_time
       flash[:warning] = "開始時間錯誤"
@@ -64,7 +67,7 @@ class EventsController < ApplicationController
     else
       if @event.save
         current_user.join!(@event)
-        redirect_to event_path(@event), notice: "建立活動成功"
+        redirect_to crop_event_path(@event), notice: "建立活動成功"
       else
         render :new
       end
@@ -82,18 +85,13 @@ class EventsController < ApplicationController
 
   def edit
     @event = current_user.events.find(params[:id])
-
-    if @event.event_photo.present?
-      @event_photo = @event.event_photo
-    else
-      @event_photo = @event.build_event_photo
-    end
   end
 
   def update
     @event = current_user.events.find(params[:id])
+    @event.update_attributes(event_params)
     if @event.start_time > @event.end_time
-      flash[:warning] = "開始時間錯誤"
+      flash[:warning] = "時間錯誤"
       render :edit
     else
       if @event.update(event_params)
@@ -113,6 +111,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:topic, :start_time, :end_time, :location, :content, :is_active, event_photo_attributes: [:image, :id])
+    params.require(:event).permit(:topic, :start_time, :end_time, :location, :content, :is_active, :photo)
   end
 end

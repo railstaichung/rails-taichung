@@ -33,8 +33,14 @@ gem 'figaro'
 gem 'holder_rails'
 gem "font-awesome-rails"
 
+# seed
+gem 'faker'
+
 # user profile
 gem 'haml-rails'
+
+# user follower
+gem 'kaminari'
 
 gem 'mini_magick'
 gem 'gravtastic'
@@ -43,7 +49,7 @@ gem 'ckeditor'
 gem 'ckeditor-imgur'
 
 gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
-
+gem 'carrierwave-crop-on-fly'
 gem 'carrierwave-qiniu', '>= 0.2.4'
 gem 'geocoder'
 gem 'gmaps4rails'
