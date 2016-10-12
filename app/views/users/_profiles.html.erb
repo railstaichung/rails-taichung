@@ -1,0 +1,15 @@
+<% @profiles.each do |profile| %>
+  <tr>
+    <td>
+      <%= link_to( "#{profile.content}", profile.url, target: "_blank" )  %>
+    </td>
+    <td>
+      <% if @user.editable_by?(@user, current_user) %>
+        <div class="btn-group pull-right" role="group">
+          <%= link_to("修改", edit_user_profile_path(profile.user, profile)) %>
+          <%= link_to("刪除", user_profile_path(profile.user, profile), method: :delete, data: { confirm: "確定刪除?"}) %>
+        </div>
+      <% end %>
+    </td>
+  </tr>
+<% end %>

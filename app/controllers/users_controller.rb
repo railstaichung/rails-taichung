@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-#  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
+  before_action :authenticate_user!, only: [ :edit, :update, :destroy, :following, :followers]
 
   def index
     @users = User.all.order("created_at DESC")
@@ -35,6 +35,39 @@ class UsersController < ApplicationController
     @user.destroy
     redirect_to users_path
   end
+
+  def follow
+    @user = user.find(params[:id])
+      if !current_user.is_following?(@user)
+        current_user.follow!(@user)
+        flash[:notice] = "follow!"
+      end
+    redirect_to user_path(@user)
+  end
+
+  def unfollow
+    @user = user.find(params[:id])
+      if current_user.is_following?(@user)
+        current_user.unfollow!(@user)
+        flash[:alert] = "unfollowed！"
+      end
+    redirect_to user_path(@user)
+  end
+
+  def following
+    @title = "Following"
+    @user  = User.find(params[:id])
+    @users = @user.following.page(1).per(5)
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @user  = User.find(params[:id])
+    @users = @user.followers.page(1).per(5)
+    render 'show_follow'
+  end
+
 
   private
 
