@@ -1,6 +1,6 @@
 <%= simple_form_for [@user,@profile] do |f| %>
   <div class="form-group">
-    <%= f.collection_radio_buttons :content, [['Facebook', '_Facebook_ '] ,['Github', '_Github_'],['Blog', '_Blog_'],['Twitter', '_Twitter_']], :first, :last %>
+    <%= f.input :content, input_html: { class: "form-control"} %>
     <%= f.input :url, input_html: { class: "form-control"} %>
   </div>
   <div class="form-actions">

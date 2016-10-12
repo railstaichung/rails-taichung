@@ -33,8 +33,14 @@ gem 'figaro'
 gem 'holder_rails'
 gem "font-awesome-rails"
 
+# seed
+gem 'faker'
+
 # user profile
 gem 'haml-rails'
+
+# user follower
+gem 'kaminari'
 
 gem 'mini_magick'
 gem 'gravtastic'
