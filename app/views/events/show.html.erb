@@ -55,16 +55,13 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
   handler.fitMapToBounds();
 });
 
-$(document).ready(function(){
-  $("#hide").click(function(){
-      if($(".mapbox").css("display")=="none"){
-        $(".mapbox").slideDown();
-        document.getElementById('hide').value= "<%= I18n.t("hide_map") %>";
-      }else{
-        $(".mapbox").slideUp();
-        document.getElementById('hide').value= "<%= I18n.t("show_map") %>";
-      }
-  });
-
+$(document).on("click", "#hide", function(){
+  if($(".mapbox").css("display")=="none"){
+    $(".mapbox").slideDown();
+    document.getElementById('hide').value= "<%= I18n.t("hide_map") %>";
+  }else{
+    $(".mapbox").slideUp();
+    document.getElementById('hide').value= "<%= I18n.t("show_map") %>";
+  }
 });
 </script>

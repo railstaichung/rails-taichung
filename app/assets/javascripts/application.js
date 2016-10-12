@@ -24,5 +24,7 @@
 
 
 $(document).ready(function() {
+  if ($(".events.crop").length > 0) {
     document.jcrop.init({ file_input_id: 'event_photo' });
+  }
 });
