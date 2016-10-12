@@ -6,8 +6,8 @@
     <td>
       <% if @user.editable_by?(@user, current_user) %>
         <div class="btn-group pull-right" role="group">
-          <%= link_to("修改", edit_user_profile_path(profile.user, profile)) %>
-          <%= link_to("刪除", user_profile_path(profile.user, profile), method: :delete, data: { confirm: "確定刪除?"}) %>
+          <%= link_to(I18n.t('edit'), edit_user_profile_path(profile.user, profile)) %>
+          <%= link_to(I18n.t('delete'), user_profile_path(profile.user, profile), method: :delete, data: { confirm: I18n.t('confirm')}) %>
         </div>
       <% end %>
     </td>

@@ -12,9 +12,6 @@
 </div>
 
 <div>
-  <section>
-    信箱：<%= @user.email %><br>
-  </section>
   <section class="stats">
   <%= render 'users/shared/stats' %>
   <%= render 'users/follow_form' if signed_in? %>
@@ -24,9 +21,9 @@
       <tr>
         <th>
           <% if @user.editable_by?(@user, current_user) %>
-            <%= link_to("連結新增", new_user_profile_path(@user), class: "btn btn-warning") %>
-            <%= link_to("圖片新增", new_user_image_path(@user), class: "btn btn-warning") %>
-            <%= link_to("個資管理", edit_user_path(@user), class: "btn btn-warning", role: "button") %>
+            <%= link_to(I18n.t('new_user_profile'), new_user_profile_path(@user), class: "btn btn-warning") %>
+            <%= link_to(I18n.t('new_user_image'), new_user_image_path(@user), class: "btn btn-warning") %>
+            <%= link_to(I18n.t('edit_user'), edit_user_path(@user), class: "btn btn-warning", role: "button") %>
           <% end %>
         </th>
         <th colspan="2"></th>
@@ -43,7 +40,7 @@
       <div class="thumbnail">
         <%= image_tag image.url.thumb %>
         <% if @user.editable_by?(@user, current_user) %>
-            <%= link_to("刪除", user_image_path(image.user, image), method: :delete, data: { confirm: "確定刪除?"}) %>
+            <%= link_to( I18n.t('delete'), user_image_path(image.user, image), method: :delete, data: { confirm: I18n.t('confirm')}) %>
         <% end %>
       </div>
     </div>

@@ -20,6 +20,19 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 en:
   hello: "Hello world"
+  more: "More"
+  save: "Save"
+  edit: "Edit"
+  delete: "X"
+  confirm: "Are you sure?"
+  # User
+  new_user_profile: "+Profile"
+  new_user_image: "+Photo"
+  edit_user: "Account"
+  name: "Name"
+  upload_user_image: "Upload A Photo"
+  unfollow: "Unfollow"
+  follow: "Follow"
   # Navi bar
   title: "Rails Taichung"
   activities: "Activities"
