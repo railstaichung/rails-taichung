@@ -1,14 +1,7 @@
-
-<p><%= @name %>，歡迎您加入Rails台中的大家庭：</p>
-
-<p>請點選連結驗證E-mail信箱完成註冊：</p>
-
-<p><%= link_to '驗證E-Mail', confirmation_url(@resource, confirmation_token: @token) %></p>
-
 <div id="mail_background">
   <div class="container-fluid" style="background-color: rgba(250,250,250,0.8); height: 450px; width:720px;position: absolute;top: 50%;left: 50%;margin: -225px 0 0 -360px;">
     <div style="height:440px; width:710px;border-style:solid;border-width:2px;border-radius: 10px; margin:2px 0 0 2px">
-    <h2><%= @name %>歡迎您加入Rails台中：</h2>
+    <h2><%= @name %>，歡迎您加入Rails台中：</h2>
     <hr>
       <div id="mail_body">
        <p>不想看下面的廢話的話，請直接點選連結驗證E-mail信箱完成註冊：<%= link_to '驗證E-Mail', confirmation_url(@resource, confirmation_token: @token) %></p>
@@ -33,8 +26,8 @@
     position: absolute;
   }
   div#mail_body{
-    line-height:32px !important;
-    background-image:url(http://localhost:3000/assets/images/letter_line.jpg) !important;
+    line-height:32px;
+    background-image:url(http://localhost:3000/assets/images/letter_line.jpg);
     background-position: bottom;
     background-repeat: repeat;
     background-attachment:fixed;
