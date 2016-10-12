@@ -25,7 +25,7 @@ User.create!(name:  "Example User",
                )
   # Profiles
   4.times do |k|
-   Profile.create([content: "連結 #{k} ", user_id: "#{i}"])
+   Profile.create([content: "連結 #{k} ", user_id: "#{n}"])
   end
 
 end
