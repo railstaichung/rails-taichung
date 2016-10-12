@@ -18,8 +18,8 @@
     活動地點 : <%= @event.location %><br>
     活動內容 : <%= simple_format(@event.content) %></p>
 </div>
-<div class="mapbox" style='width: 800px;'>
-  <div id="map" style='width: 800px; height: 400px;'></div>
+<div class="mapbox" style='position: relative;padding-bottom: 28.125%;height: 0;overflow: hidden;'>
+  <div id="map" style='position: absolute;top: 0;left: 0;width: 100%;height: 100%;'></div>
 </div>
 
 <input type="button" id="hide" class="btn btn-primary" value="<%= I18n.t('hide_map') %>"/>
