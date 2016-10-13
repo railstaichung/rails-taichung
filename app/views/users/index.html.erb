@@ -7,10 +7,7 @@
         <%= image_tag user.gravatar_url(:size => 300, :default => 'https://dl.dropboxusercontent.com/u/1252720/_rortc/ROR.jpg'), size: "300" %>
         <div class="caption">
           <h3><%= user.name %></h3>
-          <p>
-          信箱：<%= user.email %><br>
-          </p>
-          <p><%= link_to("詳情", user_path(user), class: "btn btn-primary btn-block", role: "button") %></p>
+          <p><%= link_to( I18n.t('more'), user_path(user), class: "btn btn-primary btn-block", role: "button") %></p>
         </div>
       </div>
     </div>

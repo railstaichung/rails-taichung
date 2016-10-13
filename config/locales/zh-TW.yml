@@ -1,5 +1,18 @@
 zh-TW:
   hello: "您好"
+  more: "詳情"
+  save: "儲存"
+  edit: "修改"
+  delete: "刪除"
+  confirm: "你確定?"
+  # User
+  new_user_profile: "新增連結"
+  new_user_image: "新增圖片"
+  edit_user: "帳號管理"
+  name: "稱呼"
+  upload_user_image: "上傳我的大頭照"
+  unfollow: "取消追蹤"
+  follow: "追蹤"
   # Navi bar
   title: "Rails 台中"
   activities: "參加活動"
@@ -51,4 +64,4 @@ zh-TW:
   #event
   #show
   show_map: "顯示地圖"
-  hide_map: "隱藏地圖"  
+  hide_map: "隱藏地圖"

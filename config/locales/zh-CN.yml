@@ -1,5 +1,18 @@
 zh-CN:
   hello: "亲，您好~"
+  more: "详情"
+  save: "储存"
+  edit: "修改"
+  delete: "删除"
+  confirm: "你确定?"
+  # User
+  new_user_profile: "新增连结"
+  new_user_image: "新增图片"
+  edit_user: "帐号管理"
+  name: "称呼"
+  upload_user_image: "上传我的大头照"
+  unfollow: "取消追踪"
+  follow: "追踪"
   # Navi bar
   title: "Rails 台中"
   activities: "参加活动"
@@ -51,4 +64,4 @@ zh-CN:
   #event
   #show
   show_map: "显示地图"
-  hide_map: "隐藏地图"    
+  hide_map: "隐藏地图"
