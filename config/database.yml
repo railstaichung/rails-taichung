@@ -21,5 +21,6 @@ test:
   database: db/test.sqlite3
 
 production:
+  adapter: mysql2
   <<: *default
   database: db/production.sqlite3
