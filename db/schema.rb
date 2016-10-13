@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,13 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20161011112528) do
-
-  create_table "event_photos", force: :cascade do |t|
-    t.integer  "event_id"
-    t.string   "image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "events", force: :cascade do |t|
     t.string   "topic"
@@ -40,9 +32,8 @@ ActiveRecord::Schema.define(version: 20161011112528) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_images_on_user_id"
   end
-
-  add_index "images", ["user_id"], name: "index_images_on_user_id"
 
   create_table "profiles", force: :cascade do |t|
     t.text     "content"
@@ -57,20 +48,18 @@ ActiveRecord::Schema.define(version: 20161011112528) do
     t.integer  "followed_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["followed_id"], name: "index_relationships_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
-
-  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id"
-  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
-  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
 
   create_table "simple_captcha_data", force: :cascade do |t|
     t.string   "key",        limit: 40
     t.string   "value",      limit: 6
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["key"], name: "idx_key"
   end
-
-  add_index "simple_captcha_data", ["key"], name: "idx_key"
 
   create_table "user_events", force: :cascade do |t|
     t.integer  "user_id"
@@ -106,10 +95,9 @@ ActiveRecord::Schema.define(version: 20161011112528) do
     t.string   "unconfirmed_email"
     t.string   "provider"
     t.string   "uid"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end
