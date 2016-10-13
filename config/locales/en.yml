@@ -41,7 +41,7 @@ en:
   resources: "Resources"
   register: "New member?"
   login: "Log in"
-  account_setting: "Account setting"
+  change_password: "Change password"
   my_events: "My events"
   create_event: "Create event"
   member_info: "Personal info"
@@ -75,6 +75,11 @@ en:
   password_confirmation: "Password confirmation"
   sign_up: "Sign up"
   password_char_min: "%{minimum_password_length} characters minimum"
+  #Change password
+  current_password: "Current password"
+  password_hint: "leave it blank if you don't want to change it"
+  current_password_hint: "we need your current password to confirm your changes"
+  update_btn: "Update"
   #Forgot password page
   forgot_pw_title: "Forgot your password?"
   reset_pw_button: "Send me reset password instructions"

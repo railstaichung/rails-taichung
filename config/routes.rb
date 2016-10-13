@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :issues
+
   namespace :account do
     resources :events, only: [:index]
     resources :my_events, only: [:index, :show]

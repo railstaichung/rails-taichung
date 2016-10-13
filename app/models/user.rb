@@ -32,6 +32,7 @@
   has_many :user_events
   has_many :participated_events, through: :user_events, source: :event
   has_many :events
+  has_many :issues
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -57,6 +58,10 @@
 
   def editable_by?(user, current_user)
     user && user == current_user
+  end
+
+  def from_omniauth?
+    !provider.nil?
   end
 
   # Follows a user.

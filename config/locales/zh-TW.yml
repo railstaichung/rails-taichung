@@ -21,7 +21,7 @@ zh-TW:
   resources: "資源分享"
   register: "新成員？"
   login: "登入"
-  account_setting: "帳號設定"
+  change_password: "變更密碼"
   my_events: "我的活動"
   create_event: "建立活動"
   member_info: "個人簡介"
@@ -55,6 +55,11 @@ zh-TW:
   password_confirmation: "密碼再次輸入確認"
   sign_up: "註冊帳號"
   password_char_min: "最少%{minimum_password_length}個字元"
+  #Change password
+  current_password: "現在密碼"
+  password_hint: "如果不想更新密碼請留空"
+  current_password_hint: "我們需要您的目前密碼來確認是否為本人"
+  update_btn: "更新密碼"
   #Forgot password page
   forgot_pw_title: "忘記密碼?"
   reset_pw_button: "寄送重設密碼信件"

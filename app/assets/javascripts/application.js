@@ -19,6 +19,8 @@
 //= require ckeditor/init
 //= require underscore
 //= require gmaps/google
+//= require dataTables/jquery.dataTables
+//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require_tree .
 //= require gravtastic
 

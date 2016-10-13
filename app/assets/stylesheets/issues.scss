@@ -1,0 +1,59 @@
+// Place all the styles related to the Issues controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.mwt_border{
+	width:100%;
+	height:90px;
+	text-align:center;
+	background:#fff;
+	position:relative;
+	border: solid 1px #333;
+  border-radius:5px;
+	margin:30px;
+	padding:30px;
+}
+/*箭頭右*/
+.mwt_border .arrow_r_int{
+	width:0px;
+	height:0px;
+	border-width:15px;
+	border-style:solid;
+	border-color:transparent transparent transparent #333;
+	position:absolute;
+	top:20%;
+	right:-30px;
+}
+/*箭頭右-邊框*/
+.mwt_border .arrow_r_out{
+	width:0px;
+	height:0px;
+	border-width:15px;
+	border-style:solid;
+	border-color:transparent transparent transparent #fff;
+	position:absolute;
+	top:20%;
+	right:-29px;
+}
+
+/*箭頭左*/
+.mwt_border .arrow_l_int{
+	width:0px;
+	height:0px;
+	border-width:15px;
+	border-style:solid;
+	border-color:transparent #333 transparent  transparent ;
+	position:absolute;
+	top:20%;
+	left:-30px;
+}
+/*箭頭左-邊框*/
+.mwt_border .arrow_l_out{
+	width:0px;
+	height:0px;
+	border-width:15px;
+	border-style:solid;
+	border-color:transparent #fff transparent transparent ;
+	position:absolute;
+	top:20%;
+	left:-29px;
+}

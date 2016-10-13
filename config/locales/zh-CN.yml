@@ -21,7 +21,7 @@ zh-CN:
   resources: "资源分享"
   register: "新成员？"
   login: "登录"
-  account_setting: "帐号设定"
+  change_password: "变更密码"
   my_events: "我的活动"
   create_event: "建立活动"
   member_info: "个人简介"
@@ -55,6 +55,11 @@ zh-CN:
   password_confirmation: "密钥重复输入确认"
   sign_up: "注册帐号"
   password_char_min: "最少%{minimum_password_length}个字元"
+  #Change password
+  current_password: "当前密钥"
+  password_hint: "如果不想更新密钥请留空"
+  current_password_hint: "我们需要您的当前密钥来确认是否为本人"    
+  update_btn: "更新密钥"
   #Forgot password page
   forgot_pw_title: "忘记密钥?"
   reset_pw_button: "寄送重置密钥邮件"

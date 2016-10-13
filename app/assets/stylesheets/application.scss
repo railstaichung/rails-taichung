@@ -11,7 +11,8 @@
  * file per style scope.
  *
  *= require jquery.jcrop
- *= require jcrop_fix
+ *= require jcrop_fix 
+ *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap.scss
  *= require_tree .
  *= require_self
  */
@@ -42,4 +43,3 @@
     width: 100%;
     height: 100%;
 }
-
