@@ -157,7 +157,7 @@ GEM
     multi_json (1.12.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    mysql2 (0.4.4)
+    mysql2 (0.3.21)
     netrc (0.11.0)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
@@ -312,10 +312,11 @@ DEPENDENCIES
   holder_rails
   jbuilder (~> 2.0)
   jquery-rails
+  json (~> 1.8, >= 1.8.3)
   kaminari
   letter_opener_web
   mini_magick
-  mysql2
+  mysql2 (~> 0.3.18)
   omniauth-facebook
   omniauth-github
   omniauth-google-oauth2
