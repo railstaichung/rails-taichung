@@ -87,6 +87,7 @@ group :development do
 end
 
 gem 'puma', '~> 3.0'
-# group :production do
-#   gem 'mysql2', '~> 0.3.18'
-# end
+
+group :production do
+  gem 'mysql2', '~> 0.3.18'
+end
