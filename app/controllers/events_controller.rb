@@ -23,7 +23,7 @@ class EventsController < ApplicationController
     @events = Event.where(:is_active => 't').all.order("created_at DESC")
   end
 
-  def close
+  def inactive
     @events = Event.where(:is_active => 'f').all.order("created_at DESC")
   end
 
