@@ -182,6 +182,7 @@ GEM
     multi_json (1.12.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    mysql2 (0.3.21)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.2.0)
@@ -351,6 +352,7 @@ DEPENDENCIES
   kaminari
   letter_opener_web
   mini_magick
+  mysql2 (~> 0.3.18)
   omniauth-facebook
   omniauth-github
   omniauth-google-oauth2
