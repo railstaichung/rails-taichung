@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
     collection do
       get :active
-      get :close
+      get :inactive
     end
   end
 
