@@ -5,8 +5,7 @@ jQuery ->
     $('.datatable').DataTable({
       "autoWidth":false;
       "columnDefs": [
-          { "width": "10%", "targets": 0 },
-          { "width": "60%", "targets": 1 },
-          { "width": "20%", "targets": 2 },
-          { "width": "10%", "targets": 3 }]
+          { "width": "70%", "targets": 0 },
+          { "width": "20%", "targets": 1 },
+          { "width": "10%", "targets": 2 }]
         });

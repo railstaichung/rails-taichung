@@ -8,7 +8,6 @@
             <table class='datatable table table-bordered table-striped' style='margin-bottom:0;'>
               <thead>
                 <tr>
-                  <th>編號</th>
                   <th>標題</th>
                   <th>發起人</th>
                   <th>狀態</th>
@@ -17,8 +16,7 @@
               <tbody>
                 <% @issues.each do |issue| %>
                   <tr>
-                    <td><%= issue.id %></td>
-                    <td><%= link_to(issue.title, issue_path(issue)) %></td>
+                    <td><%= link_to("#{issue.title}##{issue.id}", issue_path(issue)) %></td>
                     <td><%= issue.owner.name %></td>
                     <td><%= issue.issue_state %></td>
                   </tr>
