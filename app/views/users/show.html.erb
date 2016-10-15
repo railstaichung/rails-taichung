@@ -1,51 +1,50 @@
 <br>
 <div class="container">
-<div class="jumbotron">
-  <br>
-  <h1><%= @user.name %></h1>
-  <br>
-</div>
-
-<div class="page-header">
-  <h1><%=  @user.name %></h1>
-  <%= image_tag @user.gravatar_url(:size => 300, :default => 'https://dl.dropboxusercontent.com/u/1252720/_rortc/ROR.jpg'), size: "300" %>
-</div>
-
-<div>
-  <section class="stats">
-  <%= render 'users/shared/stats' %>
-  <%= render 'users/follow_form' if signed_in? %>
-  </section>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>
+<div class="row">
+  <div class="col-md-3 col-md-offset-2 col-xs-10 col-xs-offset-1">
+    <%= image_tag @user.gravatar_url(:size => 300, :default => 'https://dl.dropboxusercontent.com/u/1252720/_rortc/ROR.jpg'), size: "300" %>
+  </div>
+  <div class="col-md-5 col-xs-10 col-xs-offset-1">
+    <h1><%=  @user.name %></h1>
+    <h5>帳戶建立 : <%=  @user.created_at %></h5>
+    <h5>普通會員</h5>
+    <br>
+    <section class="stats">
+      <%= render 'users/shared/stats' %>
+      <%= render 'users/follow_form' if signed_in? %>
+    </section>
+  </div>
+  <div class="col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>
           <% if @user.editable_by?(@user, current_user) %>
             <%= link_to(I18n.t('new_user_profile'), new_user_profile_path(@user), class: "btn btn-warning") %>
             <%= link_to(I18n.t('new_user_image'), new_user_image_path(@user), class: "btn btn-warning") %>
             <%= link_to(I18n.t('edit_user'), edit_user_path(@user), class: "btn btn-warning", role: "button") %>
           <% end %>
-        </th>
-        <th colspan="2"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <%= render 'profiles' %>
-    </tbody>
-  </table>
-</div>
-<div>
-  <% @images.each do |image| %>
-    <div class="col-sm-6 col-md-4">
-      <div class="thumbnail">
-        <%= image_tag image.url.thumb %>
-        <% if @user.editable_by?(@user, current_user) %>
+          </th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render 'profiles' %>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1">
+    <% @images.each do |image| %>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <%= image_tag image.url.thumb %>
+          <% if @user.editable_by?(@user, current_user) %>
             <%= link_to( I18n.t('delete'), user_image_path(image.user, image), method: :delete, data: { confirm: I18n.t('confirm')}) %>
-        <% end %>
+          <% end %>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
-<hr>
 </div>
 <br>
