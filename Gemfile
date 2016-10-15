@@ -36,7 +36,6 @@ gem 'figaro'
 gem 'holder_rails'
 gem "font-awesome-rails"
 gem "aasm"
-gem "jquery-datatables-rails"
 
 # seed
 gem 'faker'
