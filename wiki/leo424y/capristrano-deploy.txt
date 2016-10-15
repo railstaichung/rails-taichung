@@ -1,0 +1,193 @@
+
+來源： http://courses.growthschool.com/courses/deploy-rails-project-to-linux-server/lectures/917443
+
+簡介：
+我們會發現，每次網站一改版，就要重新 git clone , 設定 database.yml, secret.yml, 跑一系列 rake 指令
+要花太多人工的時間，而且很難確保不會在手動執行的過程中手殘造成悲劇
+
+所以我們改用自動化部署，來幫助我們自動處理，而且還有 rollback 的功能，萬一本次的版本炸掉，還能回溯上個版本
+
+本節預計要完成：
+
+用 Capristrano 自動化部署，一個指令完成 Deploy
+
+在 ubuntu 端的專案建立 shared/config 資料夾
+Gemfile 安裝 capristrano 3.4
+執行 cap install
+設定 config/deploy.rb
+設定 capfile
+設定 config/deploy/production.rb
+執行 deploy 程序
+修改 ubuntu 機器端的 nginx.conf
+  在 ubuntu 端的專案建立 shared/config 資料夾
+用 apps 帳號登入 ubuntu 機器裡，並且 cd 到你的 rails 專案資料夾
+
+( 已 raills101s 為例: cd rails101s )
+
+mkdir shared
+mkdir shared/config
+
+將原專案 config 資料夾裡的 database.yml 跟 secret.yml 複製到 shared/config 資料夾
+cp config/database.yml shared/config/
+cp config/secrets.yml shared/config/
+
+
+
+Gemfile 安裝 capristrano
+打開 Gemfile
+
+Gemfile
+...
+...
++ group :development do
++   gem "capistrano"
++   gem "capistrano-rvm"
++   gem "capistrano-rails"
++ end
+...
+...
+bundle install
+
+
+
+執行 cap install
+執行 cap install
+cap install
+
+會生出以下檔案：
+
+Capfire
+config/deploy.rb
+config/deploy/production.rb
+config/deploy/staging.rb
+
+接下來做上述檔案的設定
+
+設定 config/deploy.rb
+設定 config/deploy.rb
+config/deploy.rb
+ # config valid only for current version of Capistrano
+ lock '3.4.0'
+
++# 你的 application name
+-set :application, 'my_app_name'
++set :application, 'rails101s'
+
+
++# 你的 git url
+-set :repo_url, 'git@example.com:me/my_repo.git'
++set :repo_url, 'https://github.com/sdlong/rails101s.git'
+
+ # Default branch is :master
+ # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+
+ # Default deploy_to directory is /var/www/my_app_name
+
++# deploy 的資料夾位置 (prodution)
+-# set :deploy_to, '/var/www/my_app_name'
++set :deploy_to, "/home/apps/rails101s"
+
+ # Default value for :scm is :git
+ # set :scm, :git
+
+...(略)
+
+ # set :pty, true
+
+ # Default value for :linked_files is []
++# git clone 完成後會從 shared 資料夾 copy 過去的檔案
+-# set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
++set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
+
+ # Default value for linked_dirs is []
++# git clone 完成後會從 shared 資料夾 copy 過去的資料夾
+-# set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
++set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
+
+ # Default value for default_env is {}
+ # set :default_env, { path: "/opt/ruby/bin:$PATH" }
+
+...(略)
+
+設定 Capfile
+Capfile
+...(略)
+
+-# require 'capistrano/rvm'
++require 'capistrano/rvm'
+ # require 'capistrano/rbenv'
+ # require 'capistrano/chruby'
+-# require 'capistrano/bundler'
+-# require 'capistrano/rails/assets'
+-# require 'capistrano/rails/migrations'
++require 'capistrano/bundler'
++require 'capistrano/rails/assets'
++require 'capistrano/rails/migrations'
+ # require 'capistrano/passenger'
+
+...(略)
+設定 config/deploy/production.rb
+設定 config/deploy/production.rb
+config/deploy/production.rb
+...(略)
+
++# 你設定的 deploy 用帳號 & ip ( 本教材的 ip 是範例 )
+-# role :app, %w{deploy@example.com}, my_property: :my_value
+-# role :web, %w{user1@primary.com user2@additional.com}, other_property: :other_value
+-# role :db,  %w{deploy@example.com}
++role :app, %w{apps@139.162.37.149}
++role :web, %w{apps@139.162.37.149}
++role :db,  %w{apps@139.162.37.149}
+
+...(略)
+
+執行 deploy:check
+執行 deploy:check
+cap production deploy:check
+
+將會做 deploy 前的檢查，並把遠端 (production) 需要的資料夾建立，如果有 error 請檢查錯誤訊息去 debug
+
+  執行 deploy 程序
+執行 deploy 程序
+cap production deploy
+正式運作自動化 deploy
+
+
+
+修改 nginx.conf
+修改 nginx.conf
+由於 capristrano 將專案的位置改到 rails101s/current 所以要將 nginx 上 server 對應的位置修改
+
+登入 root 帳號到 ubuntu 機器
+
+sudo vim /opt/nginx/conf/nginx.conf
+
+/opt/nginx/conf/nginx.conf
+...(略)
+
+    server {
+        listen       80;
+        server_name  localhost;
+-       root /home/apps/rails101s/public;
++       root /home/apps/rails101s/current/public;
+        passenger_enabled on;
+    }
+...(略)
+重開 nginx, 看看是否 deploy 成功
+重開 nginx, 看看是否 deploy 成功
+sudo /etc/init.d/nginx restart
+
+=> 用瀏覽器瀏覽你的網站吧！
+
+以後專案有任何異動，只要 push 到 github ( master 主線 ) 以後
+直接輸入 cap production deploy 即可自動跑完 deploy
+
+萬一新版本的專案炸掉，還可以輸入 cap production deploy:rollback 回溯上個版本
+
+production 端的 rails101s 根目錄會有三個資料夾
+
+current <== 現在實際上線運作的版本
+releases <== 你過去 deploy 的記錄 ( 預設存五個 , 最新版的 = current )
+shared <== 你不想放在 git 上給人看到的檔案(例如 database.yml) / logs / 圖片 … etc 的放置處，新版本 deploy 完後 capristrano 會自動 copy 一份過去到 current 上
+
+現在根目錄除了這三個資料以外的檔案都沒有用到了，如果嫌太亂可以這些檔案刪除掉

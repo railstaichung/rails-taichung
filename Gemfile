@@ -11,7 +11,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 gem 'json', '~> 1.8', '>= 1.8.3'
 
@@ -65,9 +65,6 @@ gem 'gmaps4rails'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -84,9 +81,13 @@ group :development do
   gem 'pry-nav'
   gem "awesome_rails_console"
   gem 'letter_opener_web'
+  gem "capistrano", "~> 3.4"
+  gem "capistrano-rvm"
+  gem "capistrano-rails"
 end
 
 gem 'puma', '~> 3.0'
-# group :production do
-#   gem 'mysql2', '~> 0.3.18'
-# end
+
+group :production do
+  gem 'mysql2', '~> 0.3.18'
+end
