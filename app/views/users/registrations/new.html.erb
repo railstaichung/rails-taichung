@@ -1,6 +1,6 @@
 <div class="container-fluid" style="height:550px; width:770px;">
-<h2><%= I18n.t('sign_up') %></h2>
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <h2><%= I18n.t('sign_up') %></h2>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -13,7 +13,7 @@
   <div class="form-actions">
     <%= f.button :submit, I18n.t('sign_up'),class: "btn btn-success btn-lg btn-block" %>
   </div>
-<% end %>
+  <% end %>
 
-<%= render "users/shared/links" %>
+  <%= render "users/shared/links" %>
 </div>
