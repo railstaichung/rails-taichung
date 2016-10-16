@@ -80,7 +80,8 @@ group :development do
   gem 'pry-nav'
   gem "awesome_rails_console"
   gem 'letter_opener_web'
-  gem "capistrano", "~> 3.4"
+  gem "capistrano"
+  gem 'capistrano-passenger'
   gem "capistrano-rvm"
   gem "capistrano-rails"
 end
