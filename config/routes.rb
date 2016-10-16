@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
     collection do
       get :active
-      get :close
+      get :inactive
     end
   end
 
@@ -41,6 +41,8 @@ Rails.application.routes.draw do
     end
   end
   resources :relationships,       only: [:create, :destroy]
+
+  resources :beefs
 
   if Rails.env.development? then
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
