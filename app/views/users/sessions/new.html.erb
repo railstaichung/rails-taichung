@@ -1,6 +1,9 @@
-<div class="container-fluid" style="height:550px; width:770px;">
-  <div class="row" style="position: absolute; top:50%; left:50%; margin: -230px 0 0 -365px;">
-    <div class="col-xs-6 col-sm-4 login-frame login-body">
+<br>
+<div class="container">
+  <div class="row">
+  <div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+
+    <div class="col-md-5 login-frame login-body">
       <h4><%= I18n.t('logintitle') %>(
         <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
         <%= link_to I18n.t('register'), new_registration_path(resource_name) %>
@@ -22,10 +25,16 @@
       </div>
       <% end %>
     </div>
-    <div class="col-md-1 login-frame" style="width:6px;">
-      <%=image_tag("pixel.png", height:"450px", width:"1px")%>
+
+    <div class="col-md-2 visible-lg-block">
+      <%=image_tag("pixel.png", height:"450px", width:"1px", class: "center-block")%>
     </div>
-    <div class="col-xs-6 col-sm-4 login-frame login-body">
+
+    <div class="visible-xs-block">
+      <hr>
+    </div>
+
+    <div class="col-md-5 login-frame login-body">
       <h4><%= I18n.t('login_third_party') %></h4>
       <%= link_to user_facebook_omniauth_authorize_path, class: "btn btn-primary btn-lg btn-block" do%>
       <%= fa_icon "facebook", text: "facebook", class: "pull-left" %>
@@ -39,19 +48,8 @@
       <hr>
       <%= render "users/shared/links" %>
     </div>
+
+  </div>
   </div>
 </div>
-<style media="screen">
-  div.login-frame {
-    height: 450px;
-    top: 40px;
-  }
-  div.login-body {
-    width: 350px;
-    border-style: solid;
-    border-width: 2px;
-    border-radius: 10px;
-    padding: 10px;
-  }
-
-</style>
+<br>
