@@ -42,6 +42,8 @@ Rails.application.routes.draw do
   end
   resources :relationships,       only: [:create, :destroy]
 
+  resources :beefs
+
   if Rails.env.development? then
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end

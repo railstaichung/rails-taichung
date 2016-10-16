@@ -1,0 +1,34 @@
+<div class="container-fluid" style="padding: 15px 30px 15px 50px;">
+  <div class="row">
+
+    <div class="col-md-12">
+      <div class="group">
+        <%= link_to("加入新資源", new_beef_path, class: "btn btn-primary pull-right") %>
+      </div>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <td>#</td>
+            <td>標題</td>
+            <td>內容</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @beefs.each do |beef| %>
+            <tr>
+              <td>#</td>
+              <td><%= link_to(beef.title, beef_path(beef)) %></td>
+              <td><%= beef.description %></td>
+              <td>
+                  <%= link_to("編輯", edit_beef_path(beef), class: "btn btn-sm btn-default")%>
+                  <%= link_to("刪除", beef_path(beef),    class: "btn btn-sm btn-default",
+                              method: :delete, data: { confirm: "確定要刪除嗎？" } )%>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

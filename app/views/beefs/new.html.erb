@@ -1,0 +1,18 @@
+<div class="container-fluid" style="padding: 15px 30px 15px 50px;">
+  <div class="row">
+
+    <div class="col-md-4 col-md-offset-4">
+      <h1>加入新資源</h1>
+
+      <hr>
+      <%= simple_form_for @beef do |f| %>
+        <div class="form-group">
+          <%= f.input :title, input_html: { class: "form-control"}, label: '標題'%>
+          <%= f.input :description, input_html: { class: "form-control"}, label: '內容'%>
+        </div>
+        <%= f.submit "提交新資源", class: "btn btn-primary", data: { disable_with: "提交中..." } %>
+      <% end %>
+    </div>
+
+  </div>
+</div>
