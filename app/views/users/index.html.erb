@@ -1,27 +1,26 @@
 <br>
 <div class="container">
-<div class="row">
-  <div class="page-header">
-    <h1 class="text-center">我們的成員</h1>
-    <h4 class="text-center">來自各行各業的夥伴，都擁有分享熱情的心</h1>
-  </div>
-  <% @users.each do |user| %>
+  <div class="row">
+    <div class="page-header">
+      <h1 class="text-center">我們的成員</h1>
+      <h4 class="text-center">來自各行各業的夥伴，都擁有分享熱情的心</h1>
+    </div>
+    <% @users.each do |user| %>
     <div class="col-xs-12 col-lg-4">
-    <div class="index_image">
-      <div>
-        <%= link_to user_path(user) do %>
+      <div class="index_image">
+        <div>
+          <%= link_to user_path(user) do %>
           <%= image_tag user.gravatar_url(:size => 150, :default => 'https://dl.dropboxusercontent.com/u/1252720/_rortc/ROR.jpg'), size: "150", class: "img-circle center-block" %>
-        <% end %>
-      </div>
-      <div class="index_bg">
-      </div>
-      <div>
-        <h4 class="text-center"><%= user.name %></h4>
-        <h5 class="text-center">普通會員</h5>
+          <% end %>
+        </div>
+        <div class="index_bg"></div>
+        <div>
+          <h4 class="text-center"><%= user.name %></h4>
+          <h5 class="text-center">普通會員</h5>
+        </div>
       </div>
     </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 </div>
 <br>

@@ -19,8 +19,6 @@
 //= require ckeditor/init
 //= require underscore
 //= require gmaps/google
-//= require dataTables/jquery.dataTables
-//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require_tree .
 //= require gravtastic
 
@@ -29,4 +27,5 @@ $(document).ready(function() {
   if ($(".events.crop").length > 0) {
     document.jcrop.init({ file_input_id: 'event_photo' });
   }
+
 });
