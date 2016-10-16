@@ -1,17 +1,22 @@
-<div class="container-fluid" style="height:350px; width:770px;">
-  <h2><%= I18n.t('forgot_pw_title') %></h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="page-header">
+        <h2><%= I18n.t('forgot_pw_title') %></h2>
+      </div>
+      <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= f.error_notification %>
+      <div class="form-inputs">
+        <%= f.input :email, label:I18n.t('email')  ,required: true, autofocus: true %>
+      </div>
 
-  <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
+      <div class="form-actions">
+        <%= f.button :submit, I18n.t('reset_pw_button') %>
+      </div>
+      <% end %>
 
-  <div class="form-inputs">
-    <%= f.input :email, label:I18n.t('email')  ,required: true, autofocus: true %>
+      <%= render "users/shared/links" %>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, I18n.t('reset_pw_button') %>
-  </div>
-  <% end %>
-
-  <%= render "users/shared/links" %>
 </div>
+<br>
