@@ -1,6 +1,10 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+
+  # 獨立scss載入
+  config.assets.precompile += ['active_admin.scss']
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
