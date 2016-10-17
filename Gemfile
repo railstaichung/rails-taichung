@@ -27,6 +27,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem "rails-i18n"
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'simple_form'
+gem 'activeadmin', '~> 1.0.0.pre4'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'devise'
 gem 'simple_captcha2', require: 'simple_captcha'
 gem 'omniauth-facebook'
