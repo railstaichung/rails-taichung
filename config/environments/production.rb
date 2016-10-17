@@ -1,6 +1,10 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+
+  # 獨立scss載入
+  config.assets.precompile += ['active_admin.scss']
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -23,6 +27,8 @@ Rails.application.configure do
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
   config.public_file_server.enabled = false
+  # 配置rails讀取靜態文件設定
+  config.serve_static_files = true
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -63,6 +69,7 @@ Rails.application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default_url_options = { host: 'rails-taichung.com'}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   ActionMailer::Base.smtp_settings = {
@@ -87,4 +94,15 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  Rails.application.config.middleware.use ExceptionNotification::Rack,
+    :slack => {
+      :webhook_url => "https://hooks.slack.com/services/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",
+      :channel => "#exceptions",
+      :additional_parameters => {
+        :icon_url => "http://image.jpg",
+        :mrkdwn => true
+      }
+    }
+
 end
