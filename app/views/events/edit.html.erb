@@ -6,9 +6,9 @@
     </div>
     <%= simple_form_for @event do |f| %>
       <div>
-        <%= image_tag @event.try(:photo).try(:url), class: "img-responsive", alt: "Responsive image" || "https://unsplash.it/1280/360/?random" %>
+        <%= image_tag @event.try(:photo).try(:small).try(:banner).try(:url), class: "img-responsive", alt: "Responsive image" || "https://unsplash.it/1080/540/?random" %>
         <br>
-      <%= link_to("修改圖片", crop_event_path(@event), method: :get, class: "btn btn-primary btn-lg btn-block") %>
+        <%= f.file_field :photo, required: true, label: '活動主題照片' %>
       </div>
       <br>
       <%= f.input :topic, required: true, label: '這次活動的主題？' %>
