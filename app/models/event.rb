@@ -10,6 +10,13 @@ class Event < ActiveRecord::Base
 
   mount_uploader :photo, PhotoUploader
 
+  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
+  after_update :crop_photo
+
+  def crop_photo
+    photo.recreate_versions! if crop_x.present?
+  end
+
   def editable_by?(user)
     user && user ==owner
   end
@@ -25,4 +32,5 @@ class Event < ActiveRecord::Base
   def to_close
     self.update_columns(is_active: false)
   end
+
 end

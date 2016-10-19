@@ -109,11 +109,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
-    carrierwave-crop-on-fly (0.0.5)
-      carrierwave (>= 0.8.0)
-      jquery-rails
-      rails (>= 3.2)
-    carrierwave-qiniu (0.2.5)
+    carrierwave-qiniu (0.2.6)
       carrierwave
       qiniu (~> 6.8.0)
     ckeditor (4.2.0)
@@ -312,6 +308,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    rmagick (2.15.4)
     ruby-hmac (0.4.0)
     ruby_parser (3.8.3)
       sexp_processor (~> 4.1)
@@ -384,7 +381,6 @@ DEPENDENCIES
   capistrano-rails
   capistrano-rvm
   carrierwave (>= 1.0.0.beta, < 2.0)
-  carrierwave-crop-on-fly
   carrierwave-qiniu (>= 0.2.4)
   ckeditor
   ckeditor-imgur
@@ -415,6 +411,7 @@ DEPENDENCIES
   puma (~> 3.0)
   rails (~> 5.0.0, >= 5.0.0.1)
   rails-i18n
+  rmagick
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   simple_captcha2
