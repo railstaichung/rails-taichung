@@ -21,7 +21,7 @@
     </div>
 
     <div>
-      <p>主 辦 人 : <%= @event.owner.name %><br>
+      <p>活動主辦 : <%= link_to(@event.owner.name, user_path(@event.owner)) %><br>
         活動日期 : <%= @event.start_time.to_s(:normal) %> ~ <%= @event.end_time.to_s(:normal) %><br>
         活動地點 : <%= @event.location %><br>
         活動內容 : <%= simple_format(@event.content) %></p>
@@ -83,7 +83,7 @@
 
 <script>
   $(function () {
-    $('#myTab a:last').tab('show')
+    $('#myTab a:first').tab('show')
   })
 </script>
 </div>
