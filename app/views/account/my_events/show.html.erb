@@ -3,7 +3,7 @@
 <div class="row">
 <div class="col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1">
 <div class="img-container">
-  <%= image_tag @event.try(:photo).try(:url) || "https://unsplash.it/1280/360/?random" %>
+  <%= image_tag @event.try(:photo).try(:small).try(:banner).try(:url) || "https://unsplash.it/1080/540/?random" %>
 </div>
  <br>
 

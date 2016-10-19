@@ -15,7 +15,7 @@
           <h3><%= event.topic %></h3>
           <h4>目前有 <%= event.members.size %> 位夥伴參加</h4>
           <p>
-          主 辦 人 : <%= event.owner.name %><br>
+          活動主辦 : <%= link_to(event.owner.name, user_path(event.owner)) %><br>
           開始時間 : <%= event.start_time.to_s(:normal) %><br>
           結束時間 : <%= event.end_time.to_s(:normal) %><br>
           活動地點 : <%= event.location %><br>
