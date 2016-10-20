@@ -33,6 +33,7 @@
   has_many :participated_events, through: :user_events, source: :event
   has_many :events
   has_many :issues
+  has_many :issue_responds  
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

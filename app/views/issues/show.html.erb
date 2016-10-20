@@ -1,15 +1,61 @@
 <div class="container-fluid">
-  <div class="col-md-offset-1 col-xs-10 col-xs-offset-1">
-    <h3><%= @issue.title %>#<%= @issue.id %></h3>
+  <div class="col-md-offset-2 col-xs-8 col-sm-8 col-md-8 col-xs-offset-1">
     <div class="row">
-      <div class="col-md-2">
-        Test
+      <div class="col-md-8 col-sm-8 col-xs-8">
+        <h3><%= @issue.title %>#<%= @issue.id %></h3>
       </div>
-      <div class="col-md-9 mwt_border">
-        <span class="arrow_l_int"></span>
-        <span class="arrow_l_out"></span>
-      	<%= @issue.content %>
+      <div class="col-md-4 col-sm-4 col-xs-4 pull-right">
+        <% if @issue.control_by?(current_user) %>
+          <% if @issue.issue_state == "open" %>
+            <%= link_to("Close", issue_close_issue_path(@issue), class: "btn btn-success ", style:"margin-top:15px;", method: :post) %>
+          <% else %>
+            <%= link_to("Reopen", issue_reopen_issue_path(@issue), class: "btn btn-danger", style:"margin-top:15px;", method: :post) %>
+          <% end %>
+        <% end %>
       </div>
+    </div>
+    <div class="row">
+      <div class="media">
+        <div class="media-left">
+          <%= link_to(user_path(@issue.owner)) do %>
+            <%=image_tag(@issue.owner.gravatar_url(:default => 'https://dl.dropboxusercontent.com/u/1252720/_rortc/ROR.jpg'),
+                         class: "media-object")%>
+          <% end %>
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading">
+            <%= @issue.owner.name %> commented on <%= @issue.created_at.strftime("%Y/%m/%d %H:%M:%S") %>
+          </h4>
+          <%= raw(@issue.content) %>
+        </div>
+      </div>
+      <hr>
+      <% @issue_responds.each do |issue_respond| %>
+        <div class="media">
+          <div class="media-left">
+            <%= link_to(user_path(issue_respond.user)) do %>
+              <%=image_tag(issue_respond.user.gravatar_url(:default => 'https://dl.dropboxusercontent.com/u/1252720/_rortc/ROR.jpg'),
+                           class: "media-object")%>
+            <% end %>
+            <%= render "vote", issue_respond: issue_respond %>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">
+              <%= issue_respond.user.name %> commented on <%= issue_respond.created_at.strftime("%Y/%m/%d %H:%M:%S") %>
+            </h4>
+            <%= raw(issue_respond.content) %>
+          </div>
+        </div>
+        <hr>
+      <% end %>
+      <% if @issue.issue_state == "open" %>
+        <%= simple_form_for @respond, url: issue_issue_responds_path(@issue) do |r| %>
+          <div class="form-group">
+            <%=r.input :content, as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini' } }, required: true, label: '新增回應' %>
+          </div>
+          <%=r.submit "Submit", class: "btn btn-primary", data:{disable_with: "Submitting..."}%>
+        <% end %>
+      <% end %>
     </div>
   </div>
 
