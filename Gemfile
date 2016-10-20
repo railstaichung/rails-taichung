@@ -27,6 +27,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem "rails-i18n"
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'simple_form'
+gem 'activeadmin', '~> 1.0.0.pre4'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'devise'
 gem 'simple_captcha2', require: 'simple_captcha'
 gem 'omniauth-facebook'
@@ -47,13 +49,13 @@ gem 'haml-rails'
 gem 'kaminari'
 
 gem 'mini_magick'
+gem 'rmagick'
 gem 'gravtastic'
 
 gem 'ckeditor'
 gem 'ckeditor-imgur'
 
 gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
-gem 'carrierwave-crop-on-fly'
 gem 'carrierwave-qiniu', '>= 0.2.4'
 gem 'geocoder'
 gem 'gmaps4rails'
@@ -64,6 +66,10 @@ gem 'sanitize'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
+
+# exception_notification
+gem 'exception_notification'
+gem 'slack-notifier'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -81,7 +87,8 @@ group :development do
   gem 'pry-nav'
   gem "awesome_rails_console"
   gem 'letter_opener_web'
-  gem "capistrano", "~> 3.4"
+  gem "capistrano"
+  gem 'capistrano-passenger'
   gem "capistrano-rvm"
   gem "capistrano-rails"
 end
@@ -89,5 +96,5 @@ end
 gem 'puma', '~> 3.0'
 
 group :production do
-  gem 'mysql2', '~> 0.3.18'
+  gem 'mysql2'
 end

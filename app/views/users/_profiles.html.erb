@@ -1,15 +1,15 @@
 <% @profiles.each do |profile| %>
-  <tr>
-    <td>
-      <%= link_to( "#{profile.content}", profile.url, target: "_blank" )  %>
-    </td>
-    <td>
-      <% if @user.editable_by?(@user, current_user) %>
-        <div class="btn-group pull-right" role="group">
-          <%= link_to(I18n.t('edit'), edit_user_profile_path(profile.user, profile)) %>
-          <%= link_to(I18n.t('delete'), user_profile_path(profile.user, profile), method: :delete, data: { confirm: I18n.t('confirm')}) %>
-        </div>
-      <% end %>
-    </td>
-  </tr>
+<tr>
+  <td>
+    <%= link_to( "#{profile.content}", profile.url, target: "_blank" )  %>
+  </td>
+  <td>
+    <% if @user.editable_by?(@user, current_user) %>
+    <div class="btn-group pull-right" role="group">
+      <%= link_to(I18n.t('edit'), edit_user_profile_path(profile.user, profile)) %>
+      <%= link_to(I18n.t('delete'), user_profile_path(profile.user, profile), method: :delete, data: { confirm: I18n.t('confirm')}) %>
+    </div>
+    <% end %>
+  </td>
+</tr>
 <% end %>

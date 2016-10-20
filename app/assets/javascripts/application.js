@@ -13,7 +13,6 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
-//= require jcrop.js
 //= require holder
 //= require bootstrap/alert
 //= require ckeditor/init
@@ -21,11 +20,4 @@
 //= require gmaps/google
 //= require_tree .
 //= require gravtastic
-
-
-$(document).ready(function() {
-  if ($(".events.crop").length > 0) {
-    document.jcrop.init({ file_input_id: 'event_photo' });
-  }
-
-});
+//= require jquery.Jcrop

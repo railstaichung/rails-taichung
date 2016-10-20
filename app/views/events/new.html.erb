@@ -5,6 +5,7 @@
       <h1>建立活動</h1>
     </div>
     <%= simple_form_for @event do |f| %>
+      <%= f.file_field :photo, required: true, label: '活動主題照片' %>
       <%= f.input :topic, required: true, label: '這次活動的主題？' %>
       <%= f.input :start_time, as: :date_time_picker, required: true, label: '開始時間' %>
       <%= f.input :end_time, as: :date_time_picker, required: true, label: '結束時間' %>

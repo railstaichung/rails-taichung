@@ -1,6 +1,6 @@
 # config valid only for current version of Capistrano
 lock '3.6.1'
-
+`ssh-add`
 set :application, 'rails-taichung'
 set :repo_url, 'git@github.com:railstaichung/rails-taichung.git'
 
@@ -36,4 +36,5 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
 # Default value for keep_releases is 5
-# set :keep_releases, 5
+set :keep_releases, 10
+set :passenger_restart_with_touch, true

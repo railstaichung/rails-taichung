@@ -1,4 +1,5 @@
-/*
+/* 注意，本 app 分開載入sass! 有非本sass的請手動加到下面喔
+ * ihower建議： https://ihower.tw/rails/assets-pipeline.html
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -10,9 +11,11 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require jquery.jcrop
- *= require jcrop_fix
- *= require_tree .
+ *= require bootstrap-datetimepicker
+ *= require user.min
+ *= require user
+ *= require issues
+ *= require jquery.Jcrop
  *= require_self
  */
 @import "font-awesome";

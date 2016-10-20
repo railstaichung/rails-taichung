@@ -20,11 +20,11 @@ class EventsController < ApplicationController
   end
 
   def active
-    @events = Event.where(:is_active => 't').all.order("created_at DESC")
+    @events = Event.where(is_active: 'true').or(Event.where(is_active: 't')).all.order("created_at DESC")
   end
 
   def inactive
-    @events = Event.where(:is_active => 'f').all.order("created_at DESC")
+    @events = Event.where(is_active: 'false').or(Event.where(is_active: 'f')).all.order("created_at DESC")
   end
 
   def join
@@ -60,7 +60,6 @@ class EventsController < ApplicationController
 
   def create
     @event = current_user.events.new(event_params)
-
     if @event.start_time > @event.end_time
       flash[:warning] = "開始時間錯誤"
       render :new
@@ -89,13 +88,17 @@ class EventsController < ApplicationController
 
   def update
     @event = current_user.events.find(params[:id])
-    @event.update_attributes(event_params)
     if @event.start_time > @event.end_time
       flash[:warning] = "時間錯誤"
       render :edit
     else
-      if @event.update(event_params)
-        redirect_to event_path(@event), notice: "活動修改成功"
+      if @event.update_attributes(event_params)
+        if params[:event][:photo].present?
+          redirect_to crop_event_path(@event)
+        else
+          @event.save
+          redirect_to event_path(@event), notice: "活動修改成功"
+        end
       else
         render :edit
       end
@@ -111,6 +114,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:topic, :start_time, :end_time, :location, :content, :is_active, :photo)
+    params.require(:event).permit(:topic, :start_time, :end_time, :location, :content, :is_active, :photo, :crop_x, :crop_y, :crop_w, :crop_h, :crop_photo)
   end
 end
