@@ -1,0 +1,3 @@
+module IssueRespondsHelper
+  
+end

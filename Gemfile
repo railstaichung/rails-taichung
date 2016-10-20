@@ -59,6 +59,7 @@ gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
 gem 'carrierwave-qiniu', '>= 0.2.4'
 gem 'geocoder'
 gem 'gmaps4rails'
+gem 'sanitize'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
