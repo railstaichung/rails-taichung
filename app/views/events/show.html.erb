@@ -15,7 +15,7 @@
 </div>
 
 <div>
-  <p>主 辦 人 : <%= @event.owner.name %><br>
+  <p>活動主辦 : <%= link_to(@event.owner.name, user_path(@event.owner)) %><br>
     活動日期 : <%= @event.start_time.to_s(:normal) %> ~ <%= @event.end_time.to_s(:normal) %><br>
     活動地點 : <%= @event.location %> <input type="button" id="hide" class="btn btn-primary btn-xs" value="<%= I18n.t('hide_map') %>"/><br>
     </p>

@@ -5,7 +5,8 @@
       <div class="page-header">
         <h1>建立活動圖片</h1>
       </div>
-        <%= image_tag @event.photo_url(:large), id: "cropbox" %>
+          <%= image_tag @event.photo_url(:large), id: "cropbox" %>
+        <hr>
         <h4>Preview</h4>
         <div style="width:300px; height:150px; overflow:hidden">
           <%= image_tag @event.photo.url(:large), :id => "preview" %>
@@ -15,7 +16,7 @@
           <%= f.hidden_field "crop_#{attribute}" %>
         <% end %>
         <div class="actions">
-          <%= f.submit "Crop" %>
+          <br><%= f.submit "Crop", class: "btn btn-primary", role: "button" %>
         </div>
       <% end %>
     </div>

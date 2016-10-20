@@ -20,11 +20,11 @@ class EventsController < ApplicationController
   end
 
   def active
-    @events = Event.where(:is_active => 't').all.order("created_at DESC")
+    @events = Event.where(is_active: 'true').or(Event.where(is_active: 't')).all.order("created_at DESC")
   end
 
   def inactive
-    @events = Event.where(:is_active => 'f').all.order("created_at DESC")
+    @events = Event.where(is_active: 'false').or(Event.where(is_active: 'f')).all.order("created_at DESC")
   end
 
   def join
