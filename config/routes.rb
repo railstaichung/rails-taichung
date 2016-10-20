@@ -15,7 +15,16 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :issues
+  resources :issues do
+    member do
+      post :issue_close
+      post :issue_reopen
+    end
+    resources :issue_responds do
+      post 'up_vote'
+      post 'down_vote'
+    end
+  end
 
   namespace :account do
     resources :events, only: [:index]

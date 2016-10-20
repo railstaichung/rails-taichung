@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161015031608) do
+ActiveRecord::Schema.define(version: 20161020034929) do
 
   create_table "beefs", force: :cascade do |t|
     t.string   "title"
@@ -40,6 +40,24 @@ ActiveRecord::Schema.define(version: 20161015031608) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_images_on_user_id"
+  end
+
+  create_table "issue_respond_votes", force: :cascade do |t|
+    t.integer  "issue_respond_id"
+    t.integer  "user_id"
+    t.integer  "vote_num"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["issue_respond_id", "user_id"], name: "index_issue_respond_votes_on_issue_respond_id_and_user_id", unique: true
+  end
+
+  create_table "issue_responds", force: :cascade do |t|
+    t.integer  "issue_id"
+    t.integer  "user_id"
+    t.text     "content"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "vote",       default: 0
   end
 
   create_table "issues", force: :cascade do |t|

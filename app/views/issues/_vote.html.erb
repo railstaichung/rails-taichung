@@ -1,0 +1,25 @@
+<div class="vote-style">
+  <% if !issue_respond.votes.exists?(user_id: current_user) %>
+    <div class="vote-btn">
+      <%= link_to(issue_issue_respond_up_vote_path(@issue, issue_respond), class: "btn btn-danger", method: :post) do %>
+        <i class="fa fa-smile-o"> Like it</i>
+      <% end %>
+    </div>
+  <% end %>
+  <p align=center class="vote-text">
+    <%= issue_respond.vote %>
+    <% if issue_respond.vote >=0 %>
+      <i class="fa fa-heart" style="color:red;"></i>
+    <% else %>
+      <i class="fa fa-heart" style="color:black;"></i>
+    <% end %>
+
+  </p>
+  <% if !issue_respond.votes.exists?(user_id: current_user) %>
+    <div class="vote-btn">
+      <%= link_to(issue_issue_respond_down_vote_path(@issue, issue_respond), class: "btn btn-success", method: :post) do %>
+        <i class="fa fa-frown-o"> Hate it</i>
+      <% end %>
+    </div>
+  <% end %>
+</div>

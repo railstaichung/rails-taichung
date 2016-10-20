@@ -15,7 +15,7 @@
             <div class="pull-right">
               <div class="btn-group">
                 <button type="button" class="btn btn-success btn-filter" data-target="open">Open issues</button>
-								<button type="button" class="btn btn-warning btn-filter" data-target="closed">Closed issues</button>
+								<button type="button" class="btn btn-warning btn-filter" data-target="close">Closed issues</button>
 								<button type="button" class="btn btn-default btn-filter" data-target="all">All issues</button>
               </div>
             </div>
@@ -23,17 +23,21 @@
               <table class="table table-filter">
                 <tbody>
                   <% @issues.each do |issue| %>
-                    <tr data-status="open">
+                    <tr data-status= <%= issue.issue_state %> >
                       <td>
                         <div class="media">
                           <a href="#" class="pull-left">
                             <%= image_tag issue.owner.gravatar_url(:default => 'https://dl.dropboxusercontent.com/u/1252720/_rortc/ROR.jpg'), class:"media-photo"%>
                           </a>
                           <div class="media-body">
-                            <span class="media-meta pull-right"><%= issue.created_at.to_s(:long) %></span>
+                            <span class="media-meta pull-right"><%= issue.created_at.strftime("%Y/%m/%d %H:%M:%S") %></span>
                             <h4 class="title">
                               <%= link_to("#{issue.title}##{issue.id}", issue_path(issue)) %>
-                              <span class="pull-right open">(Open)</span>
+                              <% if issue.issue_state == "open" %>
+                                <span class="pull-right open"><%=image_tag("unlock.png")%></span>
+                              <% else %>
+                                <span class="pull-right close"><%=image_tag("lock.png")%></span>
+                              <% end %>
                             </h4>
                             <p class="summary">
                               <%= sanitize_text2(issue.content) %>
@@ -45,6 +49,9 @@
                   <% end %>
                 </tbody>
               </table>
+              <div class="pull-right">
+                <%= paginate @issues %>
+              </div>
             </div>
           </div>
         </div>
