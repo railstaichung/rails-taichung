@@ -20,11 +20,11 @@ class EventsController < ApplicationController
   end
 
   def active
-    @events = Event.where(is_active: 'true').or(Event.where(is_active: 't')).all.order("created_at DESC")
+    @events = Event.where(is_active: true).all.order("created_at DESC")
   end
 
   def inactive
-    @events = Event.where(is_active: 'false').or(Event.where(is_active: 'f')).all.order("created_at DESC")
+    @events = Event.where(is_active: false).all.order("created_at DESC")
   end
 
   def join
@@ -97,7 +97,7 @@ class EventsController < ApplicationController
           redirect_to crop_event_path(@event)
         else
           @event.save
-          redirect_to event_path(@event), notice: "活動修改成功"
+          redirect_to account_my_events_path, notice: "活動修改成功"
         end
       else
         render :edit

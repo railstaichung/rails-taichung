@@ -30,7 +30,11 @@ Rails.application.routes.draw do
 
   namespace :account do
     resources :events, only: [:index]
-    resources :my_events, only: [:index, :show]
+    resources :my_events do
+      member do
+        post :kickout
+      end
+    end
   end
 
   devise_for :users, controllers:{

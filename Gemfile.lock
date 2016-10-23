@@ -109,10 +109,6 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
-    carrierwave-crop-on-fly (0.0.5)
-      carrierwave (>= 0.8.0)
-      jquery-rails
-      rails (>= 3.2)
     carrierwave-qiniu (0.2.6)
       carrierwave
       qiniu (~> 6.8.0)
