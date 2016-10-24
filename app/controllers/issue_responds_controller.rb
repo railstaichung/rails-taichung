@@ -8,6 +8,18 @@ class IssueRespondsController < ApplicationController
     end
   end
 
+  def edit
+    @respond = IssueRespond.find(params[:id])
+  end
+
+  def update
+    @respond = @issue.responds.find(params[:id])
+    @respond.update(respond_params)
+    if @respond.save then
+      redirect_to issue_path(@issue)
+    end
+  end
+
   def up_vote
     @respond = @issue.responds.find(params[:issue_respond_id])
     @respond.update_columns(vote: @respond.vote + 1)
