@@ -87,6 +87,7 @@ zh-TW:
   issue_title: "議題標題"
   issue_content: "議題內容"
   respond_title: "回應"
+  respond_success: "成功建立回應"
   submit: "發佈"
   submitting: "發佈中..."
   login_and_respond: "登入並回應問題來得到更多的"
