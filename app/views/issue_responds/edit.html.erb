@@ -1,0 +1,13 @@
+<div class="container">
+<div class="row">
+  <div class="col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1">
+    <div class="page-header">
+      <h1><%= I18n.t('respond_edit') %></h1>
+    </div>
+    <%= simple_form_for @respond, url:issue_issue_respond_path(@issue) do |f| %>
+      <%= f.input :content, as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini' } }, required: true, label: I18n.t('respond_content') %>
+      <%= f.submit I18n.t('submit'), class: "btn btn-primary btn-lg pull-right", data:{disable_with: I18n.t('submitting')} %>
+    <% end %>
+  </div>
+</div>
+</div>

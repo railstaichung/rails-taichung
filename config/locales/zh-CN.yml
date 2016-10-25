@@ -58,7 +58,7 @@ zh-CN:
   #Change password
   current_password: "当前密钥"
   password_hint: "如果不想更新密钥请留空"
-  current_password_hint: "我们需要您的当前密钥来确认是否为本人"    
+  current_password_hint: "我们需要您的当前密钥来确认是否为本人"
   update_btn: "更新密钥"
   #Forgot password page
   forgot_pw_title: "忘记密钥?"
@@ -66,7 +66,29 @@ zh-CN:
   #Resend confirmation mail
   resend_confirm_title: "重送帐号验证邮件"
   resend_confirm_button: "重送帐号验证邮件"
-  #event
+  #event========================================================================
   #show
   show_map: "显示地图"
   hide_map: "隐藏地图"
+  #Issue========================================================================
+  #Index
+  issue_list: "议题清单"
+  new_issue: "新议题"
+  open_issue: "待结议题"
+  close_issue: "已结议题"
+  all_issue: "全部议题"
+  #New/Show
+  close_btn: "关闭议题"
+  reopen_btn: "重开议题"
+  commented_on: "发表于"
+  like_it: "很赞同"
+  hate_it: "不赞同"
+  edit_title: "议题更新"
+  issue_title: "议题标题"
+  issue_content: "议题内容"
+  respond_title: "回应"
+  submit: "提交"
+  submitting: "提交中..."
+  login_and_respond: "登陆并回复问题来得到更多的"
+  respond_edit: "回复更新"
+  respond_content: "回复内容"  

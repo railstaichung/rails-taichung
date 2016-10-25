@@ -1,0 +1,55 @@
+<br>
+<div class="container">
+  <div class="row">
+  <div class="col-md-10 col-md-offset-2 col-xs-10 col-xs-offset-1">
+
+    <div class="col-md-5 login-frame login-body">
+      <h4><%= I18n.t('logintitle') %>(
+        <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+        <%= link_to I18n.t('register'), new_registration_path(resource_name) %>
+        <% end -%>)
+      </h4>
+
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name) ) do |f| %>
+      <div class="form-inputs">
+        <%= f.input :email, label: I18n.t('email'),class:"form-control", required: false, autofocus: true, stakeholder: "E-Mail帳號" %>
+        <%= f.input :password, label: I18n.t('password'), required: false %>
+        <%= f.input :remember_me, label: I18n.t('remember_me'), as: :boolean if devise_mapping.rememberable? %>
+        <%= f.input :captcha, label: I18n.t('captcha') do %>
+        <%= show_simple_captcha %>
+        <% end %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, I18n.t('login'),class: "btn btn-success btn-lg btn-block" %>
+      </div>
+      <% end %>
+    </div>
+
+    <div class="col-md-2 visible-lg-block login-line">
+      <%=image_tag("pixel.png", height:"450px", width:"1px", class: "center-block")%>
+    </div>
+
+    <div class="visible-xs-block">
+      <hr>
+    </div>
+
+    <div class="col-md-5 login-frame login-body">
+      <h4><%= I18n.t('login_third_party') %></h4>
+      <%= link_to user_facebook_omniauth_authorize_path, class: "btn btn-primary btn-lg btn-block" do%>
+      <%= fa_icon "facebook", text: "facebook", class: "pull-left" %>
+      <% end %>
+      <%= link_to user_google_oauth2_omniauth_authorize_path, class: "btn btn-danger btn-lg btn-block" do%>
+      <%= fa_icon "google-plus", text: "Google+", class: "pull-left" %>
+      <% end %>
+      <%= link_to user_github_omniauth_authorize_path, class: "btn btn-warning btn-lg btn-block" do%>
+      <%= fa_icon "github", text: "github", class: "pull-left" %>
+      <% end %>
+      <hr>
+      <%= render "users/shared/links" %>
+    </div>
+
+  </div>
+  </div>
+</div>
+<br>

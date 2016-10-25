@@ -1,22 +1,22 @@
 <div class="container">
   <div class="row">
     <section class="content">
-      <h1>問題清單</h1>
+      <h1><%= I18n.t("issue_list") %></h1>
       <div class="col-md-10 col-md-offset-1">
         <div class="panel panel-default">
           <div class="panel-body">
             <% if current_user %>
               <div class="pull-left">
                 <div class="btn-group">
-                  <%= link_to("Add issue", new_issue_path , class: "btn btn-primary") %>
+                  <%= link_to(I18n.t('new_issue'), new_issue_path , class: "btn btn-primary") %>
                 </div>
               </div>
             <% end %>
             <div class="pull-right">
               <div class="btn-group">
-                <button type="button" class="btn btn-success btn-filter" data-target="open">Open issues</button>
-								<button type="button" class="btn btn-warning btn-filter" data-target="close">Closed issues</button>
-								<button type="button" class="btn btn-default btn-filter" data-target="all">All issues</button>
+                <button type="button" class="btn btn-success btn-filter" data-target="open"><%= I18n.t('open_issue') %></button>
+								<button type="button" class="btn btn-warning btn-filter" data-target="close"><%= I18n.t('close_issue') %></button>
+								<button type="button" class="btn btn-default btn-filter" data-target="all"><%= I18n.t('all_issue') %></button>
               </div>
             </div>
             <div class="table-container">
@@ -27,20 +27,20 @@
                       <td>
                         <div class="media">
                           <a href="#" class="pull-left">
-                            <%= image_tag issue.owner.gravatar_url(:default => 'https://dl.dropboxusercontent.com/u/1252720/_rortc/ROR.jpg'), class:"media-photo"%>
+                            <%= image_tag issue.owner.gravatar_url(:default => 'http://i.imgur.com/fclemsW.jpg'), class:"media-photo"%>
                           </a>
                           <div class="media-body">
                             <span class="media-meta pull-right"><%= issue.created_at.strftime("%Y/%m/%d %H:%M:%S") %></span>
                             <h4 class="title">
                               <%= link_to("#{issue.title}##{issue.id}", issue_path(issue)) %>
                               <% if issue.issue_state == "open" %>
-                                <span class="pull-right open"><%=image_tag("unlock.png")%></span>
+                                <span class="pull-right open"><%=image_tag("unlock.png",size:20)%></span>
                               <% else %>
-                                <span class="pull-right close"><%=image_tag("lock.png")%></span>
+                                <span class="pull-right close"><%=image_tag("lock.png", size:20)%></span>
                               <% end %>
                             </h4>
                             <p class="summary">
-                              <%= sanitize_text2(issue.content) %>
+                              <%= sanitize_text(issue.content) %>
                             </p>
                           </div>
                         </div>
