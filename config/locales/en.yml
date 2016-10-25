@@ -86,7 +86,29 @@ en:
   #Resend confirmation mail
   resend_confirm_title: "Resend confirmation instructions"
   resend_confirm_button: "Resend confirmation instructions"
-  #event
+  #Event========================================================================
   #show
   show_map: "Show map"
   hide_map: "Hide map"
+  #Issue========================================================================
+  #Index
+  issue_list: "Issue List"
+  new_issue: "New issue"
+  open_issue: "Open issues"
+  close_issue: "Closed issues"
+  all_issue: "All issues"
+  #New/Show
+  close_btn: "Close issue"
+  reopen_btn: "Reopen issue"
+  commented_on: "Commented on"
+  like_it: "Like it"
+  hate_it: "Hate it"
+  edit_title: "Issue edit"
+  issue_title: "Issue title"
+  issue_content: "Issue content"
+  respond_title: "Responds"
+  submit: "Submit"
+  submitting: "Submitting..."
+  login_and_respond: "Login and respond to get more"
+  respond_edit: "Respond content edit"
+  respond_content: "Respond content"
