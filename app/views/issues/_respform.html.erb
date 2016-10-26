@@ -1,0 +1,9 @@
+<%= simple_form_for @respond, url: issue_issue_responds_path(@issue) do |r| %>
+  <div class="form-group">
+    <%=r.input :content, as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini' } }, required: true, label: I18n.t('respond_title') %>
+  </div>
+  <%=r.submit I18n.t('submit'), class: "btn btn-primary btn-lg pull-right", data:{disable_with: I18n.t('submitting')}%>
+  <br>
+  <br>
+  <br>
+<% end %>

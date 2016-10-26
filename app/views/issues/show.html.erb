@@ -1,30 +1,53 @@
+<%= render "common/someome" %>
 <div class="container-fluid">
   <div class="col-md-offset-2 col-xs-8 col-sm-8 col-md-8 col-xs-offset-1">
     <div class="row">
-      <div class="col-md-8 col-sm-8 col-xs-8">
-        <h3><%= @issue.title %>#<%= @issue.id %></h3>
-      </div>
-      <div class="col-md-4 col-sm-4 col-xs-4 pull-right">
-        <% if @issue.control_by?(current_user) %>
-          <% if @issue.issue_state == "open" %>
-            <%= link_to("Close", issue_close_issue_path(@issue), class: "btn btn-success ", style:"margin-top:15px;", method: :post) %>
+      <div class="col-md-10 col-xs-10 col-md-10">
+        <h3><%= @issue.title %>#<%= @issue.id %>
+          <% if current_user %>
+            <% if @issue.control_by?(current_user) %>
+              <% if @issue.issue_state == "open" %>
+                <%= link_to(issue_close_issue_path(@issue),class:"btn btn-primary", method: :post) do%>
+                  <%=image_tag("lock.png", size:20)%><%= I18n.t('close_btn') %>
+                <% end %>
+              <% else %>
+                <%= link_to(issue_reopen_issue_path(@issue), class:"btn btn-success", method: :post) do%>
+                  <%=image_tag("unlock.png", size:20)%><%= I18n.t('reopen_btn') %>
+                <% end %>
+              <% end %>
+            <% else %>
+              <% if @issue.issue_state == "open" %>
+                <%=image_tag("unlock.png", size:20)%>
+              <% else %>
+                <%=image_tag("lock.png", size:20)%>
+              <% end %>
+            <% end %>
           <% else %>
-            <%= link_to("Reopen", issue_reopen_issue_path(@issue), class: "btn btn-danger", style:"margin-top:15px;", method: :post) %>
+            <% if @issue.issue_state == "open" %>
+              <%=image_tag("unlock.png", size:20)%>
+            <% else %>
+              <%=image_tag("lock.png", size:20)%>
+            <% end %>
           <% end %>
-        <% end %>
+        </h3>
       </div>
     </div>
     <div class="row">
       <div class="media">
         <div class="media-left">
           <%= link_to(user_path(@issue.owner)) do %>
-            <%=image_tag(@issue.owner.gravatar_url(:default => 'https://dl.dropboxusercontent.com/u/1252720/_rortc/ROR.jpg'),
+            <%=image_tag(@issue.owner.gravatar_url(:default => 'http://i.imgur.com/fclemsW.jpg', size: 80),
                          class: "media-object")%>
           <% end %>
         </div>
         <div class="media-body">
           <h4 class="media-heading">
-            <%= @issue.owner.name %> commented on <%= @issue.created_at.strftime("%Y/%m/%d %H:%M:%S") %>
+            <%= @issue.owner.name %> <%= I18n.t('commented_on') %> <%= @issue.created_at.strftime("%Y/%m/%d %H:%M:%S") %>
+            <% if @issue.control_by?(current_user) %>
+              <%= link_to("#", class: "pull-right", data:{toggle:"modal",target:"#myModal"}) do%>
+                <i class="fa fa-pencil-square-o fa-lg" style="color:#c9c7c7;"></i>
+              <% end %>
+            <% end %>
           </h4>
           <%= raw(@issue.content) %>
         </div>
@@ -34,29 +57,39 @@
         <div class="media">
           <div class="media-left">
             <%= link_to(user_path(issue_respond.user)) do %>
-              <%=image_tag(issue_respond.user.gravatar_url(:default => 'https://dl.dropboxusercontent.com/u/1252720/_rortc/ROR.jpg'),
+              <%=image_tag(issue_respond.user.gravatar_url(:default => 'http://i.imgur.com/fclemsW.jpg', size: 80),
                            class: "media-object")%>
             <% end %>
             <%= render "vote", issue_respond: issue_respond %>
           </div>
           <div class="media-body">
-            <h4 class="media-heading">
-              <%= issue_respond.user.name %> commented on <%= issue_respond.created_at.strftime("%Y/%m/%d %H:%M:%S") %>
+            <h4 class="media-heading"><%= issue_respond.user.name %> <%= I18n.t('commented_on') %> <%= issue_respond.created_at.strftime("%Y/%m/%d %H:%M:%S") %>
+              <% if current_user?(issue_respond.user) %>
+                <%= link_to(edit_issue_issue_respond_path(@issue,issue_respond), class:"pull-right") do%>
+                  <i class="fa fa-pencil-square-o fa-lg" style="color:#c9c7c7;"></i>
+                <% end %>
+              <% end %>
             </h4>
             <%= raw(issue_respond.content) %>
           </div>
         </div>
         <hr>
       <% end %>
-      <% if @issue.issue_state == "open" %>
-        <%= simple_form_for @respond, url: issue_issue_responds_path(@issue) do |r| %>
-          <div class="form-group">
-            <%=r.input :content, as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini' } }, required: true, label: '新增回應' %>
-          </div>
-          <%=r.submit "Submit", class: "btn btn-primary", data:{disable_with: "Submitting..."}%>
+      <% if current_user %>
+        <% if @issue.issue_state == "open" %>
+          <%= render "respform" %>
         <% end %>
+      <% else %>
+        <div class="center-block jumbotron">
+          <div style="margin: 0 auto;">
+            <%= link_to(new_user_session_path, class: "btn btn-primary btn-lg") do%>
+              <%= I18n.t('login_and_respond') %><i class="fa fa-heart fa-lg" style="color:red;"></i>
+            <% end %>
+          </div>
+        </div>
       <% end %>
     </div>
+    <%= render "common/disqus" %>
   </div>
-
+  <%= render "modal" %>
 </div>

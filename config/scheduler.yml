@@ -1,0 +1,9 @@
+  Sidekiq排程測試:
+    cron: "1 * * * *"
+    class: ActiveJob::QueueAdapters::SidekiqAdapter::JobWrapper
+    description: "Sidekiq排程測試"
+    wrapped: SidekiqTestJob
+    args:
+      -
+        job_class: SidekiqTestJob
+        arguments: [1, "2", "ABC"]

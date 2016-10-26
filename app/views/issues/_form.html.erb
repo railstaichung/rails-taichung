@@ -1,0 +1,10 @@
+<%= simple_form_for @issue do |i| %>
+  <div class="form-group">
+    <%=i.input :title, label: I18n.t('issue_title'), input_html: {class: "form-control"}%>
+    <%=i.input :content, as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini' } }, required: true, label: I18n.t('issue_content') %>
+  </div>
+  <%=i.submit I18n.t('submit'), class: "btn btn-primary btn-lg pull-right", data:{disable_with: I18n.t('submitting')}%>
+  <br>
+  <br>
+  <br>
+<% end %>

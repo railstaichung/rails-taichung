@@ -22,6 +22,13 @@ class IssuesController < ApplicationController
     end
   end
 
+  def update
+    @issue = Issue.find(params[:id])
+    @issue.update(issue_params)
+    if @issue.save then
+      redirect_to :back
+    end
+  end
   def issue_close
     @issue = Issue.find(params[:id])
     @issue.close_issue!

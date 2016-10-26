@@ -6,14 +6,14 @@ CKEDITOR.editorConfig = function (config) {
       ['Styles', 'Format', 'Font', 'FontSize'],
       ["Bold",  "Italic",  "Underline",  "Strike",  "-",  "Subscript",  "Superscript"],
       ['Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar'],
-      ['CreateDiv'],['pbckcode']
+      ['pbckcode']
     ];
     config.toolbar_Full = [['Undo', 'Redo', '-', 'SelectAll', 'RemoveFormat'],
                            ['Styles', 'Format', 'Font', 'FontSize'],
                            ['TextColor', 'BGColor'],
                            ['Maximize', 'ShowBlocks', '-', 'About'], '/',
                            ['Bold', 'Italic', 'Underline', 'Strike', '-', 'Subscript', 'Superscript'],
-                           ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', 'Blockquote', 'CreateDiv'],
+                           ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', 'Blockquote', 'pbckcode'],
                            ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
                            ['Link', 'Unlink', 'Anchor'],
                            ['Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak']];

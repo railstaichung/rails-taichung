@@ -30,7 +30,11 @@ Rails.application.routes.draw do
 
   namespace :account do
     resources :events, only: [:index]
-    resources :my_events, only: [:index, :show]
+    resources :my_events do
+      member do
+        post :kickout
+      end
+    end
   end
 
   devise_for :users, controllers:{
@@ -57,5 +61,8 @@ Rails.application.routes.draw do
 
   if Rails.env.development? then
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
+    require 'sidekiq/web'
+    require 'sidekiq-scheduler/web'
+    mount Sidekiq::Web => '/sidekiq'    
   end
 end

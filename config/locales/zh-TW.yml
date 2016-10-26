@@ -66,7 +66,30 @@ zh-TW:
   #Resend confirmation mail
   resend_confirm_title: "重寄帳號驗證信"
   resend_confirm_button: "重寄帳號驗證信"
-  #event
+  #event========================================================================
   #show
   show_map: "顯示地圖"
   hide_map: "隱藏地圖"
+  #Issue========================================================================
+  #Index
+  issue_list: "議題清單"
+  new_issue: "新議題"
+  open_issue: "待結議題"
+  close_issue: "已結議題"
+  all_issue: "全部議題"
+  #New/Show
+  close_btn: "關閉議題"
+  reopen_btn: "重開議題"
+  commented_on: "發表於"
+  like_it: "很贊同"
+  hate_it: "不贊同"
+  edit_title: "議題更新"
+  issue_title: "議題標題"
+  issue_content: "議題內容"
+  respond_title: "回應"
+  respond_success: "成功建立回應"
+  submit: "發佈"
+  submitting: "發佈中..."
+  login_and_respond: "登入並回應問題來得到更多的"
+  respond_edit: "回覆更新"
+  respond_content: "回覆內容"
