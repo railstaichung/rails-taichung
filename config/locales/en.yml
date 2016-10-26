@@ -107,6 +107,7 @@ en:
   issue_title: "Issue title"
   issue_content: "Issue content"
   respond_title: "Responds"
+  respond_success: "Successful response"
   submit: "Submit"
   submitting: "Submitting..."
   login_and_respond: "Login and respond to get more"

@@ -11,7 +11,7 @@ gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'carrierwave-qiniu', '>= 0.2.4'
 gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
-gem 'ckeditor-imgur'
+gem 'ckeditor-imgur'
 gem 'ckeditor'
 gem 'coffee-rails', '~> 4.2' # Use CoffeeScript for .coffee assets and views
 gem 'devise'
@@ -39,6 +39,8 @@ gem 'rmagick'
 gem 'sanitize'
 gem 'sass-rails', '~> 5.0' # Use SCSS for stylesheets
 gem 'sdoc', '~> 0.4.0', group: :doc # bundle exec rake doc:rails generates the API under doc/api.
+gem 'sidekiq-scheduler'
+gem 'sidekiq'
 gem 'simple_captcha2', require: 'simple_captcha'
 gem 'simple_form'
 gem 'slack-notifier'

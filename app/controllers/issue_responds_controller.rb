@@ -4,7 +4,8 @@ class IssueRespondsController < ApplicationController
     @respond = @issue.responds.build(respond_params)
     @respond.user = current_user
     if @respond.save then
-      redirect_to issue_path(@issue), notice: "建立回應成功"
+      redirect_to issue_path(@issue), notice: I18n.t('respond_success')
+      IssuePostManJob.perform_later(@issue.id)
     end
   end
 

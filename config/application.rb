@@ -25,5 +25,8 @@ module RorTaichung
 
     # Include the authenticity token in remote forms.
     config.action_view.embed_authenticity_token_in_remote_forms = true
+    # Use sidekiq
+    config.active_job.queue_adapter = :sidekiq
+    config.eager_load_paths += %W( #{config.root}/app/jobs )
   end
 end

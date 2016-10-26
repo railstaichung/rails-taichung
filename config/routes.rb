@@ -61,5 +61,8 @@ Rails.application.routes.draw do
 
   if Rails.env.development? then
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
+    require 'sidekiq/web'
+    require 'sidekiq-scheduler/web'
+    mount Sidekiq::Web => '/sidekiq'    
   end
 end
