@@ -60,6 +60,7 @@ gem 'carrierwave-qiniu', '>= 0.2.4'
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'sidekiq'
+gem 'sidekiq-scheduler'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
