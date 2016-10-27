@@ -37,14 +37,14 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :users, controllers:{
-    sessions: "users/sessions",
-    confirmations: "users/confirmations",
-    registrations: "users/registrations",
-    passwords: "users/passwords",
-    unlocks: "users/unlocks",
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    confirmations: 'users/confirmations',
+    registrations: 'users/registrations',
+    passwords: 'users/passwords',
+    unlocks: 'users/unlocks',
 
-    omniauth_callbacks: "users/omniauth_callbacks"
+    omniauth_callbacks: 'users/omniauth_callbacks'
 
   }
 
@@ -55,14 +55,18 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
-  resources :relationships,       only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
+
+  map.resources :users do |users|
+    users.resources :keywords
+  end
 
   resources :beefs
 
-  if Rails.env.development? then
-    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: '/letter_opener'
     require 'sidekiq/web'
     require 'sidekiq-scheduler/web'
-    mount Sidekiq::Web => '/sidekiq'    
+    mount Sidekiq::Web => '/sidekiq'
   end
 end
