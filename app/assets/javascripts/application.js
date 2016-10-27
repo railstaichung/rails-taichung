@@ -18,6 +18,10 @@
 //= require ckeditor/init
 //= require underscore
 //= require gmaps/google
-//= require_tree .
 //= require gravtastic
 //= require jquery.Jcrop
+//= require ckeditor/init
+//= require ckeditor/plugins/widget/plugin
+//= require ckeditor/plugins/codesnippet/plugin
+//= require ckeditor/config
+//= require_tree .
