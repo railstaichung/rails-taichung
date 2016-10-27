@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161020034929) do
+ActiveRecord::Schema.define(version: 20161027054854) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -98,6 +98,15 @@ ActiveRecord::Schema.define(version: 20161020034929) do
     t.string   "issue_state"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "keywords", force: :cascade do |t|
+    t.string   "content"
+    t.string   "keywordable_type"
+    t.integer  "keywordable_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["keywordable_type", "keywordable_id"], name: "index_keywords_on_keywordable_type_and_keywordable_id"
   end
 
   create_table "profiles", force: :cascade do |t|

@@ -3,10 +3,12 @@ class Event < ActiveRecord::Base
   after_validation :geocode
   validates_presence_of :topic, :start_time, :end_time, :location, :content
 
+  has_many :keywords, as: :keywordable
+
   has_many :user_events
   has_many :members, through: :user_events, source: :user
 
-  belongs_to :owner, class_name: "User", foreign_key: :user_id
+  belongs_to :owner, class_name: 'User', foreign_key: :user_id
 
   mount_uploader :photo, PhotoUploader
 
@@ -18,7 +20,7 @@ class Event < ActiveRecord::Base
   end
 
   def editable_by?(user)
-    user && user ==owner
+    user && user == owner
   end
 
   def active?
@@ -26,11 +28,10 @@ class Event < ActiveRecord::Base
   end
 
   def to_active
-    self.update_columns(is_active: true)
+    update_columns(is_active: true)
   end
 
   def to_close
-    self.update_columns(is_active: false)
+    update_columns(is_active: false)
   end
-
 end
