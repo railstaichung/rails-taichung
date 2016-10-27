@@ -6,7 +6,7 @@
     </div>
     <%= simple_form_for @event do |f| %>
       <div>
-        <%= image_tag @event.try(:photo).try(:small).try(:banner).try(:url), class: "img-responsive", alt: "Responsive image" || "https://unsplash.it/1080/540/?random" %>
+        <%= image_tag @event.try(:photo).try(:banner).try(:url), class: "img-responsive", alt: "Responsive image" || "https://unsplash.it/1080/540/?random" %>
         <br>
         <%= f.file_field :photo, required: true, label: '活動主題照片' %>
       </div>
