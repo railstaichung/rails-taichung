@@ -12,12 +12,11 @@
  * file per style scope.
  *
  *= require bootstrap-datetimepicker
+ *= require jquery.Jcrop
  *= require user.min
  *= require user
- *= require events
  *= require issues
- *= require jquery.Jcrop
- *= require jcrop_fix
+ *= require events
  *= require_self
  */
 @import "font-awesome";
