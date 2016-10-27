@@ -42,6 +42,10 @@ Rails.application.routes.draw do
   end
   resources :relationships,       only: [:create, :destroy]
 
+  get 'tags/:tag', to: 'beefs#index', as: :tag
+  resources :beefs
+  root to: 'beefs#index'
+
   if Rails.env.development? then
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end

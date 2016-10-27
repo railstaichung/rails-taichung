@@ -39,6 +39,8 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    acts-as-taggable-on (4.0.0)
+      activerecord (>= 4.0)
     addressable (2.4.0)
     airbrussh (1.1.1)
       sshkit (>= 1.6.1, != 1.7.0)
@@ -329,6 +331,7 @@ PLATFORMS
 
 DEPENDENCIES
   aasm
+  acts-as-taggable-on (~> 4.0)
   awesome_rails_console
   bootstrap-sass (~> 3.3.6)
   byebug
@@ -380,4 +383,4 @@ RUBY VERSION
    ruby 2.3.0p0
 
 BUNDLED WITH
-   1.13.3
+   1.13.4
