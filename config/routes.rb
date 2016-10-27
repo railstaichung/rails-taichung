@@ -49,6 +49,7 @@ Rails.application.routes.draw do
   }
 
   resources :users do
+    resources :keywords
     resources :profiles
     resources :images
     member do
@@ -56,10 +57,6 @@ Rails.application.routes.draw do
     end
   end
   resources :relationships, only: [:create, :destroy]
-
-  map.resources :users do |users|
-    users.resources :keywords
-  end
 
   resources :beefs
 
