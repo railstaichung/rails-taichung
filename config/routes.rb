@@ -59,6 +59,7 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
 
   resources :beefs
+  resources :keywords
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: '/letter_opener'

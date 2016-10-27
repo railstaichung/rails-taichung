@@ -1,0 +1,7 @@
+<div class="keywords">
+  <% @keywords.each do |keyword| %>
+  <a href="<%= keyword_path(keyword) %>">
+    <%= keyword.content %>
+  </a>
+  <% end %>
+</div>

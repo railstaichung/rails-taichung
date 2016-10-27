@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update, :destroy, :following, :followers]
-  before_action :find_user
+  before_action :find_user, only: [:show, :edit, :update, :destroy, :follow, :unfollow, :following, :followers]
 
   def index
     @users = User.all.order('created_at DESC')
@@ -9,10 +9,10 @@ class UsersController < ApplicationController
   def show
     @profiles = @user.profiles
     @images = @user.images
+    @keywords = @user.keywords
   end
 
   def edit
-    @user = User.find(params[:id])
     @user_photo = if @user.user_photo.present?
                     @user.user_photo
                   else
@@ -21,8 +21,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
-
     if @user.update(user_params)
       redirect_to user_path(@user)
     else
@@ -31,13 +29,11 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
     @user.destroy
     redirect_to users_path
   end
 
   def follow
-    @user = user.find(params[:id])
     unless current_user.is_following?(@user)
       current_user.follow!(@user)
       flash[:notice] = 'follow!'
@@ -46,7 +42,6 @@ class UsersController < ApplicationController
   end
 
   def unfollow
-    @user = user.find(params[:id])
     if current_user.is_following?(@user)
       current_user.unfollow!(@user)
       flash[:alert] = 'unfollowed！'
@@ -56,14 +51,12 @@ class UsersController < ApplicationController
 
   def following
     @title = 'Following'
-    @user  = User.find(params[:id])
     @users = @user.following.page(1).per(5)
     render 'show_follow'
   end
 
   def followers
     @title = 'Followers'
-    @user  = User.find(params[:id])
     @users = @user.followers.page(1).per(5)
     render 'show_follow'
   end
