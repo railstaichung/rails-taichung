@@ -1,19 +1,21 @@
-<div class="container-fluid" style="height:550px; width:770px;">
-  <h2><%= I18n.t('sign_up') %></h2>
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+<div class="container-fluid">
+  <div class="col-md-8 col-md-offset-2">
+    <h2><%= I18n.t('sign_up') %></h2>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :name, label:I18n.t('name') ,required: true, autofocus: true %>
-    <%= f.input :email, label:I18n.t('email') ,required: true %>
-    <%= f.input :password, label:I18n.t('password'), required: true, hint: (I18n.t('password_char_min', minimum_password_length:@minimum_password_length) if @minimum_password_length) %>
-    <%= f.input :password_confirmation, label:I18n.t('password_confirmation'),required: true %>
+    <div class="form-inputs">
+      <%= f.input :name, label:I18n.t('name') ,required: true, autofocus: true %>
+      <%= f.input :email, label:I18n.t('email') ,required: true %>
+      <%= f.input :password, label:I18n.t('password'), required: true, hint: (I18n.t('password_char_min', minimum_password_length:@minimum_password_length) if @minimum_password_length) %>
+      <%= f.input :password_confirmation, label:I18n.t('password_confirmation'),required: true %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, I18n.t('sign_up'),class: "btn btn-success btn-lg btn-block" %>
+    </div>
+    <% end %>
+
+    <%= render "users/shared/links" %>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, I18n.t('sign_up'),class: "btn btn-success btn-lg btn-block" %>
-  </div>
-  <% end %>
-
-  <%= render "users/shared/links" %>
 </div>
