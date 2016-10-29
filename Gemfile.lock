@@ -63,6 +63,8 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    acts-as-taggable-on (4.0.0)
+      activerecord (>= 4.0)
     addressable (2.4.0)
     airbrussh (1.1.1)
       sshkit (>= 1.6.1, != 1.7.0)
@@ -138,7 +140,7 @@ GEM
       railties (>= 4.1.0, < 5.1)
       responders
       warden (~> 1.2.3)
-    domain_name (0.5.20160826)
+    domain_name (0.5.20161021)
       unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     exception_notification (4.2.1)
@@ -340,7 +342,7 @@ GEM
       connection_pool (~> 2.2, >= 2.2.0)
       rack-protection (>= 1.5.0)
       redis (~> 3.2, >= 3.2.1)
-    sidekiq-scheduler (2.0.19)
+    sidekiq-scheduler (2.0.20)
       hashie (~> 3.4)
       redis (~> 3)
       rufus-scheduler (~> 3.1.8)
@@ -396,6 +398,7 @@ PLATFORMS
 DEPENDENCIES
   aasm
   activeadmin (~> 1.0.0.pre4)
+  acts-as-taggable-on (~> 4.0)
   awesome_rails_console
   bootstrap-sass (~> 3.3.6)
   byebug
@@ -453,4 +456,4 @@ RUBY VERSION
    ruby 2.3.0p0
 
 BUNDLED WITH
-   1.13.5
+   1.13.6
