@@ -8,6 +8,14 @@ GIT
       railties (>= 3.2, < 5.1)
       responders
 
+GIT
+  remote: git://github.com/seuros/capistrano-sidekiq.git
+  revision: 951995f08e1aa790fff3a2cf18b0c3a3c8bf918d
+  specs:
+    capistrano-sidekiq (0.5.4)
+      capistrano
+      sidekiq (>= 3.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -406,6 +414,7 @@ DEPENDENCIES
   capistrano-passenger
   capistrano-rails
   capistrano-rvm
+  capistrano-sidekiq!
   carrierwave (>= 1.0.0.beta, < 2.0)
   carrierwave-qiniu (>= 0.2.4)
   ckeditor
