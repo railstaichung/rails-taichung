@@ -40,3 +40,4 @@ set :passenger_restart_with_touch, true
 
 # capistrano-sidekiq
 set :sidekiq_monit_use_sudo, false
+set :sidekiq_role, :apps
