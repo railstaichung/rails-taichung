@@ -28,3 +28,4 @@ Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }
 
 require 'capistrano/sidekiq'
 require 'capistrano/sidekiq/monit' # to require monit tasks # Only for capistrano3
+set :sidekiq_monit_use_sudo, false
