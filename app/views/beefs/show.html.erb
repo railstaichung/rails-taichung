@@ -7,6 +7,7 @@
       </div>
       <h2><%= @beef.title %></h2>
       <p><%= @beef.description %></p>
+      <p>標籤：<%= raw @beef.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></p>
     </div>
 
   </div>
