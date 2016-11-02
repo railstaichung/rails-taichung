@@ -8,6 +8,7 @@ gem 'rails', '~> 5.0.0', '>= 5.0.0.1' # Bundle edge Rails instead: gem 'rails', 
 # gem 'unicorn' # Use Unicorn as the app server
 gem 'aasm'
 gem 'activeadmin', '~> 1.0.0.pre4'
+gem 'acts-as-taggable-on', '~> 4.0'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'carrierwave-qiniu', '>= 0.2.4'
 gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
@@ -57,6 +58,7 @@ group :development do
   gem 'capistrano-passenger'
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
+  gem 'capistrano-sidekiq', github: 'seuros/capistrano-sidekiq'
   gem 'capistrano'
   gem 'letter_opener_web'
   gem 'pry-nav'

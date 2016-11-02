@@ -27,7 +27,6 @@ set :deploy_to, '/home/apps/rails-taichung'
 # git clone 完成後會從 shared 資料夾 copy 過去的檔案
 set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml', 'config/application.yml')
 
-
 # Default value for linked_dirs is []
 # git clone 完成後會從 shared 資料夾 copy 過去的資料夾
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
@@ -38,3 +37,7 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 # Default value for keep_releases is 5
 set :keep_releases, 10
 set :passenger_restart_with_touch, true
+
+# capistrano-sidekiq
+set :sidekiq_monit_use_sudo, false
+set :sidekiq_role, :apps
