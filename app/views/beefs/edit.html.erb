@@ -5,13 +5,7 @@
       <h1>修改資源內容</h1>
 
       <hr>
-      <%= simple_form_for @beef do |f| %>
-        <div class="form-group">
-          <%= f.input :title, label: '標題' %>
-          <%= f.input :description, label: '內容' %>
-        </div>
-        <%= f.submit "提交新內容", class: "btn btn-primary", data: { disable_with: "提交中..." } %>
-      <% end %>
+      <%= render "form" %>
     </div>
 
   </div>

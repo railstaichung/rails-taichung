@@ -1,0 +1,11 @@
+<div class="container-fluid" style="height:550px; width:770px;">
+  <% provide(:title, @title) %>
+  <h3><%= @title %></h3>
+  <% if @keywordable.any? %>
+  <div>
+    <% @keywordable.each do |k| %>
+    <%= k.keywordable.name %><br/>
+    <% end %>
+  </div>
+  <% end %>
+</div>

@@ -6,6 +6,7 @@ zh-TW:
   delete: "刪除"
   confirm: "你確定?"
   # User
+  new_user_keyword: "新增關鍵字"
   new_user_profile: "新增連結"
   new_user_image: "新增圖片"
   edit_user: "帳號管理"

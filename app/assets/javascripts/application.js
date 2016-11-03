@@ -15,9 +15,10 @@
 //= require jquery_ujs
 //= require holder
 //= require bootstrap/alert
-//= require ckeditor/init
 //= require underscore
 //= require gmaps/google
-//= require_tree .
 //= require gravtastic
 //= require jquery.Jcrop
+//= require ckeditor/init
+//= require ckeditor/config
+//= require_tree .
