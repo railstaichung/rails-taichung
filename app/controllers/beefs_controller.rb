@@ -1,7 +1,11 @@
 class BeefsController < ApplicationController
 
   def index
-    @beefs = Beef.all
+    if params[:tag]
+      @beefs = Beef.tagged_with(params[:tag])
+    else
+      @beefs = Beef.all
+    end
   end
 
   def new
@@ -42,10 +46,12 @@ class BeefsController < ApplicationController
       redirect_to beefs_path, alert: '資源已刪除！'
   end
 
+
+
   private
 
   def beef_params
-    params.require(:beef).permit(:title, :description)
+    params.require(:beef).permit(:title, :description, :tag_list)
   end
 
 end

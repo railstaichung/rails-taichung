@@ -11,6 +11,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+
  *= require bootstrap-datetimepicker
  *= require user.min
  *= require user
@@ -18,6 +19,8 @@
  *= require keywords
  *= require jquery.Jcrop
  *= require_self
+ *= require_tree ./users
+ *= require_directory .
  */
 @import "font-awesome";
 @import "bootstrap-sprockets";
