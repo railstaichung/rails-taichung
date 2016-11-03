@@ -29,6 +29,10 @@ zh-CN:
   backstage: "进入后台"
   logout: "登出"
   search: "查找"
+  registered_activity: "已报名活动"
+  new_activity: "建立活动"
+  activity_managment: "活动管理"
+  search_website: "全站查找"  
   # Footer
   meeting_place: "聚会地点"
   address: "404台中市北区大雅路454号"

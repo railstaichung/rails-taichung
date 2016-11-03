@@ -50,6 +50,10 @@ en:
   backstage: "Backstage"
   logout: "Log out"
   search: "Search"
+  registered_activity: "Registered"
+  new_activity: "New activity"
+  activity_managment: "Managment"
+  search_website: "Keyword"
   # Footer
   meeting_place: "Meeting place"
   address: "404 North Daya Lu Taichung No. 454"
