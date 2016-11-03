@@ -12,7 +12,10 @@ $ bundle exec figaro install
 $ rake db:migrate
 $ rake db:seed
 ```
-* figaro applcation.yml 請 [Slack]( https://rortc.herokuapp.com/) 私訊取得
+* figaro applcation.yml 請 [加入 Slack](https://rortc.herokuapp.com/) 私訊取得
+
+## 技術日誌
+[railstaichung.github.io](http://railstaichung.github.io) 請以markdown push到_post即可
 
 ## 前言
 RoR Taichung 官網是Rails Taichung為了Rails在台中持續發展深耕並服務社群所建立。本專案也是Rails Taichung第一個團隊開發專案。
