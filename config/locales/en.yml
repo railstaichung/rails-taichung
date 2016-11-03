@@ -26,6 +26,7 @@ en:
   delete: "X"
   confirm: "Are you sure?"
   # User
+  new_user_keyword: "+Keyword"
   new_user_profile: "+Profile"
   new_user_image: "+Photo"
   edit_user: "Account"
@@ -49,6 +50,10 @@ en:
   backstage: "Backstage"
   logout: "Log out"
   search: "Search"
+  registered_activity: "Registered"
+  new_activity: "New activity"
+  activity_managment: "Managment"
+  search_website: "Keyword"
   # Footer
   meeting_place: "Meeting place"
   address: "404 North Daya Lu Taichung No. 454"

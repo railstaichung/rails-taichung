@@ -6,6 +6,7 @@ zh-TW:
   delete: "刪除"
   confirm: "你確定?"
   # User
+  new_user_keyword: "新增關鍵字"
   new_user_profile: "新增連結"
   new_user_image: "新增圖片"
   edit_user: "帳號管理"
@@ -29,6 +30,10 @@ zh-TW:
   backstage: "進入後台"
   logout: "登出"
   search: "搜尋"
+  registered_activity: "已報名活動"
+  new_activity: "建立活動"
+  activity_managment: "活動管理"
+  search_website: "全站搜尋"  
   # Footer
   meeting_place: "聚會地點"
   address: "404台中市北區大雅路454號"
