@@ -32,6 +32,29 @@
   }
 }
 
+.keywords {
+  overflow: auto;
+  margin-top: 0;
+  padding: 0;
+  a {
+    float: left;
+    padding: 0 1px;
+    border-left: 1px;
+    color: pink;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: red;
+    }
+  }
+  strong {
+    display: block;
+  }
+}
+
 .user_avatars {
   overflow: auto;
   margin-top: 10px;

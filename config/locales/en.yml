@@ -26,6 +26,7 @@ en:
   delete: "X"
   confirm: "Are you sure?"
   # User
+  new_user_keyword: "+Keyword"
   new_user_profile: "+Profile"
   new_user_image: "+Photo"
   edit_user: "Account"
