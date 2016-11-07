@@ -64,7 +64,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, user_photo_attributes: [:image, :id])
+    params.require(:user).permit(:name, :info, user_photo_attributes: [:image, :id])
   end
 
   def find_user
