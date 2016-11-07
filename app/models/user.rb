@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  validates :name, length: { maximum: 20 }
+  validates :info, length: { maximum: 100 }
+
   include Gravtastic
   gravtastic
 
