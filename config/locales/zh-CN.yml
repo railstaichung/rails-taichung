@@ -10,6 +10,7 @@ zh-CN:
   new_user_image: "新增图片"
   edit_user: "帐号管理"
   name: "称呼"
+  info: "简介"
   upload_user_image: "上传我的大头照"
   unfollow: "取消追踪"
   follow: "追踪"
@@ -32,7 +33,7 @@ zh-CN:
   registered_activity: "已报名活动"
   new_activity: "建立活动"
   activity_managment: "活动管理"
-  search_website: "全站查找"  
+  search_website: "全站查找"
   # Footer
   meeting_place: "聚会地点"
   address: "404台中市北区大雅路454号"
