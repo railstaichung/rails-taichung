@@ -11,6 +11,7 @@ zh-TW:
   new_user_image: "新增圖片"
   edit_user: "帳號管理"
   name: "稱呼"
+  info: "簡介"
   upload_user_image: "上傳我的大頭照"
   unfollow: "取消追蹤"
   follow: "追蹤"
@@ -33,7 +34,7 @@ zh-TW:
   registered_activity: "已報名活動"
   new_activity: "建立活動"
   activity_managment: "活動管理"
-  search_website: "全站搜尋"  
+  search_website: "全站搜尋"
   # Footer
   meeting_place: "聚會地點"
   address: "404台中市北區大雅路454號"
