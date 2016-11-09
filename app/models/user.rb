@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
   has_many :issues
   has_many :issue_responds
 
-  def self.from_omniauth(auth)
+  def self.from_omniauth(auth)    
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
@@ -44,6 +44,10 @@ class User < ActiveRecord::Base
       user.skip_confirmation!
       user.save!
     end
+  end
+
+  def self.email_exists?(auth)
+    where(email: auth.info.email).first
   end
 
   def join!(event)
