@@ -10,7 +10,7 @@
       <div class="index_image">
         <div>
           <%= link_to user_path(user) do %>
-          <%= image_tag user.gravatar_url(:size => 150, :default => 'https://dl.dropboxusercontent.com/u/1252720/_rortc/ROR.jpg'), size: "150", class: "img-circle center-block" %>
+            <%= user_image(user, 150, "img-circle center-block") %>
           <% end %>
         </div>
         <div class="index_bg"></div>

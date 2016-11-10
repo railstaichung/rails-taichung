@@ -1,60 +1,36 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
-    # You need to implement the method below in your model (e.g. app/models/user.rb)
-    @user = User.from_omniauth(request.env["omniauth.auth"])
-
-    if @user.persisted? then
-      sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
-      set_flash_message(:notice, :success, :kind => "Facebook") if is_navigational_format?
-    else
-      session["devise.facebook_data"] = request.env["omniauth.auth"]
-      redirect_to new_user_registration_url
-    end
+    basic_omniauth_action("Facebook")
   end
 
   def google_oauth2
-    @user = User.from_omniauth(request.env["omniauth.auth"])
-
-    if @user.persisted?
-      flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Google"
-      sign_in_and_redirect @user, :event => :authentication
-    else
-      session["devise.google_data"] = request.env["omniauth.auth"]
-      redirect_to new_user_registration_url
-    end
+    basic_omniauth_action("Google")
   end
 
   def github
-    @user = User.from_omniauth(request.env["omniauth.auth"])
-
-    if @user.persisted?
-      flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Github"
-      sign_in_and_redirect @user, :event => :authentication
-    else
-      session["devise.github_data"] = request.env["omniauth.auth"]
-      redirect_to new_user_registration_url
-    end
+    basic_omniauth_action("github")
   end
+
+  def line
+    basic_omniauth_action("Line")
+  end
+
   def failure
     redirect_to root_path
   end
-  # More info at:
-  # https://github.com/plataformatec/devise#omniauth
 
-  # GET|POST /resource/auth/twitter
-  # def passthru
-  #   super
-  # end
+  private
 
-  # GET|POST /users/auth/twitter/callback
-  # def failure
-  #   super
-  # end
+  def basic_omniauth_action(omniauth_type)
+    @user = User.from_omniauth(request.env["omniauth.auth"])
 
-  # protected
+    if @user.persisted?
+      sign_in_and_redirect @user, :event => :authentication
+      flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => omniauth_type
+    else
+      session["devise.#{omniauth_type.downcase}_data"] = request.env["omniauth.auth"]
+      redirect_to new_user_registration_url
+    end
+  end
 
-  # The path used when OmniAuth fails
-  # def after_omniauth_failure_path_for(scope)
-  #   super(scope)
-  # end
 end

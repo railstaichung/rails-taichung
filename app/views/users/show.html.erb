@@ -1,8 +1,8 @@
 <br>
 <div class="container">
   <div class="row">
-    <div class="col-md-3 col-md-offset-2 col-xs-10 col-xs-offset-1">
-      <%= image_tag @user.gravatar_url(:size => 300, :default => 'https://dl.dropboxusercontent.com/u/1252720/_rortc/ROR.jpg'), size: "300" %>
+    <div class="col-md-3 col-md-offset-2 col-xs-10 col-xs-offset-1">      
+      <%= user_image(@user, 300, "") %>
     </div>
     <div class="col-md-5 col-xs-10 col-xs-offset-1">
       <h1><%=  @user.name %></h1>
