@@ -27,7 +27,7 @@
                       <td>
                         <div class="media">
                           <a href="#" class="pull-left">
-                            <%= image_tag issue.owner.gravatar_url(:default => 'http://i.imgur.com/fclemsW.jpg'), class:"media-photo"%>
+                            <%= user_image(issue.owner, nil, "media-photo") %>
                           </a>
                           <div class="media-body">
                             <span class="media-meta pull-right"><%= issue.created_at.strftime("%Y/%m/%d %H:%M:%S") %></span>

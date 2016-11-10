@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
          :trackable,
          :validatable,
          :confirmable,
-         :omniauthable, omniauth_providers: [:facebook, :google_oauth2, :github]
+         :omniauthable, omniauth_providers: [:facebook, :google_oauth2, :github, :line]
 
   # user relationships
   has_many :active_relationships,  class_name:  'Relationship',
@@ -40,13 +40,18 @@ class User < ActiveRecord::Base
   has_many :issue_responds
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = auth.info.email
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|      
+      user.email = auth.info.email||"#{Devise.friendly_token[0,10]}@noemail.com"
       user.password = Devise.friendly_token[0, 20]
       user.name = auth.info.name # assuming the user model has a name
+      user.image = auth.info.image
       user.skip_confirmation!
       user.save!
     end
+  end
+
+  def self.email_exists?(auth)
+    where(email: auth.info.email).first
   end
 
   def join!(event)

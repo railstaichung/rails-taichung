@@ -73,13 +73,14 @@ GEM
       tzinfo (~> 1.1)
     acts-as-taggable-on (4.0.0)
       activerecord (>= 4.0)
-    addressable (2.4.0)
+    addressable (2.5.0)
+      public_suffix (~> 2.0, >= 2.0.2)
     airbrussh (1.1.1)
       sshkit (>= 1.6.1, != 1.7.0)
     arbre (1.1.1)
       activesupport (>= 3.0.0)
     arel (7.1.4)
-    autoprefixer-rails (6.5.1.1)
+    autoprefixer-rails (6.5.2)
       execjs
     awesome_print (1.7.0)
     awesome_rails_console (0.4.0)
@@ -257,7 +258,10 @@ GEM
       multi_json (~> 1.3)
       omniauth (>= 1.1.1)
       omniauth-oauth2 (>= 1.3.1)
-    omniauth-oauth2 (1.4.0)
+    omniauth-line (0.0.2)
+      json (~> 1.3)
+      omniauth-oauth2 (~> 1.3.1)
+    omniauth-oauth2 (1.3.1)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
@@ -271,6 +275,7 @@ GEM
       pry (>= 0.9.10, < 0.11.0)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
+    public_suffix (2.0.4)
     puma (3.6.0)
     qiniu (6.8.1)
       json (~> 1.8)
@@ -315,8 +320,7 @@ GEM
       activesupport (>= 3.0)
       i18n
       polyamorous (~> 1.3)
-    rdoc (4.2.2)
-      json (~> 1.4)
+    rdoc (4.3.0)
     redis (3.3.1)
     ref (2.0.0)
     responders (2.3.0)
@@ -345,7 +349,7 @@ GEM
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     sexp_processor (4.7.0)
-    sidekiq (4.2.4)
+    sidekiq (4.2.5)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
       rack-protection (>= 1.5.0)
@@ -373,7 +377,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.3.12)
-    sshkit (1.11.3)
+    sshkit (1.11.4)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     therubyracer (0.12.2)
@@ -441,6 +445,7 @@ DEPENDENCIES
   omniauth-facebook
   omniauth-github
   omniauth-google-oauth2
+  omniauth-line
   pry
   pry-nav
   puma (~> 3.0)
