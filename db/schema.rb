@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_161_107_053_235) do
+ActiveRecord::Schema.define(version: 20_161_110_024_829) do
   create_table 'active_admin_comments', force: :cascade do |t|
     t.string   'namespace'
     t.text     'body'
@@ -193,7 +193,7 @@ ActiveRecord::Schema.define(version: 20_161_107_053_235) do
     t.string   'unconfirmed_email'
     t.string   'provider'
     t.string   'uid'
-    t.string   'info'
+    t.string   'image'
     t.index ['confirmation_token'], name: 'index_users_on_confirmation_token', unique: true
     t.index ['email'], name: 'index_users_on_email', unique: true
     t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true

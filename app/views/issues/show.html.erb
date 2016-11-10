@@ -36,8 +36,7 @@
       <div class="media">
         <div class="media-left">
           <%= link_to(user_path(@issue.owner)) do %>
-          <%=image_tag(@issue.owner.gravatar_url(:default => 'http://i.imgur.com/fclemsW.jpg', size: 80),
-                         class: "media-object")%>
+          <%= user_image(@issue.owner, 80, "media-object") %>
           <% end %>
         </div>
         <div class="media-body">
@@ -59,8 +58,7 @@
       <div class="media">
         <div class="media-left">
           <%= link_to(user_path(issue_respond.user)) do %>
-          <%=image_tag(issue_respond.user.gravatar_url(:default => 'http://i.imgur.com/fclemsW.jpg', size: 80),
-                           class: "media-object")%>
+          <%= user_image(issue_respond,user, 80, "media-object") %>
           <% end %>
           <%= render "vote", issue_respond: issue_respond %>
         </div>
