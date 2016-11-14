@@ -31,6 +31,7 @@ en:
   new_user_image: "+Photo"
   edit_user: "Account"
   name: "Name"
+  info: "Information"
   upload_user_image: "Upload A Photo"
   unfollow: "Unfollow"
   follow: "Follow"
