@@ -27,7 +27,7 @@
     </div>
 
     <div class="col-md-2 visible-lg-block login-line">
-      <%=image_tag("pixel.png", height:"450px", width:"1px", class: "center-block")%>
+      <%=image_tag("pixel.png", height:"480px", width:"1px", class: "center-block")%>
     </div>
 
     <div class="visible-xs-block">
@@ -44,6 +44,9 @@
       <% end %>
       <%= link_to user_github_omniauth_authorize_path, class: "btn btn-warning btn-lg btn-block" do%>
       <%= fa_icon "github", text: "github", class: "pull-left" %>
+      <% end %>
+      <%= link_to user_line_omniauth_authorize_path, class: "btn btn-success btn-lg btn-block" do%>
+      <%=image_tag("line.svg", size: "20", class: "pull-left")%> LINE
       <% end %>
       <hr>
       <%= render "users/shared/links" %>
