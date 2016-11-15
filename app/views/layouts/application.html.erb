@@ -7,6 +7,8 @@
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= favicon_link_tag 'rortc30.jpg' %>
+    <%= render "common/smartsupp" %>
+    <%= render "common/sendpulse" %>
   </head>
   <body class="<%= controller_name %> <%= action_name %>">
     <%= render "common/navbar" %>
