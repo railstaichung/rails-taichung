@@ -1,4 +1,4 @@
-<div style="background-image: url(<%=  image_path("landscape.jpg") %>); background-size: cover; background-repeat: no-repeat; background-attachment:center; background-position: center;">
+<div style="background-image: url(<%=  image_path(" landscape.jpg") %>); background-size: cover; background-repeat: no-repeat; background-attachment:center; background-position: center;">
   <div class="container-fluid" style="background-color: rgba(0,0,0,0.2)">
     <div class="row" style="padding: 40px;">
       <div class="col-md-5 text-right" style="padding: 12% 5% 10px 0px;">
@@ -10,7 +10,7 @@
           <p><%= link_to("免費參加", active_events_path, class: "btn btn-warning btn-lg", role: "button") %></p>
         </div>
       </div>
-      <div class="col-md-7 center-block" style="padding: 5%;" >
+      <div class="col-md-7 center-block" style="padding: 5%;">
         <%=image_tag("coworkers.jpg", class: "img-responsive", alt: "Responsive image")%>
       </div>
     </div>
@@ -23,7 +23,9 @@
       <div class="text-center" style="color:white;">
         <div>
           <div>
-            <h1 style="color:orange;"><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span></h1>
+            <h1 style="color:orange;">
+              <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
+            </h1>
           </div>
           <div>
             <h4>聊天</h4>
@@ -37,7 +39,9 @@
       <div class="text-center">
         <div>
           <div>
-            <h1 style="color:orange;"><span class="glyphicon glyphicon-send" aria-hidden="true"></span></h1>
+            <h1 style="color:orange;">
+              <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+            </h1>
           </div>
           <div>
             <h4>創業</h4>
@@ -51,7 +55,9 @@
       <div class="text-center" style="color:white;">
         <div>
           <div>
-            <h1 style="color:orange;"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span></h1>
+            <h1 style="color:orange;">
+              <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
+            </h1>
           </div>
           <div>
             <h4>求職</h4>
@@ -69,6 +75,6 @@
       <h2>一個人練功太苦悶<br>一群人聚會有神助</h2>
       <br>
       <p><%= link_to("免費參加", active_events_path, class: "btn btn-warning btn-lg", role: "button") %></p>
-   </div>
+    </div>
   </div>
 </div>
