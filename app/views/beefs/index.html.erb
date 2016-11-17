@@ -1,48 +1,73 @@
-<div class="container-fluid" style="padding: 15px 30px 15px 50px;">
-  <div class="row">
+<div id="beef-main" class="container-fluid">
+      <article class="row">
+        <div class="col-xs-12 col-md-8 col-md-offset-1">
+          <div class="row">
+            <h1 style="color:white;">資源分享</h1>
+            <% if current_user %>
+              <%= link_to("加入新資源", new_beef_path, class: "btn btn-primary pull-right") %>
+            <% end %>
+          </div>
+          <ul class="block-list">
+            <% @beefs.each do |beef| %>
+              <li>
+                <section class="beef-section">
+                  <div class="card-block">
+                    <p class="card-text">
+                      <%= raw(beef.description) %>
+                    </p>
+                  </div>
+                  <div class="card-body">
+                    <h2 class="card-title"><%= link_to(beef.title, beef_path(beef)) %></h2>
+                    <ul class="author-info">
+                      <li>
+                        <%= user_image(beef.user, 30, "round-image") %>
+                      </li>
+                      <li>
+                        <%= beef.user.name %>
+                      </li>
+                      <li>
+                        <%= beef_createtime(beef.created_at) %>
+                      </li>
+                    </ul>
+                  </div>
+                </section>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="col-xs-4 col-md-3">
+          <div id="tag_cloud">
+            <% tag_cloud Beef.tag_counts, %w[s m l] do |tag, css_class| %>
+              <%= link_to tag.name, tag_path(tag.name), class: css_class %>
 
-    <div class="col-md-9">
-      <div class="group">
-        <%= link_to("加入新資源", new_beef_path, class: "btn btn-primary pull-right") %>
-      </div>
-
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <td>#</td>
-            <td>標題</td>
-            <td>內容</td>
-            <td>標籤</td>
-          </tr>
-        </thead>
-        <tbody>
-          <% @beefs.each do |beef| %>
-            <tr>
-              <td>#</td>
-              <td><%= link_to(beef.title, beef_path(beef)) %></td>
-              <td><%= beef.description %></td>
-              <td>
-                <%= raw beef.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
-              </td>
-              <td>
-                  <%= link_to("編輯", edit_beef_path(beef), class: "btn btn-sm btn-default")%>
-                  <%= link_to("刪除", beef_path(beef),    class: "btn btn-sm btn-default",
-                              method: :delete, data: { confirm: "確定要刪除嗎？" } )%>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="col-md-3">
-      <div id="tag_cloud">
-        <% tag_cloud Beef.tag_counts, %w[s m l] do |tag, css_class| %>
-          <%= link_to tag.name, tag_path(tag.name), class: css_class %>
-
-        <% end %>
-      </div>
-    </div>
-
-  </div>
+            <% end %>
+          </div>
+        </div>
+      </article>
 </div>
+<style media="screen">
+  #beef-main{
+    background-image: url(<%=image_path("beef_background.jpg")%>);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment:center;
+    background-position: center;
+  }
+  .beef-section{
+    background-color: #FFFFFF;
+  }
+  .card-block{
+    padding: 10px;
+    height: 180px;
+  }
+  .card-body{
+    background-color: #F7F7F7;
+    height: 80px;
+  }
+  .card-body ul li{
+    display: inline;
+  }
+  .block-list{
+    list-style-type: none;
+  }
+</style>

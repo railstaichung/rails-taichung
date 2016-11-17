@@ -8,7 +8,7 @@ CKEDITOR.editorConfig = function (config) {
       ['Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar'],
       ['pbckcode']
     ];
-    config.toolbar_Full = [['Undo', 'Redo', '-', 'SelectAll', 'RemoveFormat'],
+    config.toolbar_cust = [['Undo', 'Redo', '-', 'SelectAll', 'RemoveFormat'],
                            ['Styles', 'Format', 'Font', 'FontSize'],
                            ['TextColor', 'BGColor'],
                            ['Maximize', 'ShowBlocks', '-', 'About'], '/',

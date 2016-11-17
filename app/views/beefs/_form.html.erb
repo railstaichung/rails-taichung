@@ -1,8 +1,9 @@
 <%= simple_form_for @beef do |f| %>
 <div class="form-group">
   <%= f.input :title, input_html: { class: "form-control"}, label: '標題'%>
-  <%= f.input :description, input_html: { class: "form-control"}, label: '內容'%>
   <%= f.input :tag_list, input_html: { class: "form-control"}, label: '標籤(兩個以上請用空白分開)' %>
+  <%= f.input :description, as: :ckeditor, input_html: { ckeditor: { toolbar: 'cust' } }, required: true, label: '內容' %>
 </div>
-<%= f.submit "提交新資源", class: "btn btn-primary", data: { disable_with: "提交中..." } %>
+<%= f.submit "提交新資源", class: "btn btn-primary pull-right", data: { disable_with: "提交中..." } %>
+<br>
 <% end %>
