@@ -13,8 +13,7 @@ class BeefsController < ApplicationController
   end
 
   def create
-    @beef = Beef.new(beef_params)
-
+    @beef = current_user.beefs.new(beef_params)    
     if @beef.save
       redirect_to beefs_path
     else
