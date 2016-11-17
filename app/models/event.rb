@@ -7,6 +7,7 @@ class Event < ActiveRecord::Base
 
   has_many :user_events
   has_many :members, through: :user_events, source: :user
+  has_many :beefs
 
   belongs_to :owner, class_name: 'User', foreign_key: :user_id
 

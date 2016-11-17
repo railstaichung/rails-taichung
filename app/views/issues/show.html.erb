@@ -58,7 +58,7 @@
       <div class="media">
         <div class="media-left">
           <%= link_to(user_path(issue_respond.user)) do %>
-          <%= user_image(issue_respond,user, 80, "media-object") %>
+          <%= user_image(issue_respond.user, 80, "media-object") %>
           <% end %>
           <%= render "vote", issue_respond: issue_respond %>
         </div>
