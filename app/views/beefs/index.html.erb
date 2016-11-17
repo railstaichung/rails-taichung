@@ -17,7 +17,7 @@
                     </p>
                   </div>
                   <div class="card-body">
-                    <h2 class="card-title"><%= link_to(beef.title, beef_path(beef)) %></h2>
+                    <h2 class="card-title"><%= link_to(beef.title, beef_path(beef),class: "beef-title") %></h2>
                     <ul class="author-info">
                       <li>
                         <%= user_image(beef.user, 30, "round-image") %>
@@ -31,6 +31,7 @@
                     </ul>
                   </div>
                 </section>
+                <br>
               </li>
             <% end %>
           </ul>
@@ -70,4 +71,11 @@
   .block-list{
     list-style-type: none;
   }
+  .card-title{
+    padding: 0px 20px;
+  }
+  A.beef-title:link  {text-decoration: none; color: #776d6d;}
+  A.beef-title:visited {text-decoration: none; color: #776d6d;}
+  A.beef-title:hover {text-decoration: underline; color: #776d6d;}
+  A.beef-title:active {text-decoration: none; color: #776d6d;}
 </style>
