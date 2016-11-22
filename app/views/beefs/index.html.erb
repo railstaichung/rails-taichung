@@ -2,10 +2,14 @@
       <article class="row">
         <div class="col-xs-12 col-md-8 col-md-offset-1">
           <div class="row">
-            <h1 style="color:white;">資源分享</h1>
-            <% if current_user %>
-              <%= link_to("加入新資源", new_beef_path, class: "btn btn-primary pull-right") %>
-            <% end %>
+            <div class="col-md-8">
+              <h1 style="color:white;">資源分享</h1>
+            </div>
+            <div class="col-md-4">
+              <% if current_user %>
+                <%= link_to("加入新資源", new_beef_path, class: "btn btn-primary pull-right", style:"margin:20px") %>
+              <% end %>
+            </div>
           </div>
           <ul class="block-list">
             <% @beefs.each do |beef| %>
@@ -13,7 +17,7 @@
                 <section class="beef-section">
                   <div class="card-block">
                     <p class="card-text">
-                      <%= raw(beef.description) %>
+                      <%= sanitize(beef.description ) %>
                     </p>
                   </div>
                   <div class="card-body">
@@ -50,7 +54,7 @@
   #beef-main{
     background-image: url(<%=image_path("beef_background.jpg")%>);
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-attachment:center;
     background-position: center;
   }
@@ -70,8 +74,13 @@
   }
   .block-list{
     list-style-type: none;
+    margin: 0;
+    padding: 0;
   }
   .card-title{
+    padding: 0px 20px;
+  }
+  .author-info{
     padding: 0px 20px;
   }
   A.beef-title:link  {text-decoration: none; color: #776d6d;}
