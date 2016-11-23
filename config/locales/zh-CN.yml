@@ -98,3 +98,18 @@ zh-CN:
   login_and_respond: "登陆并回复问题来得到更多的"
   respond_edit: "回复更新"
   respond_content: "回复内容"
+  #Beefs=========================================================================
+  resource:
+    title: "共享资源"
+    new: "新增资源"
+    tag: "标签"
+    hours_ago_submit: "小时前提交"
+    days_ago_submit: "天前提交"
+    months_ago_submit: "个月前提交"
+    years_ago_submit: "年前提交"
+    edit: "编辑资源"
+    subject: "名称"
+    tags: "标签 (两个以上时请以空格区隔)"
+    content: "內容"
+    submit: "提交新资源"
+    submitting: "提交中..."

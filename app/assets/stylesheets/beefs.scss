@@ -13,8 +13,8 @@
 #beef-main{
   background-image: image_url("beef_background.jpg");
   background-size: cover;
-  background-repeat: repeat;
-  background-attachment:center;
+  background-repeat: no-repeat;
+  background-attachment:fixed;
   background-position: center;
 }
 .beef-section{

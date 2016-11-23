@@ -119,5 +119,18 @@ en:
   login_and_respond: "Login and respond to get more"
   respond_edit: "Respond content edit"
   respond_content: "Respond content"
-  #=============================================================================
-  
+  #Beefs=========================================================================
+  resource:
+    title: "Share resources"
+    new: "New resource"
+    tag: "Tag"
+    hours_ago_submit: "hours ago submit"
+    days_ago_submit: "days ago submit"
+    months_ago_submit: "months ago submit"
+    years_ago_submit: "years ago submit"
+    edit: "Edit resource"
+    subject: "Subject"
+    tags: "Tag (two or more with a space)"
+    content: "Content"
+    submit: "Submit new resource"
+    submitting: "Submitting..."
