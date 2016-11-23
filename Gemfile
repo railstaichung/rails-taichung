@@ -31,6 +31,7 @@ gem 'jquery-rails' # Use jquery as the JavaScript library
 gem 'json', '~> 1.8', '>= 1.8.3'
 gem 'kaminari' # user follower
 gem 'mini_magick'
+gem 'nokogiri'
 gem 'omniauth-facebook'
 gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
@@ -51,7 +52,8 @@ gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
 
 group :development, :test do
   gem 'byebug' # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'sqlite3', group: :development # Use sqlite3 as the database for Active Record
+  #gem 'sqlite3', group: :development # Use sqlite3 as the database for Active Record
+  gem 'mysql2'
 end
 
 group :development do

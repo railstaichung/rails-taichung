@@ -12,21 +12,21 @@
 
 ActiveRecord::Schema.define(version: 20161117035502) do
 
-  create_table "active_admin_comments", force: :cascade do |t|
+  create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string   "namespace"
-    t.text     "body"
-    t.string   "resource_id",   null: false
-    t.string   "resource_type", null: false
+    t.text     "body",          limit: 65535
+    t.string   "resource_id",                 null: false
+    t.string   "resource_type",               null: false
     t.string   "author_type"
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
-    t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
-    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
+    t.index ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
+    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
   end
 
-  create_table "admin_users", force: :cascade do |t|
+  create_table "admin_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -39,106 +39,106 @@ ActiveRecord::Schema.define(version: 20161117035502) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.index ["email"], name: "index_admin_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  create_table "beefs", force: :cascade do |t|
+  create_table "beefs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string   "title"
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.integer  "user_id"
     t.integer  "event_id"
     t.string   "photo"
   end
 
-  create_table "events", force: :cascade do |t|
+  create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string   "topic"
     t.datetime "start_time"
     t.datetime "end_time"
     t.string   "location"
-    t.text     "content"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.text     "content",    limit: 65535
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.integer  "user_id"
-    t.boolean  "is_active",  default: true
-    t.float    "latitude"
-    t.float    "longitude"
+    t.boolean  "is_active",                default: true
+    t.float    "latitude",   limit: 24
+    t.float    "longitude",  limit: 24
     t.string   "photo"
   end
 
-  create_table "images", force: :cascade do |t|
+  create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string   "url"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_images_on_user_id"
+    t.index ["user_id"], name: "index_images_on_user_id", using: :btree
   end
 
-  create_table "issue_respond_votes", force: :cascade do |t|
+  create_table "issue_respond_votes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.integer  "issue_respond_id"
     t.integer  "user_id"
     t.integer  "vote_num"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.index ["issue_respond_id", "user_id"], name: "index_issue_respond_votes_on_issue_respond_id_and_user_id", unique: true
+    t.index ["issue_respond_id", "user_id"], name: "index_issue_respond_votes_on_issue_respond_id_and_user_id", unique: true, using: :btree
   end
 
-  create_table "issue_responds", force: :cascade do |t|
+  create_table "issue_responds", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.integer  "issue_id"
     t.integer  "user_id"
-    t.text     "content"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.integer  "vote",       default: 0
+    t.text     "content",    limit: 65535
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.integer  "vote",                     default: 0
   end
 
-  create_table "issues", force: :cascade do |t|
+  create_table "issues", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.integer  "user_id"
     t.string   "title"
-    t.text     "content"
+    t.text     "content",     limit: 65535
     t.string   "issue_state"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
-  create_table "keywords", force: :cascade do |t|
+  create_table "keywords", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string   "content"
     t.string   "keywordable_type"
     t.integer  "keywordable_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.index ["keywordable_type", "keywordable_id"], name: "index_keywords_on_keywordable_type_and_keywordable_id"
+    t.index ["keywordable_type", "keywordable_id"], name: "index_keywords_on_keywordable_type_and_keywordable_id", using: :btree
   end
 
-  create_table "profiles", force: :cascade do |t|
-    t.text     "content"
+  create_table "profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.text     "content",    limit: 65535
     t.string   "url"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
-  create_table "relationships", force: :cascade do |t|
+  create_table "relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.integer  "follower_id"
     t.integer  "followed_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["followed_id"], name: "index_relationships_on_followed_id"
-    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
-    t.index ["follower_id"], name: "index_relationships_on_follower_id"
+    t.index ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
+    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
+    t.index ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
   end
 
-  create_table "simple_captcha_data", force: :cascade do |t|
+  create_table "simple_captcha_data", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string   "key",        limit: 40
     t.string   "value",      limit: 6
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["key"], name: "idx_key"
+    t.index ["key"], name: "idx_key", using: :btree
   end
 
-  create_table "taggings", force: :cascade do |t|
+  create_table "taggings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.integer  "tag_id"
     t.string   "taggable_type"
     t.integer  "taggable_id"
@@ -146,38 +146,38 @@ ActiveRecord::Schema.define(version: 20161117035502) do
     t.integer  "tagger_id"
     t.string   "context",       limit: 128
     t.datetime "created_at"
-    t.index ["context"], name: "index_taggings_on_context"
-    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
-    t.index ["tag_id"], name: "index_taggings_on_tag_id"
-    t.index ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
-    t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy"
-    t.index ["taggable_id"], name: "index_taggings_on_taggable_id"
-    t.index ["taggable_type"], name: "index_taggings_on_taggable_type"
-    t.index ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type"
-    t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
+    t.index ["context"], name: "index_taggings_on_context", using: :btree
+    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+    t.index ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
+    t.index ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
+    t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy", using: :btree
+    t.index ["taggable_id"], name: "index_taggings_on_taggable_id", using: :btree
+    t.index ["taggable_type"], name: "index_taggings_on_taggable_type", using: :btree
+    t.index ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type", using: :btree
+    t.index ["tagger_id"], name: "index_taggings_on_tagger_id", using: :btree
   end
 
-  create_table "tags", force: :cascade do |t|
-    t.string  "name"
+  create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.string  "name",                       collation: "utf8_bin"
     t.integer "taggings_count", default: 0
-    t.index ["name"], name: "index_tags_on_name", unique: true
+    t.index ["name"], name: "index_tags_on_name", unique: true, using: :btree
   end
 
-  create_table "user_events", force: :cascade do |t|
+  create_table "user_events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.integer  "user_id"
     t.integer  "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "user_photos", force: :cascade do |t|
+  create_table "user_photos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.integer  "user_id"
     t.string   "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -199,9 +199,10 @@ ActiveRecord::Schema.define(version: 20161117035502) do
     t.string   "uid"
     t.string   "info"
     t.string   "image"
-    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "images", "users"
 end

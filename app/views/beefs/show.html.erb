@@ -3,13 +3,13 @@
 
     <div class="col-xs-12 col-md-8 col-md-offset-2">
       <div class="group">
-        <% if current_user %>
-          <%= link_to("編輯", edit_beef_path(@beef), class: "btn btn-primary pull-right")%>
+        <% if current_user?(@beef.user) %>
+          <%= link_to("編輯", edit_beef_path(@beef), class: "btn btn-primary pull-right", style: "margin:20px")%>
         <% end %>
       </div>
       <h2><%= @beef.title %></h2>
-      <p><%= raw(@beef.description) %></p>
       <p>標籤：<%= raw @beef.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></p>
+      <p><%= raw(@beef.description) %></p>
       <%= render "common/disqus" %>
     </div>
   </div>
