@@ -100,3 +100,18 @@ zh-TW:
   login_and_respond: "登入並回應問題來得到更多的"
   respond_edit: "回覆更新"
   respond_content: "回覆內容"
+  #Beefs=========================================================================
+  resource:
+    title: "共享資源"
+    new: "新增資源"
+    tag: "標籤"
+    hours_ago_submit: "小時前提交"
+    days_ago_submit: "天前提交"
+    months_ago_submit: "個月前提交"
+    years_ago_submit: "年前提交"
+    edit: "編輯資源"
+    subject: "名稱"
+    tags: "標籤 (兩個以上時請以空格區隔)"
+    content: "內容"
+    submit: "提交新資源"
+    submitting: "提交中..."

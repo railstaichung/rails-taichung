@@ -1,5 +1,5 @@
 class Beef < ApplicationRecord
-
+  paginates_per 10
   validates :title, :description, presence: true
   has_many :keywords, as: :keywordable
   belongs_to :event

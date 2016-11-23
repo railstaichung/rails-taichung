@@ -2,9 +2,9 @@ class BeefsController < ApplicationController
 
   def index
     if params[:tag]
-      @beefs = Beef.tagged_with(params[:tag])
+      @beefs = Beef.tagged_with(params[:tag]).page params[:page]
     else
-      @beefs = Beef.all
+      @beefs = Beef.includes(:user).page params[:page]
     end
   end
 
@@ -13,7 +13,7 @@ class BeefsController < ApplicationController
   end
 
   def create
-    @beef = current_user.beefs.new(beef_params)    
+    @beef = current_user.beefs.new(beef_params)
     if @beef.save
       redirect_to beefs_path
     else
