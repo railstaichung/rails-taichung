@@ -41,19 +41,21 @@
                  <%= render 'event_member' %>
                </div>
                <div role="tabpanel" class="tab-pane" id="messages">
+                 <% if current_user.is_member_of?(@event) %>
+                   <%= link_to("撰寫活動心得", new_event_beef_path(@event.id), class: "btn btn-primary pull-right", style: "margin:15px;") %>
+                 <% end %>
                  <h3>目前有 <%= @docs.size %> 篇心得已發表</h3>
                  <hr>
                  <%= render "beefs/resource", beefs: @docs %>
                  <hr>
-                 <%= link_to("撰寫活動心得", new_event_beef_path(@event.id), class: "btn btn-primary btn-lg btn-block") %>
                </div>
             </div>
          </div>
+         <div>
+           <h3>留言板</h3>
+           <%= render "common/disqus" %>
+         </div>
       </div>
-   </div>
-   <div>
-     <h3>留言板</h3>
-     <%= render "common/disqus" %>
    </div>
 </div>
 
@@ -67,8 +69,8 @@
      handler.fitMapToBounds();
    });
 
-  //  $(".mapbox").slideUp();
-  //  document.getElementById('hide').value= "<%= I18n.t("show_map") %>";
+   $(".mapbox").slideUp();
+   document.getElementById('hide').value= "<%= I18n.t("show_map") %>";
 
    $(document).on("click", "#hide", function(){
      if($(".mapbox").css("display")=="none"){
@@ -79,8 +81,4 @@
        document.getElementById('hide').value= "<%= I18n.t("show_map") %>";
      }
    });
-</script>
-
-<script type="text/javascript">
-  $(".mapbox").toggle();
 </script>
