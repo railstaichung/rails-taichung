@@ -20,6 +20,7 @@ zh-CN:
   members: "聚会成员"
   issues: "热门议题"
   resources: "资源分享"
+  try_ruby: "Try Ruby"
   register: "新成员？"
   login: "登录"
   change_password: "变更密码"

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'static_pages/try_ruby'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root 'landingpage#index'

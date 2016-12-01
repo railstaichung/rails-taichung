@@ -41,6 +41,7 @@ en:
   members: "Members"
   issues: "Issues"
   resources: "Resources"
+  try_ruby: "Try Ruby"
   register: "New member?"
   login: "Log in"
   change_password: "Change password"

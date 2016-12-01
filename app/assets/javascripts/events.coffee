@@ -9,7 +9,7 @@ $(document).ready ->
     autoclose: true,
     todayBtn: true,
     pickerPosition: "bottom-left",
-    format: 'yyyy-mm-dd hh:ii:ss'
+    format: 'yyyy-mm-dd hh:ii'
   });
 
 jQuery ->

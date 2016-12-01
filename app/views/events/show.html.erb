@@ -7,7 +7,7 @@
    <div class="row">
       <div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
          <div class="img-container">
-            <%= image_tag (@event.try(:photo).try(:banner).try(:url)|| "default-banner.jpg")  %>          
+            <%= image_tag (@event.try(:photo).try(:banner).try(:url)|| "default-banner.jpg")  %>
          </div>
          <div class="page-header">
             <h1><%=  @event.topic %></h1>
@@ -51,8 +51,14 @@
          </div>
       </div>
    </div>
+   <div>
+     <h3>留言板</h3>
+     <%= render "common/disqus" %>
+   </div>
 </div>
+
 <br>
+
 <script type="text/javascript">
    handler = Gmaps.build('Google');
    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
@@ -61,8 +67,8 @@
      handler.fitMapToBounds();
    });
 
-   $(".mapbox").slideUp();
-   document.getElementById('hide').value= "<%= I18n.t("show_map") %>";
+  //  $(".mapbox").slideUp();
+  //  document.getElementById('hide').value= "<%= I18n.t("show_map") %>";
 
    $(document).on("click", "#hide", function(){
      if($(".mapbox").css("display")=="none"){
@@ -73,4 +79,8 @@
        document.getElementById('hide').value= "<%= I18n.t("show_map") %>";
      }
    });
+</script>
+
+<script type="text/javascript">
+  $(".mapbox").toggle();
 </script>
