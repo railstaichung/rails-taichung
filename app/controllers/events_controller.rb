@@ -80,6 +80,8 @@ class EventsController < ApplicationController
       marker.lng event.longitude
       marker.infowindow event.topic
     end
+    @members = @event.members
+    @docs = @event.beefs.order('created_at DESC').page params[:page]
   end
 
   def edit

@@ -1,0 +1,14 @@
+<h3>目前有 <%= @members.size %> 位夥伴參加</h3>
+<div id="membersDiv">
+  <ul>
+    <% @members.each do |member| %>
+     <li>
+        <div class="col-md-3 col-xs-4 member-list">
+          <%= link_to user_path(member) do %>
+            <%= user_image(member, 40, "img-circle") %>&nbsp;&nbsp;<%= member.name %>
+          <% end %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

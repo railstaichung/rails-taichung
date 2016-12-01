@@ -11,57 +11,7 @@
               <% end %>
             </div>
           </div>
-          <ul class="block-list">
-            <% @beefs.each do |beef| %>
-              <li>
-                <section class="beef-section">
-                  <div class="card-block">
-                    <% if image_not_exists?(beef) %>
-                      <div class="card-text" style="height:180px; width:100%; float:left;">
-                        <p>  <%= html_content_parsed(beef) %>  </p>
-                      </div>
-                    <% else %>
-                      <div style="height:100px; width:40%; float:left; margin:0px 10px 0px 0px;">
-                        <%= html_image_parsed(beef, 0, '100%', '180px') %>
-                      </div>
-                      <div style="height:80px; width:55%; float:left;">
-                        <%= html_image_parsed(beef, 1, '50px', '50px') %>
-                        <%= html_image_parsed(beef, 2, '50px', '50px') %>
-                        <%= html_image_parsed(beef, 3, '50px', '50px') %>
-                        <%= html_image_parsed(beef, 4, '50px', '50px') %>
-                      </div>
-                      <div class="card-text" style="height:100px; width:55%; float:left;">
-                        <p>  <%= html_content_parsed(beef) %>  </p>
-                      </div>
-                    <% end %>
-                  </div>
-                  <div class="card-body">
-                    <h2 class="card-title"><%= link_to(beef.title, beef_path(beef),class: "beef-title") %></h2>
-                    <ul class="author-info">
-                      <li>
-                        <%= link_to(user_path(beef.user)) do %>
-                          <%= user_image(beef.user, 30, "round-image") %>
-                        <% end %>
-                      </li>
-                      <li>
-                        <%= beef.user.name %>
-                      </li>
-                      <li>
-                        <%= beef_createtime(beef.created_at) %>
-                      </li>
-                      <li>
-                        <%= I18n.t('resource.tag') %>：<%= raw beef.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
-                      </li>
-                    </ul>
-                  </div>
-                </section>
-                <br>
-              </li>
-            <% end %>
-          </ul>
-          <div class="pull-right">
-            <%= paginate @beefs %>
-          </div>
+          <%= render "resource", beefs: @beefs %>          
         </div>
         <div class="col-xs-4 col-md-3">
           <div id="tag_cloud">
