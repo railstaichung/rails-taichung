@@ -17,6 +17,11 @@ Rails.application.routes.draw do
       get :active
       get :inactive
     end
+    resources :beefs, only: [:new] do
+      collection do
+        post :create_from_event
+      end
+    end
   end
 
   resources :issues do

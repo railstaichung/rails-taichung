@@ -9,6 +9,9 @@
       </div>
       <h2><%= @beef.title %></h2>
       <p><%= I18n.t('resource.tag') %>：<%= raw @beef.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></p>
+      <% if @beef.event %>
+        <p><%= I18n.t('resource.from') %>：<%= link_to(@beef.event.topic, event_path(@beef.event)) %> </p>
+      <% end %>
       <p><%= raw(@beef.description) %></p>
       <%= render "common/disqus" %>
     </div>
