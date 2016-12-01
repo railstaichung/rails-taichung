@@ -41,7 +41,7 @@
                  <%= render 'event_member' %>
                </div>
                <div role="tabpanel" class="tab-pane" id="messages">
-                 <% if current_user.is_member_of?(@event) %>
+                 <% if current_user && current_user.is_member_of?(@event) %>
                    <%= link_to("撰寫活動心得", new_event_beef_path(@event.id), class: "btn btn-primary pull-right", style: "margin:15px;") %>
                  <% end %>
                  <h3>目前有 <%= @docs.size %> 篇心得已發表</h3>
