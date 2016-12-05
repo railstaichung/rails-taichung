@@ -28,3 +28,5 @@ config/google_analytics.yml
 
 # Ignore application configuration
 /config/application.yml
+
+config/database.yml
