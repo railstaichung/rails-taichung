@@ -2,9 +2,9 @@ class BeefsController < ApplicationController
 
   def index
     if params[:tag]
-      @beefs = Beef.tagged_with(params[:tag]).page params[:page]
+      @beefs = Beef.tagged_with(params[:tag]).order("created_at DESC").page params[:page]
     else
-      @beefs = Beef.includes(:user).page params[:page]
+      @beefs = Beef.includes(:user).order("created_at DESC").page params[:page]
     end
   end
 

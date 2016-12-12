@@ -130,6 +130,7 @@ en:
     months_ago_submit: "months ago submit"
     years_ago_submit: "years ago submit"
     edit: "Edit resource"
+    co_editor: "Activity co-editor"
     subject: "Subject"
     tags: "Tag (two or more with a space)"
     content: "Content"
