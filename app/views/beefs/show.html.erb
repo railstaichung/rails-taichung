@@ -5,6 +5,8 @@
       <div class="group">
         <% if current_user?(@beef.user) %>
           <%= link_to(I18n.t('resource.edit'), edit_beef_path(@beef), class: "btn btn-primary pull-right", style: "margin:20px")%>
+        <% elsif current_user && current_user.is_member_of?(@beef.event) %>
+          <%= link_to(I18n.t('resource.co_editor'), edit_beef_path(@beef), class: "btn btn-primary pull-right", style: "margin:20px")%>
         <% end %>
       </div>
       <h2><%= @beef.title %></h2>
