@@ -194,6 +194,8 @@ GEM
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (0.7.0)
+    intercom-rails (0.3.4)
+      activesupport (> 3.0)
     jbuilder (2.6.0)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
@@ -434,6 +436,7 @@ DEPENDENCIES
   haml-rails
   holder_rails
   inherited_resources!
+  intercom-rails
   jbuilder (~> 2.5)
   jquery-rails
   json (~> 1.8, >= 1.8.3)

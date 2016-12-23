@@ -26,6 +26,7 @@ gem 'gravtastic'
 gem 'haml-rails' # user profile
 gem 'holder_rails'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+gem 'intercom-rails'
 gem 'jbuilder', '~> 2.5' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jquery-rails' # Use jquery as the JavaScript library
 gem 'json', '~> 1.8', '>= 1.8.3'
