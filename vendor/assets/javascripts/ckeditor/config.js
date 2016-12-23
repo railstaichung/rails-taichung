@@ -5,14 +5,14 @@ CKEDITOR.editorConfig = function (config) {
       ['Styles', 'Format', 'Font', 'FontSize'],
       ["Bold",  "Italic",  "Underline",  "Strike",  "-",  "Subscript",  "Superscript"],
       ['Imgur', 'Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar'],
-      ['pbckcode','Imgur']
+      ['CreateDiv','Imgur']
     ];
     config.toolbar_cust = [['Undo', 'Redo', '-', 'SelectAll', 'RemoveFormat'],
                            ['Styles', 'Format', 'Font', 'FontSize'],
                            ['TextColor', 'BGColor'],
                            ['Maximize', 'ShowBlocks', '-', 'About'], '/',
                            ['Bold', 'Italic', 'Underline', 'Strike', '-', 'Subscript', 'Superscript'],
-                           ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', 'Blockquote', 'pbckcode'],
+                           ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', 'Blockquote', 'CreateDiv'],
                            ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
                            ['Link', 'Unlink', 'Anchor'],
                            ['Imgur','Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak']];
